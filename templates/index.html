@@ -1,1 +1,13 @@
-<h1>Hello World!</h1>
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+    </style>
+{% endblock %}
+{% block body %}
+<h1>Hello, World!</h1>
+{% endblock %}
+</html>
