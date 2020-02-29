@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_mail import Mail, Message
+# eventuell sicherer mit OAuth
 # from authlib.integrations.flask_client import OAuth
 # from loginpass import create_flask_blueprint, GitHub
 
