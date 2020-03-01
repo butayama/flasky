@@ -23,4 +23,4 @@ def strip_version_numbers(f, f_old):
 
 
 if __name__ == "__main__":
-    strip_version_numbers(f='common.txt', f_old='common_old.txt')
+    strip_version_numbers(f='heroku.txt', f_old='old.txt')
