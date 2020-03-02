@@ -1,11 +1,11 @@
 -r common.txt
-certifi==2017.7.27.1
+certifi==2019.11.28
 chardet==3.0.4
-coverage==4.4.1
-faker==0.7.18
-httpie==0.9.9
-idna==2.5
-Pygments==2.2.0
-requests==2.18.2
-selenium==3.4.3
-urllib3==1.22
+coverage==5.0.3
+faker==4.0.1
+httpie==2.0.0
+idna==2.9
+Pygments==2.5.2
+requests==2.23.0
+selenium==4.0.0a3
+urllib3==1.25.8
