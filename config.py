@@ -112,6 +112,19 @@ class UnixConfig(ProductionConfig):
         app.logger.addHandler(syslog_handler)
 
 
+class LinodeConfig(ProductionConfig):
+    @classmethod
+    def init_app(cls, app):
+        ProductionConfig.init_app(app)
+
+        # log to syslog
+        import logging
+        from logging.handlers import SysLogHandler
+        syslog_handler = SysLogHandler()
+        syslog_handler.setLevel(logging.INFO)
+        app.logger.addHandler(syslog_handler)
+
+
 config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
@@ -119,6 +132,7 @@ config = {
     'heroku': HerokuConfig,
     'docker': DockerConfig,
     'unix': UnixConfig,
+    'linode': LinodeConfig,
 
     'default': DevelopmentConfig
 }
