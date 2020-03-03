@@ -125,6 +125,25 @@ heroku local
 Deploying with git push
 =======================
 
+Creating a Heroku remote
+
+Git remotes are versions of your repository that live on other servers. You deploy your app by pushing its code to a special Heroku-hosted remote that’s associated with your app.  
+**some helpful commands:**  
+heroku info schweini-chat  
+git remote -v  
+
+
+**Error: 'heroku' does not appear to be a git repository**  
+
+First, make sure you're logged into heroku:  
+`heroku login`  
+Enter your credentials.  
+It's common to get this error when using a cloned git repo onto a new machine. Even if your heroku credentials are already on the machine, there is no link between the cloned repo and heroku locally yet. To do this, cd into the root dir of the cloned repo and run  
+
+heroku git:remote -a yourapp  
+`heroku git:remote -a schweini-chat ` 
+
+
 Funktioniert nur mit einem gültigen SSH Zertifikat
 ==================================================
 
