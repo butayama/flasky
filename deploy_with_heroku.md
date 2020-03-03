@@ -138,7 +138,7 @@ heroku logs -t
 
 Deploying an Upgrade
 ====================
-heroku maintenance:on  
+heroku maintenance:on -a=schweini-chat   
 git push heroku master  
 heroku run flask deploy  
 heroku restart  
