@@ -6,3 +6,5 @@ The current login functionality implemented with the help of Flask-Login stores 
 
 NoteThe stateless requirement of REST may seem overly strict, but it is not arbitrary. Stateless servers can scale very easily. If servers store information about clients, it is necessary to ensure that the same server always gets requests from a given client, or else to use shared storage for client data. Both are complex problems to solve that do not exist when the server is stateless.  
 
+A cookie managing module is stored in the folder  
+**not_yet_used**
