@@ -1,0 +1,20 @@
+{% extends "shared/_layout.html" %}
+{% block main_content %}
+
+    <h1>Single Cut Rotational Osteotomy</h1>
+
+    <h2>Angles (degrees):</h2>
+
+    {% for a in angles%}
+        <div>
+    <span class="title">
+        {{ a.name }}
+    </span>
+    <span class="value">
+        {{ a.value }}
+    </span>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
