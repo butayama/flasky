@@ -1,0 +1,17 @@
+    <header>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ url_for('index') }}"
+                                        class="nav-link {% if index %}active{% endif %}">Home</a></li>
+                <li class="nav-item"><a href="{{ url_for('case') }}"
+                                        class="nav-link {% if index %}active{% endif %}">Case</a></li>
+                <li class="nav-item"><a href="{{ url_for('op_planning') }}"
+                                        class="nav-link {% if index %}active{% endif %}">op_planning</a></li>
+                <li class="nav-item"><a href="{{ url_for('op') }}"
+                                        class="nav-link {% if index %}active{% endif %}">op</a></li>
+                <li class="nav-item"><a href="{{ url_for('post_op') }}"
+                                        class="nav-link {% if index %}active{% endif %}">post_op</a></li>
+            </ul>
+        </nav>
+        <hr style="clear:both">
+    </header>
