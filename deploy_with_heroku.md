@@ -7,7 +7,9 @@ aus /mnt/Volume/GitHub/version_remove_requirements_txt
 
 Flask Starten
 -------------
-export FLASK_APP=flasky.py
+export FLASK_APP=flasky.py  
+Windows:  
+set FLASK_APP=flasky.py
 
 Datenbank initialisieren:
 -------------------------
