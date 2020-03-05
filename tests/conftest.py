@@ -1,6 +1,6 @@
 import os
 import sys
-from scripts.file_handling import write_pickle
+from app.file_handling import write_pickle
 import pytest
 
 myPath = os.path.dirname(os.path.abspath(__file__))

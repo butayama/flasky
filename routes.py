@@ -1,4 +1,4 @@
-from scripts import app
+from flasky import app
 from flask import render_template
 
 

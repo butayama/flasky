@@ -6,10 +6,10 @@ import app.services.angles_service as angles_service
 blueprint = flask.Blueprint('..templates/home', __name__, template_folder='templates')
 
 
-"""@blueprint.route('/')
+@blueprint.route('/')
 @response(template_file='..templates/home/index.html')
 def index():
-    return {}"""
+    return {}
 
 
 @blueprint.route('/about')
