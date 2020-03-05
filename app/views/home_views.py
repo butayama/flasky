@@ -3,29 +3,29 @@ import flask
 from ..infrastructure.view_modifiers import response
 import app.services.angles_service as angles_service
 
-blueprint = flask.Blueprint('home', __name__, template_folder='templates')
+blueprint = flask.Blueprint('..templates/home', __name__, template_folder='templates')
 
 
-@blueprint.route('/')
-@response(template_file='home/index.html')
+"""@blueprint.route('/')
+@response(template_file='..templates/home/index.html')
 def index():
-    return {}
+    return {}"""
 
 
 @blueprint.route('/about')
-@response(template_file='home/about.html')
+@response(template_file='..templates/home/about.html')
 def about():
     return {}
 
 
 @blueprint.route('/about_01')
-@response(template_file='home/about_01.html')
+@response(template_file='..templates/home/about_01.html')
 def about_01():
     return {}
 
 
 @blueprint.route('/case')
-@response(template_file='home/case.html')
+@response(template_file='..templates/home/case.html')
 def case():
     return {}
 

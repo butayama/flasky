@@ -1,0 +1,28 @@
+.navbar-default {
+    background-color: #6b9e1f;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-size: 25px;
+}
+
+.fluid-top {
+    background: #cccccc;
+}
+
+.fluid-middle .row {
+    padding: 0px;
+    padding-bottom: 60px;
+    background: white;
+}
+
+.fluid-bottom .row {
+    font-size: 20px;
+    padding: 10px;
+    background: #cccccc;
+}
+
+.hero {
+    font-size: 18px;
+}
