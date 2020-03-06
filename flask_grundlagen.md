@@ -132,3 +132,59 @@ environ | The raw WSGI environment dictionary for the request.
 'hello'
 >>> app_ctx.pop()
 ```
+Dieser Output funktioniert bei mir nicht. Ich bekomme folgende Fehlermeldung:  
+```
+Funktioniert bei mir nicht in der Python Console - Auch nicht in PyCharm
+>>> 
+(flasky) uwes@hpi5:/mnt/Volume/GitHub/flasky$ python
+Python 3.8.1 (default, Feb 16 2020, 15:26:26) 
+[GCC 8.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from flasky import app
+Python-dotenv could not parse statement starting at line 1
+Python-dotenv could not parse statement starting at line 2
+Python-dotenv could not parse statement starting at line 3
+Python-dotenv could not parse statement starting at line 4
+>>> app_ctx = app.app_context()
+>>> app_ctx.push()
+>>> current_app.name
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'current_app' is not defined
+```
+
+# Request Hooks
+hook | description
+------------------ | ---------------------------------
+before_request | Registers a function to run before each request.
+before_first_request | Registers a function to run only before the first request is handled. This can be a convenient way to add server initialization tasks.
+after_request | Registers a function to run after each request, but only if no unhandled exceptions occurred.
+teardown_request | Registers a function to run after each request, even if unhandled exceptions occurred.  
+
+###**share data** between request hook functions and view functions:  
+use the g context global as storage.
+
+# Responses
+**make_response()** function takes one, two, or three arguments, the same values that can be returned from a view function, and returns an equivalent response object.   
+
+Flask response object 
+
+Attribute or Method | Description
+------------------ | ---------------------------------
+status_code | The numeric HTTP status code
+headers | A dictionary-like object with all the headers that will be sent with the response
+set_cookie() | Adds a cookie to the response
+delete_cookie() | Removes a cookie
+content_length | The length of the response body
+content_type | The media type of the response body
+set_data() | Sets the response body as a string or bytes value
+get_data() | Gets the response body	Description
+status_code | The numeric HTTP status code
+headers |A dictionary-like object with all the headers that will be sent with the response
+set_cookie() | Adds a cookie to the response
+delete_cookie() | Removes a cookie
+content_length | The length of the response body
+content_type |The media type of the response body
+set_data() | Sets the response body as a string or bytes value
+get_data() | Gets the response body
+
