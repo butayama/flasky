@@ -45,7 +45,7 @@ def create_app(config_name):
     from .api import api as api_blueprint
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
-    from .views import home_views as home_views
+    from app.views import home_views as home_views
     app.register_blueprint(home_views.blueprint, url_prefix='/views')
 
     from .navs.nav_items import NavItems as NavItems

@@ -278,26 +278,22 @@ def moderate_disable(id):
                             page=request.args.get('page', 1, type=int)))
 
 
-@main.route('/Case', methods=['GET', 'POST'])
+
+@main.route("/case")
 def case():
-    form = PostForm()
-    if current_user.can(Permission.WRITE) and form.validate_on_submit():
-        post = Post(body=form.body.data,
-                    author=current_user._get_current_object())
-        db.session.add(post)
-        db.session.commit()
-        return redirect(url_for('.case'))
-    page = request.args.get('page', 1, type=int)
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
-        query = current_user.followed_posts
-    else:
-        query = Post.query
-    pagination = query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
-        error_out=False)
-    posts = pagination.items
-    return render_template('case.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+    return render_template("home/case.html", case=True)
+
+
+@main.route("/op_planning")
+def op_planning():
+    return render_template("home/op_planning.html", op_planning=True)
+
+
+@main.route("/op")
+def op():
+    return render_template("home/op.html", op=True)
+
+
+@main.route("/post_op")
+def post_op():
+    return render_template("home/post_op.html", post_op=True)
