@@ -3,11 +3,11 @@ from flask_nav.elements import Navbar, View
 
 class NavItems:
     topbar = Navbar('',
-                    View('HOME', '.main.index'),
-                    View('CASE', 'main.index'),
-                    View('OP_PLANNING', 'main.index'),
-                    View('OP', 'main.index'),
-                    View('POST_OP', 'main.index'),
+                    View('HOME', 'home.index'),
+                    View('CASE', 'home.case'),
+                    View('OP_PLANNING', 'home.op_planning'),
+                    View('OP', 'home.op'),
+                    View('POST_OP', 'home.post_op'),
                     )
 
     not_used = Navbar('',
