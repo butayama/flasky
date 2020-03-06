@@ -1,5 +1,6 @@
 https://learning.oreilly.com/library/view/flask-web-development/9781491991725/ch02.html
-# application instance
+#Chapter 2. Basic Application Structure
+## application instance
 object of class Flask  
 The web server passes all requests it receives from clients to this object for handling, using a protocol called Web Server Gateway Interface (WSGI, pronounced “wiz-ghee”)
 ```python
@@ -7,7 +8,7 @@ from flask import Flask
 app = Flask(__name__)
 ```
 
-# routes - view functions
+## routes - view functions
 AThe association between a URL and the function that handles it is called a route  
 a route is declared using the **app.route** decorator.
 ```python
@@ -20,7 +21,7 @@ The function registers **index()** as the **handler** for the application’s ro
 Functions like index() that handle application URLs are called **view functions**.  
 Jinja2 is used to generate HTML responses for better maintainance.  
 
-# app.route decorator
+## app.route decorator
 defines a defines a route that has a dynamic component  
 ```python
 @app.route('/user/<name>')
@@ -29,7 +30,7 @@ def user(name):
 ```
 when the view function is invoked, the dynamic component will be passed as an argument  
 
-# Development Web Server
+## Development Web Server
 FLASK_APP environment variable
 Linux, macOS:
 ```python
@@ -51,14 +52,14 @@ if __name__ == '__main__':
     app.run()
 ```
 
-# Dynamic Routes
+## Dynamic Routes
 ```python
 @app.route('/user/<name>')
 def user(name):
     return '<h1>Hello, {}!</h1>'.format(name)
 ```
 
-# Debug Mode
+## Debug Mode
 export FLASK_DEBUG=1  
 To enable debug mode programmatically, use app.run(debug=True)
 
@@ -83,9 +84,9 @@ Commands:
  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```  
 
-# The Request-Response Cycle
+## The Request-Response Cycle
 
-## request object
+### request object
 It encapsulates the HTTP request sent by the client.  
 
 Flask context globals
@@ -187,4 +188,55 @@ content_length | The length of the response body
 content_type |The media type of the response body
 set_data() | Sets the response body as a string or bytes value
 get_data() | Gets the response body
+
+# Chapter 3. Templates
+
+Flask view functions have two completely independent purposes disguised as one, which creates a problem.  
+These two types of tasks are formally called business logic and presentation logic, respectively.Mixing business and presentation logic leads to code that is hard to understand and maintain.  
+Moving the presentation logic into templates helps improve the maintainability of the application.  
+A template is a file that contains the text of a response, with placeholder variables for the dynamic parts that will be known only in the context of a request. The process that replaces the variables with actual values and returns a final response string is called rendering.  
+
+## The Jinja2 Template Engine
+### Rendering Templates
+The function render_template() provided by Flask integrates the Jinja2 template engine with the application.  
+### Variables
+The **{{ name }}** construct used in the template shown in Example 3-2 references a variable, a special placeholder that tells the template engine that the value that goes in that place should be obtained from data provided at the time the template is rendered.  
+Jinja2 recognizes variables of any type, even complex types such as lists, dictionaries, and objects.
+
+Variables can be modified with **filters**, which are added after the variable name with a pipe character as separator.  
+
+Jinja2 variable filters
+
+Filter name | Description
+------------ | --------------
+safe | Renders the value without applying escaping
+capitalize | Converts the first character of the value to uppercase and the rest to lowercase
+lower | Converts the value to lowercase characters
+upper | Converts the value to uppercase characters
+title | Capitalizes each word in the value
+trim | Removes leading and trailing whitespace from the value
+striptags | Removes any HTML tags from the value before rendering  
+
+## Control Structures
+## Bootstrap Integration with Flask-Bootstrap
+The extension is usually imported from a flask_<name> package, where <name> is the extension name. Most Flask extensions follow one of two consistent patterns for initialization.  
+Once Flask-Bootstrap is initialized, a base template that includes all the Bootstrap files and general structure is available to the application.  
+The Jinja2 extends directive implements the template inheritance by referencing **bootstrap/base.html** from Flask-Bootstrap. The base template from Flask-Bootstrap provides a skeleton web page that includes all the Bootstrap CSS and JavaScript files.  
+
+Flask-Bootstrap’s base template blocks 
+
+Block name | Description
+----------- | -----------
+doc | The entire HTML document
+html_attribs | Attributes inside the \<html> tag  
+html | The contents of the \<html> tag
+head | The contents of the \<head> tag
+title | The contents of the \<title> tag
+metas | The list of \<meta> tags
+styles | CSS definitions
+body_attribs | Attributes inside the \<body> tag
+body | The contents of the \<body> tag
+navbar | User-defined navigation bar
+content | User-defined page content
+scripts | JavaScript declarations at the bottom of the document
 
