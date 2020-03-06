@@ -240,3 +240,27 @@ navbar | User-defined navigation bar
 content | User-defined page content
 scripts | JavaScript declarations at the bottom of the document
 
+If the application needs to add its own content to a block that already has some content, then **Jinja2’s super() function** must be used.
+
+## Custom Error Pages
+## own base templates
+the application can define its own base template with a uniform page layout that includes the navigation bar and leaves the page content to be defined in derived templates.   
+
+## Links
+Any application that has more than one route will invariably need to include links that connect the different pages, such as in a navigation bar.  
+URLs written explicitly create an unwanted dependency on the routes defined in the code. If the routes are reorganized, links in templates may break.  
+Flask provides the **url_for()** helper function, which generates URLs from the information stored in the application’s URL map.  
+
+**Relative URLs** are sufficient when generating links that connect the different routes of the application. **Absolute URLs** are necessary only for links that will be used outside of the web browser, such as when sending links by email.  
+
+## Static Files
+In its default configuration, Flask looks for static files in a subdirectory called static located in the application’s root folder.  
+
+
+## Localization of Dates and Times with Flask-Moment
+``` 
+pip install flask-moment  
+```
+Flask-Moment assumes that timestamps handled by the server-side application are “naive” datetime objects expressed in UTC. See the documentation for the datetime package in the standard library for information on naive and aware date and time objects. 
+
+# Chapter 4. Web Forms
