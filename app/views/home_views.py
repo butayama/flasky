@@ -55,6 +55,12 @@ def post_op():
     return {}
 
 
+@blueprint.route('/post_op1')
+@response(template_file='home/post_op1.html')
+def post_op1():
+    return {}
+
+
 @blueprint.route('/details')
 @response(template_file='home/details.html')
 def details():

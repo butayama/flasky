@@ -8,6 +8,9 @@ class NavItems:
                     View('OP_PLANNING', 'home.op_planning'),
                     View('OP', 'home.op'),
                     View('POST_OP', 'home.post_op'),
+                    View('POST_OP1', 'home.post_op1'),
+                    View('LOG IN', 'auth.login'),
+
                     )
 
     not_used = Navbar('',
