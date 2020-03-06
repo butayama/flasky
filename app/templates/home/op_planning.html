@@ -1,19 +1,25 @@
 {% extends "shared/_layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 {%  block title %}OP Planning{% endblock %}
-{% block content %}
+{% block page_content_middle %}
 
     <div class="hero">
         <h1>Single Cut Rotational Osteotomy</h1>
-
-        <label>
-            <input type="text" placeholder="Coronal Component C" class="for">
-        </label>
-        <label>
-            <input type="text" placeholder="Sagittal Component S" class="form-control">
-        </label>
-        <label>
-            <input type="text" placeholder="Torsion Component T" class="form-control">
-        </label>
+        <p>
+            <label>
+                <input type="text" placeholder="Coronal Component C" class="form-control">
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="text" placeholder="Sagittal Component S" class="form-control">
+            </label>
+        </p>
+        <p>
+            <label>
+                <input type="text" placeholder="Torsion Component T" class="form-control">
+            </label>
+        </p>
 
         or <a href="#">browse projects</a>
     </div>
