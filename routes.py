@@ -28,3 +28,8 @@ def op():
 def post_op():
     return render_template("home/post_op.html", post_op=True)
 
+
+@app.route("/Log In")
+def post_op():
+    return render_template("login.html", post_op=True)
+
