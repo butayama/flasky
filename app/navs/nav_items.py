@@ -3,7 +3,7 @@ from flask_nav.elements import Navbar, View
 
 class NavItems:
     topbar = Navbar('',
-                    View('HOME', 'main.index'),
+                    View('HOME', '..templates/home/index'),
                     View('CASE', 'main.index'),
                     View('OP_PLANNING', 'main.index'),
                     View('OP', 'main.index'),

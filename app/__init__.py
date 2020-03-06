@@ -46,7 +46,7 @@ def create_app(config_name):
     app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
     from .views import home_views as home_views
-    app.register_blueprint(home_views.blueprint)
+    app.register_blueprint(home_views.blueprint, url_prefix='/views')
 
     from .navs.nav_items import NavItems as NavItems
     nav.register_element('top', NavItems.topbar)
