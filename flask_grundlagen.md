@@ -264,3 +264,83 @@ pip install flask-moment
 Flask-Moment assumes that timestamps handled by the server-side application are “naive” datetime objects expressed in UTC. See the documentation for the datetime package in the standard library for information on naive and aware date and time objects. 
 
 # Chapter 4. Web Forms
+With HTML, it is possible to create web forms, in which users can enter information. The form data is then submitted by the web browser to the server, typically in the form of a POST request. The Flask request object, introduced in Chapter 2, exposes all the information sent by the client in a request and, in particular for POST requests containing form data, provides access to the user information through request.form.  
+The Flask-WTF extension makes working with web forms a much more pleasant experience. This extension is a Flask integration wrapper around the framework-agnostic WTForms package.  
+```
+(venv) $ pip install flask-wtf
+```
+
+## 
+Flask-WTF does not need to be initialized at the application level, but it expects the application to have a secret key configured.  
+ ```python
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'hard to guess string'
+```
+
+## Form Classes
+The FlaskForm base class is defined by the Flask-WTF extension, so it is imported from flask_wtf. The fields and validators, however, are imported directly from the WTForms package.  
+
+WTForms standard HTML fields 
+
+Field type | Description
+----------- | ------------
+BooleanField | Checkbox with True and False values
+DateField | Text field that accepts a datetime.date value in a given format
+DateTimeField | Text field that accepts a datetime.datetime value in a given format
+DecimalField | Text field that accepts a decimal.Decimal value
+FileField | File upload field
+HiddenField | Hidden text field
+MultipleFileField | Multiple file upload field
+FieldList | List of fields of a given type
+FloatField | Text field that accepts a floating-point value
+FormField | Form embedded as a field in a container form
+IntegerField | Text field that accepts an integer value
+PasswordField | Password text field
+RadioField | List of radio buttons
+SelectField | Drop-down list of choices
+SelectMultipleField | Drop-down list of choices with multiple selection
+SubmitField | Form submission button
+StringField | Text field
+TextAreaField | Multiple-line text field
+
+WTForms validators Validator | Description
+-----------------------------|------------
+DataRequired | Validates that the field contains data after type conversion
+Email | Validates an email address
+EqualTo | Compares the values of two fields; useful when requesting a password to be entered twice for confirmation
+InputRequired | Validates that the field contains data before type conversion
+IPAddress | Validates an IPv4 network address
+Length | Validates the length of the string entered
+MacAddress | Validates a MAC address
+NumberRange | Validates that the value entered is within a numeric range
+Optional | Allows empty input in the field, skipping additional validators
+Regexp | Validates the input against a regular expression
+URL | Validates a URL
+UUID | Validates a UUID
+AnyOf | Validates that the input is one of a list of possible values
+NoneOf | Validates that the input is none of a list of possible values  
+
+## HTML Rendering of Forms
+```jinja2
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name(id='my-text-field') }}
+    {{ form.submit() }}
+</form>
+```
+Note that in addition to the name and submit fields, the form has a form.hidden_tag() element. This element defines an extra form field that is hidden, used by Flask-WTF to implement CSRF protection.  
+
+The Flask-Bootstrap extension provides a high-level helper function that renders an entire Flask-WTF form using Bootstrap’s predefined form styles, all with a single call. Using Flask-Bootstrap, the previous form can be rendered as follows:  
+```jinja2
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
+```
+## Form Handling in View Functions
+A form view function will have two tasks. First it will render the form, and then it will receive the form data entered by the user.  
+
+## Redirects and User Sessions
+### Post/Redirect/Get pattern.
+Consequently, it is considered good practice for web applications to never leave a POST request as the last request sent by the browser.This is achieved by responding to POST requests with a redirect instead of a normal response.   
+
+## Message Flashing
+Calling flash() is not enough to get messages displayed; the templates used by the application need to render these messages. The best place to render flashed messages is the base template, because that will enable these messages in all pages. Flask makes a get_flashed_messages() function available to templates to retrieve the messages and render them  
