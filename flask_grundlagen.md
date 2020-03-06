@@ -96,7 +96,8 @@ current_app | Application context | The application instance for the active appl
 g | Application context | An object that the application can use for temporary storage during the handling of a request. This variable is reset with each request.
 request | Request context | The request object, which encapsulates the contents of an HTTP request sent by the client.
 session | Request context | The user session, a dictionary that the application can use to store values that are “remembered” between requests.
- 
+
+If any of these variables are accessed without an active application or request context, an error is generated.
 
 Table 2-2. Flask request object  
 
