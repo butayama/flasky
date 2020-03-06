@@ -276,3 +276,8 @@ def moderate_disable(id):
     db.session.commit()
     return redirect(url_for('.moderate',
                             page=request.args.get('page', 1, type=int)))
+
+
+@main.route('/case')
+def case():
+    return render_template("home/case.html", case=True)
