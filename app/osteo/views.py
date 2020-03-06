@@ -1,6 +1,6 @@
 import flask
 
-from ..infrastructure.view_modifiers import response
+from app.infrastructure.view_modifiers import response
 import app.services.angles_service as angles_service
 
 blueprint = flask.Blueprint('home', __name__, template_folder='templates')

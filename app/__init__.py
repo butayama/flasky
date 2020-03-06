@@ -36,19 +36,19 @@ def create_app(config_name):
         from flask_sslify import SSLify
         sslify = SSLify(app)
 
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint)
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
-    from .api import api as api_blueprint
-    app.register_blueprint(api_blueprint, url_prefix='/api/v1')
-
-    from .views import home_views as home_views
-    app.register_blueprint(home_views.blueprint)
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
 
     from .navs.nav_items import NavItems as NavItems
     nav.register_element('top', NavItems.topbar)
+    """
+    from .osteo import osteo as osteo_blueprint
+    app.register_blueprint(osteo_blueprint, url_prefix='/osteo')"""
 
     return app
