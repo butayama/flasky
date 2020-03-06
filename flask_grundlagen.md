@@ -123,3 +123,12 @@ url | The complete URL requested by the client.
 base_url | Same as url, but without the query string component.
 remote_addr | The IP address of the client.
 environ | The raw WSGI environment dictionary for the request.
+
+
+```python
+>>> app_ctx = app.app_context()
+>>> app_ctx.push()
+>>> current_app.name
+'hello'
+>>> app_ctx.pop()
+```
