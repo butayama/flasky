@@ -7,6 +7,7 @@ from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
+from ..services import angles_service
 
 
 @auth.before_app_request
@@ -186,7 +187,7 @@ def about_01():
 
 @auth.route('/case')
 def case():
-    return render_template('auth/unconfirmed.html')
+    return render_template('auth/case.html')
 
 
 @auth.route('/index_01')
