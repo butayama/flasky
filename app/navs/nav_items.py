@@ -13,6 +13,11 @@ class NavItems:
 
                     )
 
+    rightbar = Navbar('',
+                    View('LOG IN', 'auth.login'),
+
+                    )
+
     not_used = Navbar('',
                       View('INDEX_01', 'auth.index_01'),
                       View('DETAILS', 'auth.details'),
