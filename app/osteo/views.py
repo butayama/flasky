@@ -1,11 +1,11 @@
 import flask
 from . import osteo
-from app.infrastructure.view_modifiers import response
+from app.infrastructure.x_view_modifiers import response
 import app.services.angles_service as angles_service
 
 # osteo = flask.osteo('home', __name__, template_folder='templates')
 
-
+"""
 @osteo.route('/')
 @response(template_file='home/index.html')
 def index():
@@ -71,3 +71,4 @@ def details():
 @response(template_file='home/details_01.html')
 def details_01():
     return {}
+"""

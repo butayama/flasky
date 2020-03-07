@@ -167,3 +167,59 @@ def change_email(token):
     else:
         flash('Invalid request.')
     return redirect(url_for('main.index'))
+
+
+@auth.route('/')
+def index():
+    return render_template('auth/index.html')
+
+
+@auth.route('/about')
+def about():
+    return render_template('auth/about.html')
+
+
+@auth.route('/about_01')
+def about_01():
+    return render_template('auth/about_01.html')
+
+
+@auth.route('/case')
+def case():
+    return render_template('auth/unconfirmed.html')
+
+
+@auth.route('/index_01')
+def index_01():
+    return render_template('auth/index_01.html')
+
+
+@auth.route('/op')
+def op():
+    return render_template('auth/op.html')
+
+
+@auth.route('/op_planning')
+def op_planning():
+    test_angles = angles_service.get_angles()
+    return {'angles': test_angles}
+
+
+@auth.route('/post_op')
+def post_op():
+    return render_template('auth/post_op.html')
+
+
+@auth.route('/post_op1')
+def post_op1():
+    return render_template('auth/post_op1.html')
+
+
+@auth.route('/details')
+def details():
+    return render_template('auth/details.html')
+
+
+@auth.route('/details_01')
+def details_01():
+    return render_template('auth/details_01.html')

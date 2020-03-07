@@ -48,7 +48,7 @@ def create_app(config_name):
     from .navs.nav_items import NavItems as NavItems
     nav.register_element('top', NavItems.topbar)
 
-    from .osteo import osteo as osteo_blueprint
-    app.register_blueprint(osteo_blueprint, url_prefix='/osteo')
+    """from .osteo import osteo as osteo_blueprint
+    app.register_blueprint(osteo_blueprint, url_prefix='/osteo')"""
 
     return app

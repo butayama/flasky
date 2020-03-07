@@ -1,5 +1,5 @@
 from flask import Blueprint
 
-osteo = Blueprint('osteo', __name__)
+"""osteo = Blueprint('osteo', __name__)
 
-from . import views
+from . import views"""

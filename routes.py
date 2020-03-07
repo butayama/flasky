@@ -1,7 +1,6 @@
 import flasky as app
 from flask import render_template
 
-
 @app.route("/")
 @app.route("/index")
 @app.route("/home")
@@ -37,4 +36,3 @@ def _post_op1():
 @app.route("/Log In")
 def log_in():
     return render_template("login.html", log_in=True)
-
