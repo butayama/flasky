@@ -4,7 +4,7 @@ from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from . import main
 from .forms import EditProfileForm, EditProfileAdminForm, PostForm,\
-    CommentForm
+    CommentForm, OpPlanningForm
 from .. import db
 from ..auth.forms import LoginForm
 from ..models import Permission, Role, User, Post, Comment
@@ -280,7 +280,9 @@ def op_planning():
         coronal_component_C = form.coronal_component_C.data
         sagittal_component_S = form.sagittal_component_S.data
         torsion_component_T = form.torsion_component_T.data
-        form.name.data = ''
-    return render_template('auth/op_planning.html', coronal_component_C=coronal_component_C,
+        form.coronal_component_C.data = ''
+        sagittal_component_S.data = ''
+        torsion_component_T = ''
+    return render_template('op_planning.html', coronal_component_C=coronal_component_C,
                            sagittal_component_S=sagittal_component_S,
-                           torsion_component_T=torsion_component_T)
+                           torsion_component_T=torsion_component_T, form=form)

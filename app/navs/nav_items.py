@@ -1,13 +1,14 @@
 from flask_nav.elements import Navbar, View
 
 
-# TODO https://stackoverflow.com/questions/36505091/flask-nav-bootstrap-navbar-dynamic-construction-align-some-element-to-the-righ
+# TODO https://stackoverflow.com/questions/36505091/flask-nav-bootstrap-navbar-dynamic-construction-align-some
+#  -element-to-the-righ
 
 class NavItems:
     topbar = Navbar('',
-                    View('Auth', '.index'),
+                    View('Auth', 'main.index'),
                     View('CASE', 'auth.case'),
-                    View('OP_PLANNING', '.op_planning'),
+                    View('OP_PLANNING', 'main.op_planning'),
                     View('OP', 'auth.op'),
                     View('POST_OP', 'auth.post_op'),
                     View('POST_OP1', 'auth.post_op1'),
@@ -16,9 +17,9 @@ class NavItems:
                     )
 
     rightbar = Navbar('',
-                    View('LOG IN', 'auth.login'),
+                      View('LOG IN', 'auth.login'),
 
-                    )
+                      )
 
     not_used = Navbar('',
                       View('INDEX_01', 'auth.index_01'),

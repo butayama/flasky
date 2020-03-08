@@ -6,7 +6,7 @@ from .. import db
 from ..models import User
 from ..email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm, \
-    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm, OpPlanningForm
+    PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from ..services import angles_service
 
 
