@@ -66,10 +66,3 @@ class ChangeEmailForm(FlaskForm):
     def validate_email(self, field):
         if User.query.filter_by(email=field.data.lower()).first():
             raise ValidationError('Email already registered.')
-
-
-class OpPlanningForm(FlaskForm):
-    coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
-    sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
-    torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
-    submit = SubmitField('Submit')

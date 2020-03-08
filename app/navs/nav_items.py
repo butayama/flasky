@@ -7,7 +7,7 @@ class NavItems:
     topbar = Navbar('',
                     View('Auth', '.index'),
                     View('CASE', 'auth.case'),
-                    View('OP_PLANNING', 'auth.op_planning'),
+                    View('OP_PLANNING', '.op_planning'),
                     View('OP', 'auth.op'),
                     View('POST_OP', 'auth.post_op'),
                     View('POST_OP1', 'auth.post_op1'),

@@ -200,23 +200,39 @@ def op():
     return render_template('auth/op.html')
 
 
-@auth.route('/op_planning', methods=['GET', 'POST'])
-def op_planning():
-    coronal_component_C = None
-    sagittal_component_S = None
-    torsion_component_T = None
-
-    # test_angles = angles_service.get_angles()
-    # return {'angles': test_angles}
-    form = OpPlanningForm()
-    if form.validate_on_submit():
-        coronal_component_C = form.coronal_component_C.data
-        sagittal_component_S = form.sagittal_component_S.data
-        torsion_component_T = form.torsion_component_T.data
-        form.name.data = ''
-    return render_template('auth/op_planning.html', coronal_component_C=coronal_component_C,
-                           sagittal_component_S=sagittal_component_S,
-                           torsion_component_T=torsion_component_T)
+# @auth.route('/op_planning', methods=['GET', 'POST'])
+# def op_planning():
+# # @auth.route('/login', methods=['GET', 'POST'])
+# # def login():
+#     coronal_component_C = "1"
+#     sagittal_component_S = "2"
+#     torsion_component_T = "3"
+#
+#     return render_template('auth/op_planning.html', coronal_component_C=coronal_component_C,
+#                            sagittal_component_S=sagittal_component_S,
+#                            torsion_component_T=torsion_component_T)
+#
+# @auth.route('/op_planning', methods=['GET', 'POST'])
+# def op_planning():
+# # @auth.route('/login', methods=['GET', 'POST'])
+# # def login():
+#     coronal_component_C = None
+#     sagittal_component_S = None
+#     torsion_component_T = None
+#     #
+#     # test_angles = angles_service.get_angles()
+#     # return {'angles': test_angles}
+#     # form = PasswordResetRequestForm
+#     # form = LoginForm()
+#     form = OpPlanningForm()
+#     if form.validate_on_submit():
+#         coronal_component_C = form.coronal_component_C.data
+#         sagittal_component_S = form.sagittal_component_S.data
+#         torsion_component_T = form.torsion_component_T.data
+#         form.name.data = ''
+#     return render_template('auth/op_planning.html', coronal_component_C=coronal_component_C,
+#                            sagittal_component_S=sagittal_component_S,
+#                            torsion_component_T=torsion_component_T)
 
 
 @auth.route('/post_op')
