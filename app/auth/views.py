@@ -200,10 +200,21 @@ def op():
     return render_template('auth/op.html')
 
 
-@auth.route('/op_planning')
-def op_planning():
+@auth.route('/op_planning', methods=['GET', 'POST'])
+def op_planning()
+    coronal_component_C = None
+    sagittal_component_S = None
+    torsion_component_T = None
+
     test_angles = angles_service.get_angles()
     return {'angles': test_angles}
+    form = OpPlanningForm()
+    if form.validate_on_submit():
+        coronal_component_C = form.coronal_component_C.data
+        sagittal_component_S = Noneform.sagittal_component_S.data
+        torsion_component_T = form.torsion_component_T.data
+        form.name.data = ''
+    return render_template('index.html', form=form, name=name)
 
 
 @auth.route('/post_op')
