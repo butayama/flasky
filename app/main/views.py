@@ -280,8 +280,8 @@ def op_planning():
         coronal_component_C = form.coronal_component_C.data
         sagittal_component_S = form.sagittal_component_S.data
         torsion_component_T = form.torsion_component_T.data
-        form.coronal_component_C.data = ''
-        sagittal_component_S.data = ''
+        form.coronal_component_C = ''
+        sagittal_component_S = ''
         torsion_component_T = ''
     return render_template('op_planning.html', coronal_component_C=coronal_component_C,
                            sagittal_component_S=sagittal_component_S,
