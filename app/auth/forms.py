@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from ..models import User
@@ -66,3 +66,10 @@ class ChangeEmailForm(FlaskForm):
     def validate_email(self, field):
         if User.query.filter_by(email=field.data.lower()).first():
             raise ValidationError('Email already registered.')
+
+
+class OpPlanningForm(FlaskForm):
+    coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
+    sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
+    torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
+    submit = SubmitField('Submit')

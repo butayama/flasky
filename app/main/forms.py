@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, BooleanField, SelectField, \
-    SubmitField, PasswordField, FloatField
+    SubmitField, PasswordField
 from wtforms.validators import DataRequired, Length, Email, Regexp
 from wtforms import ValidationError
 from flask_pagedown.fields import PageDownField
@@ -61,8 +61,4 @@ class CommentForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
-class OpPlanningForm(FlaskForm):
-    coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
-    sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
-    torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
-    submit = SubmitField('Submit')
+
