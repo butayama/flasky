@@ -65,7 +65,7 @@ def input_real_loop(query, min_v, max_v, message="Input not valid. Please try ag
 
         except Exception as exec:
             print
-            raise ValueError (f"only float in the range between {min_v} and {max_v} degrees are valid") from exec
+            raise ValueError(f"only float in the range between {min_v} and {max_v} degrees are valid") from exec
             continue
         else:
             break
@@ -204,11 +204,10 @@ def txt_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_
         sys.stdout = sys.__stdout__
 
 
-def calculate():
+def calculate(c_a_d=0.0, s_a_d=0.0, t_a_d=0.0):
     """
     Calculation of osteotomy angles according to Sangeorzan, Judd (1989)
     """
-    c_a_d, s_a_d, t_a_d = input_angles_interactive()
     filename = f"result/single_cut_rotational_osteotomy_{c_a_d}" + "_" + f"{s_a_d}" + "_" + f"{t_a_d}" + ".txt"
 
     c_a = radians(c_a_d)
@@ -222,7 +221,6 @@ def calculate():
     a_ele = atan2(2 * sin(a_tad) * cos(0.5 * t_a), sin(t_a) * (1 + cos(a_tad)))
     a_aor = acos(0.5 * (cos(t_a) + cos(a_tad) + cos(t_a) * cos(a_tad) - 1))
     return filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor
-
 
 
 if __name__ == "__main__":
