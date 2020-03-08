@@ -215,7 +215,7 @@ def op_planning():
         sagittal_component_S = form.sagittal_component_S.data
         torsion_component_T = form.torsion_component_T.data
         form.name.data = ''
-    return render_template('op_planning.html', coronal_component_C=coronal_component_C,
+    return render_template('auth/op_planning.html', coronal_component_C=coronal_component_C,
                            sagittal_component_S=sagittal_component_S,
                            torsion_component_T=torsion_component_T)
 
