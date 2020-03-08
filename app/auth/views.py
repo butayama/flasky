@@ -3,9 +3,10 @@ from flask_login import login_user, logout_user, login_required, \
     current_user
 from . import auth
 from .. import db
+from ..main.forms import OpPlanningForm
 from ..models import User
 from ..email import send_email
-from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
+from .forms import LoginForm, RegistrationForm, ChangePasswordForm, \
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm
 from ..services import angles_service
 
@@ -201,20 +202,22 @@ def op():
 
 
 @auth.route('/op_planning', methods=['GET', 'POST'])
-def op_planning()
+def op_planning():
     coronal_component_C = None
     sagittal_component_S = None
     torsion_component_T = None
 
-    test_angles = angles_service.get_angles()
-    return {'angles': test_angles}
+    # test_angles = angles_service.get_angles()
+    # return {'angles': test_angles}
     form = OpPlanningForm()
     if form.validate_on_submit():
         coronal_component_C = form.coronal_component_C.data
-        sagittal_component_S = Noneform.sagittal_component_S.data
+        sagittal_component_S = form.sagittal_component_S.data
         torsion_component_T = form.torsion_component_T.data
         form.name.data = ''
-    return render_template('index.html', form=form, name=name)
+    return render_template('op_planning.html', coronal_component_C=coronal_component_C,
+                           sagittal_component_S=sagittal_component_S,
+                           torsion_component_T=torsion_component_T)
 
 
 @auth.route('/post_op')
