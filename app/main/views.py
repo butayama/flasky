@@ -9,7 +9,7 @@ from .. import db
 from ..auth.forms import LoginForm
 from ..models import Permission, Role, User, Post, Comment
 from ..decorators import admin_required, permission_required
-from ..Calculation import CalculateAngles
+from ..Calculation_x import CalculateAngles
 
 
 @main.after_app_request
@@ -270,17 +270,16 @@ def moderate_disable(id):
 
 @main.route('/op_planning', methods=['GET', 'POST'])
 def op_planning():
-    coronal_component_C = None
-    sagittal_component_S = None
-    torsion_component_T = None
+    coronal_component_C = 10.5
+    sagittal_component_S = -12
+    torsion_component_T = 23
     calc_angles = CalculateAngles
-
     form = OpPlanningForm()
     if form.validate_on_submit():
         session['coronal_component_C'] = form.coronal_component_C.data
-        session[sagittal_component_S] = form.sagittal_component_S.data
-        session[torsion_component_T] = form.torsion_component_T.data
-        return redirect(url_for('.op_planning'))
-    return render_template('op_planning.html', coronal_component_C=session.get(coronal_component_C),
+        session['sagittal_component_S'] = form.sagittal_component_S.data
+        session['torsion_component_T'] = form.torsion_component_T.data
+        return redirect(url_for('.op_planning_results', coronal_component_C=session.get(coronal_component_C),
                            sagittal_component_S=session.get(sagittal_component_S),
-                           torsion_component_T=session.get(torsion_component_T), calc_angles=calc_angles, form=form)
+                           torsion_component_T=session.get(torsion_component_T), calc_angles=calc_angles))
+    return render_template('op_planning.html', form=form)
