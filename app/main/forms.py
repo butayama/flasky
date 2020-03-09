@@ -4,8 +4,6 @@ from wtforms import StringField, TextAreaField, BooleanField, SelectField, \
 from wtforms.validators import DataRequired, Length, Email, Regexp
 from wtforms import ValidationError
 from flask_pagedown.fields import PageDownField
-
-from ..Calculation import calculate
 from ..models import Role, User
 
 
@@ -68,4 +66,3 @@ class OpPlanningForm(FlaskForm):
     sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
     torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
     submit = SubmitField('Submit')
-    calculate(coronal_component_C, sagittal_component_S, torsion_component_T)

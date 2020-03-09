@@ -9,6 +9,7 @@ from .. import db
 from ..auth.forms import LoginForm
 from ..models import Permission, Role, User, Post, Comment
 from ..decorators import admin_required, permission_required
+from ..Calculation import CalculateAngles
 
 
 @main.after_app_request
@@ -272,17 +273,14 @@ def op_planning():
     coronal_component_C = None
     sagittal_component_S = None
     torsion_component_T = None
+    calc_angles = CalculateAngles
 
-    # test_angles = angles_service.get_angles()
-    # return {'angles': test_angles}
     form = OpPlanningForm()
     if form.validate_on_submit():
-        coronal_component_C = form.coronal_component_C.data
-        sagittal_component_S = form.sagittal_component_S.data
-        torsion_component_T = form.torsion_component_T.data
-        form.coronal_component_C = ''
-        sagittal_component_S = ''
-        torsion_component_T = ''
-    return render_template('op_planning.html', coronal_component_C=coronal_component_C,
+        session['coronal_component_C'] = form.coronal_component_C.data
+        session[sagittal_component_S] = form.sagittal_component_S.data
+        session[torsion_component_T] = form.torsion_component_T.data
+        return redirect(url_for('main.op_planning_results'))
+    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
                            sagittal_component_S=sagittal_component_S,
                            torsion_component_T=torsion_component_T, form=form)

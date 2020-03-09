@@ -1,0 +1,13 @@
+{% extends "shared/_layout.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{%  block title %}OP Planning{% endblock %}
+{% block page_content_middle %}
+
+    <div class="page-header">
+        <h1>Single Cut Rotational Osteotomy</h1>
+    </div>
+    <div class="col-md-4">
+
+        {{ calculate(coronal_component_C, sagittal_component_S, torsion_component_T) }}
+    </div>
+{% endblock %}

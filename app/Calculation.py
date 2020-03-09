@@ -43,187 +43,140 @@ from os.path import join
 import sys
 from app.file_handling import text_file_object
 
+class CalculateAngles:
 
-def copyright_license_popup():
-    """not used yet"""
-    system("gnome-terminal --disable-factory")
-
-
-def input_real_loop(query, min_v, max_v, message="Input not valid. Please try again"):
-    """user input of a float with 'query' string as information for user about the requested value
-       'min_v, max_v,' as allowed range limits
-       'message' string with further information for user if Range limits are not met by input value'
-       """
-    value = 0
-    while True:
-        try:
-            value = float(input(f"{query:>43}"))
-            if value < min_v or value > max_v:
-                print(message)
-                print(f"please choose an integer value in the range between {min_v} and {max_v}")
-                raise ValueError
-
-        except Exception as exec:
-            print
-            raise ValueError(f"only float in the range between {min_v} and {max_v} degrees are valid") from exec
-            continue
-        else:
-            break
-    return value
+    def copyright_license_popup():
+        """not used yet"""
+        system("gnome-terminal --disable-factory")
 
 
-def input_angles_interactive():
-    """user input of the three angles C, S and T (c_a_d, s_a_d, t_a_d)
-    """
-    print(f"""
-        Calculation.py
+    def screen_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor):
+        """
+        Result output to screen
+        :param filename:
+        :param c_a_d:
+        :param s_a_d:
+        :param t_a_d:
+        :param c_a:
+        :param s_a:
+        :param t_a:
+        :param a_tad:
+        :param a_oa:
+        :param a_azi:
+        :param a_ele:
+        :param a_aor:
+        """
+        ansiprint(f"""  
+        Input Values:
+    
+        {'coronal_component <red>C</red> [degrees] = ':>50}{c_a_d:6.1f}
+        {'sagittal_component <red>S</red> [degrees] = ':>50}{s_a_d:6.1f}
+        {'torsion_component <red>T</red> [degrees] = ':>50}{t_a_d:6.1f}
+    
+        Transformation of degrees in radians
+        {'coronal_component C in rad = ':>39}{c_a:8.4f}
+        {'sagittal_component S in rad = ':>39}{s_a:8.4f}
+        {'torsion_component T in rad = ':>39}{t_a:8.4f}
+    
+        Calculation according to Sangeorzan, Judd (1989)
         
-        Copyright (C) 2020 | Uwe Schweinsberg | butayama@gmail.com
-
-        GNU GENERAL PUBLIC LICENSE Version 3
-        This program comes with ABSOLUTELY NO WARRANTY;
-        This is free software, and you are welcome to redistribute it
-        under certain conditions;  
-        For details visit <https://www.gnu.org/licenses/>.
-
+        {'true angular deformity (15) A = ':>39}{degrees(a_tad):8.1f} degrees ({a_tad:8.4f} rad )
     
-    """)
-    # copyright_license_popup()
-
-    c_a_d = input_real_loop(f"coronal_component C in degrees = ", -60, 60)
-    s_a_d = input_real_loop(f"sagittal_component S in degrees = ", -60, 60)
-    t_a_d = input_real_loop(f"torsion_component T in degrees = ", -60, 60)
-    return c_a_d, s_a_d, t_a_d
-    # TODO  Evaluate the input with diagrams. Warnibf if the angles are too big
-
-
-def screen_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor):
-    """
-    Result output to screen
-    :param filename:
-    :param c_a_d:
-    :param s_a_d:
-    :param t_a_d:
-    :param c_a:
-    :param s_a:
-    :param t_a:
-    :param a_tad:
-    :param a_oa:
-    :param a_azi:
-    :param a_ele:
-    :param a_aor:
-    """
-    ansiprint(f"""  
-    Input Values:
-
-    {'coronal_component <red>C</red> [degrees] = ':>50}{c_a_d:6.1f}
-    {'sagittal_component <red>S</red> [degrees] = ':>50}{s_a_d:6.1f}
-    {'torsion_component <red>T</red> [degrees] = ':>50}{t_a_d:6.1f}
-
-    Transformation of degrees in radians
-    {'coronal_component C in rad = ':>39}{c_a:8.4f}
-    {'sagittal_component S in rad = ':>39}{s_a:8.4f}
-    {'torsion_component T in rad = ':>39}{t_a:8.4f}
-
-    Calculation according to Sangeorzan, Judd (1989)
+        {'orientation angle (16) ':>35}{chr(945)}{'= ':>3}{degrees(a_oa):8.1f} degrees ({a_oa:8.4f} rad )
     
-    {'true angular deformity (15) A = ':>39}{degrees(a_tad):8.1f} degrees ({a_tad:8.4f} rad )
-
-    {'orientation angle (16) ':>35}{chr(945)}{'= ':>3}{degrees(a_oa):8.1f} degrees ({a_oa:8.4f} rad )
-
-    {'azimuth of vektor k (13) ':>35}{chr(int("3A6", 16))}{'= ':>3}{degrees(a_azi):8.1f} degrees ({a_azi:8.4f} rad )
-
-    {'angle of rotation (12) ':>35}{chr(int("398", 16))}{'= ':>3}{degrees(a_ele):8.1f} degrees ({a_ele:8.4f} rad )
-
-    {'angle of rotation around k (14) ':>35}{chr(int("3B2", 16))}{'= ':>3}{degrees(a_aor):8.1f} degrees ({a_aor:8.4f} rad )
-
-    results are stored in {filename}
-
-    """)
+        {'azimuth of vektor k (13) ':>35}{chr(int("3A6", 16))}{'= ':>3}{degrees(a_azi):8.1f} degrees ({a_azi:8.4f} rad )
+    
+        {'angle of rotation (12) ':>35}{chr(int("398", 16))}{'= ':>3}{degrees(a_ele):8.1f} degrees ({a_ele:8.4f} rad )
+    
+        {'angle of rotation around k (14) ':>35}{chr(int("3B2", 16))}{'= ':>3}{degrees(a_aor):8.1f} degrees ({a_aor:8.4f} rad )
+    
+        results are stored in {filename}
+    
+        """)
 
 
-def txt_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor):
-    """
-    Result output to text file: :param filename:
-    :param c_a_d:
-    :param s_a_d:
-    :param t_a_d:
-    :param c_a:
-    :param s_a:
-    :param t_a:
-    :param a_tad:
-    :param a_oa:
-    :param a_azi:
-    :param a_ele:
-    :param a_aor:
-    """
-    path_to_file = join(getcwd(), filename)
-    text_file_object(path_to_file)
+    def txt_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor):
+        """
+        Result output to text file: :param filename:
+        :param c_a_d:
+        :param s_a_d:
+        :param t_a_d:
+        :param c_a:
+        :param s_a:
+        :param t_a:
+        :param a_tad:
+        :param a_oa:
+        :param a_azi:
+        :param a_ele:
+        :param a_aor:
+        """
+        path_to_file = join(getcwd(), filename)
+        text_file_object(path_to_file)
 
-    with open(filename, 'w') as f_txt:
-        sys.stdout = f_txt
-        print(f"""  
-            Input Values
-
-            coronal component  C = {c_a_d:6.1f} degrees
-            sagittal component S = {s_a_d:6.1f} degrees
-            torsion_component  T = {t_a_d:6.1f} degrees
- 
-            Transformation of degrees in radians
-            coronal component  C  =  {c_a:8.4f}
-            sagittal component S  =  {s_a:8.4f}
-            torsion component  T  =  {t_a:8.4f}
-
-            Calculation according to Sangeorzan, Judd (1989)
-
-            true angular deformity (15)
-            A = {degrees(a_tad):6.1f} degrees ({a_tad:7.4f} rad )
-
-            orientation angle (16)
-            {chr(945)} = {degrees(a_oa):6.1f} degrees ({a_oa:7.4f} rad )
-
-            azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)
-            {chr(int("3A6", 16))} = {degrees(a_azi):6.1f} degrees ({a_azi:7.4f} rad )
-
-            angle of rotation between x1 axis and the projection of k onto the x1-y1 plane (12)
-            {chr(int("398", 16))} = {degrees(a_ele):6.1f} degrees({a_ele:7.4f} rad )
-
-            angle of rotation around k (14)
-            {chr(int("3B2", 16))} = {degrees(a_aor):6.1f} degrees ({a_aor:7.4f} rad )
-
-
-
-            Copyright (C) 2020 | Uwe Schweinsberg | butayama@gmail.com
-
-            GNU GENERAL PUBLIC LICENSE Version 3
-            This program comes with ABSOLUTELY NO WARRANTY;
-            This is free software, and you are welcome to redistribute it
-            under certain conditions;  
-            For details visit <https://www.gnu.org/licenses/>.
-            """)
-        sys.stdout = sys.__stdout__
-
-
-def calculate(c_a_d=0.0, s_a_d=0.0, t_a_d=0.0):
-    """
-    Calculation of osteotomy angles according to Sangeorzan, Judd (1989)
-    """
-    filename = f"result/single_cut_rotational_osteotomy_{c_a_d}" + "_" + f"{s_a_d}" + "_" + f"{t_a_d}" + ".txt"
-
-    c_a = radians(c_a_d)
-    s_a = radians(s_a_d)
-    t_a = radians(t_a_d)
-
-    h1 = sqrt(tan(c_a) * tan(c_a) + tan(s_a) * tan(s_a))
-    a_tad = atan2(h1, 1)
-    a_oa = atan2(tan(s_a), tan(c_a))
-    a_azi = atan2(-(sin(a_oa) + sin(a_oa - t_a)), (cos(a_oa) + cos(a_oa - t_a)))
-    a_ele = atan2(2 * sin(a_tad) * cos(0.5 * t_a), sin(t_a) * (1 + cos(a_tad)))
-    a_aor = acos(0.5 * (cos(t_a) + cos(a_tad) + cos(t_a) * cos(a_tad) - 1))
-    return filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor
+        with open(filename, 'w') as f_txt:
+            sys.stdout = f_txt
+            print(f"""  
+                Input Values
+    
+                coronal component  C = {c_a_d:6.1f} degrees
+                sagittal component S = {s_a_d:6.1f} degrees
+                torsion_component  T = {t_a_d:6.1f} degrees
+     
+                Transformation of degrees in radians
+                coronal component  C  =  {c_a:8.4f}
+                sagittal component S  =  {s_a:8.4f}
+                torsion component  T  =  {t_a:8.4f}
+    
+                Calculation according to Sangeorzan, Judd (1989)
+    
+                true angular deformity (15)
+                A = {degrees(a_tad):6.1f} degrees ({a_tad:7.4f} rad )
+    
+                orientation angle (16)
+                {chr(945)} = {degrees(a_oa):6.1f} degrees ({a_oa:7.4f} rad )
+    
+                azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)
+                {chr(int("3A6", 16))} = {degrees(a_azi):6.1f} degrees ({a_azi:7.4f} rad )
+    
+                angle of rotation between x1 axis and the projection of k onto the x1-y1 plane (12)
+                {chr(int("398", 16))} = {degrees(a_ele):6.1f} degrees({a_ele:7.4f} rad )
+    
+                angle of rotation around k (14)
+                {chr(int("3B2", 16))} = {degrees(a_aor):6.1f} degrees ({a_aor:7.4f} rad )
+    
+    
+    
+                Copyright (C) 2020 | Uwe Schweinsberg | butayama@gmail.com
+    
+                GNU GENERAL PUBLIC LICENSE Version 3
+                This program comes with ABSOLUTELY NO WARRANTY;
+                This is free software, and you are welcome to redistribute it
+                under certain conditions;  
+                For details visit <https://www.gnu.org/licenses/>.
+                """)
+            sys.stdout = sys.__stdout__
 
 
-if __name__ == "__main__":
-    filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor = calculate()
-    screen_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor)
-    txt_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor)
+    def calculate(c_a_d=0.0, s_a_d=0.0, t_a_d=0.0):
+        """
+        Calculation of osteotomy angles according to Sangeorzan, Judd (1989)
+        """
+        filename = f"result/single_cut_rotational_osteotomy_{c_a_d}" + "_" + f"{s_a_d}" + "_" + f"{t_a_d}" + ".txt"
+
+        c_a = radians(c_a_d)
+        s_a = radians(s_a_d)
+        t_a = radians(t_a_d)
+
+        h1 = sqrt(tan(c_a) * tan(c_a) + tan(s_a) * tan(s_a))
+        a_tad = atan2(h1, 1)
+        a_oa = atan2(tan(s_a), tan(c_a))
+        a_azi = atan2(-(sin(a_oa) + sin(a_oa - t_a)), (cos(a_oa) + cos(a_oa - t_a)))
+        a_ele = atan2(2 * sin(a_tad) * cos(0.5 * t_a), sin(t_a) * (1 + cos(a_tad)))
+        a_aor = acos(0.5 * (cos(t_a) + cos(a_tad) + cos(t_a) * cos(a_tad) - 1))
+        return filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor
+
+
+    # if __name__ == "__main__":
+    #     filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor = calculate()
+    #     screen_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor)
+    #     txt_out(filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor)
