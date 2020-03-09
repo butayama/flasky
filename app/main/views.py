@@ -277,19 +277,30 @@ def op_planning():
         session['coronal_component_C'] = form.coronal_component_C.data
         session['sagittal_component_S'] = form.sagittal_component_S.data
         session['torsion_component_T'] = form.torsion_component_T.data
-        return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
-                                sagittal_component_S=session.get(sagittal_component_S),
-                                torsion_component_T=session.get(torsion_component_T)))
+        return redirect(url_for('.op_planning_results', **request.args))
+        # return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
+        #                         sagittal_component_S=session.get(sagittal_component_S),
+        #                         torsion_component_T=session.get(torsion_component_T)))
 
     return render_template('op_planning.html', form=form)
 
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    coronal_component_C = request.args['coronal_component_C']
-    sagittal_component_S = request.args['sagittal_component_S']
-    torsion_component_T = request.args['torsion_component_T']
+
+    coronal_component_C  = request.args
+    # coronal_component_C, sagittal_component_S, torsion_component_T  = request.args
+    # coronal_component_C = request.args['coronal_component_C',
+    #                                    'sagittal_component_S',
+    #                                    'torsion_component_T']
+    # coronal_component_C, sagittal_component_S, torsion_component_T = request.args['coronal_component_C',
+    #                                                                               'sagittal_component_S',
+    #                                                                               'torsion_component_T']
+    # coronal_component_C = request.args['coronal_component_C']
+    # sagittal_component_S = request.args['sagittal_component_S']
+    # torsion_component_T = request.args['torsion_component_T']
     calc_angles = CalculateAngles
-    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
-                           sagittal_component_S=sagittal_component_S,
-                           torsion_component_T=torsion_component_T)
+    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C)
+        # ,
+        #                    sagittal_component_S=sagittal_component_S,
+        #                    torsion_component_T=torsion_component_T)
