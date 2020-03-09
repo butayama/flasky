@@ -3,7 +3,7 @@ from flask import render_template, redirect, url_for, abort, flash, request, \
 from flask_login import login_required, current_user
 from flask_sqlalchemy import get_debug_queries
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm, PostForm,\
+from .forms import EditProfileForm, EditProfileAdminForm, PostForm, \
     CommentForm, OpPlanningForm
 from .. import db
 from ..auth.forms import LoginForm
@@ -119,7 +119,7 @@ def post(id):
     page = request.args.get('page', 1, type=int)
     if page == -1:
         page = (post.comments.count() - 1) // \
-            current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
+               current_app.config['FLASKY_COMMENTS_PER_PAGE'] + 1
     pagination = post.comments.order_by(Comment.timestamp.asc()).paginate(
         page, per_page=current_app.config['FLASKY_COMMENTS_PER_PAGE'],
         error_out=False)
@@ -218,7 +218,7 @@ def followed_by(username):
 @login_required
 def show_all():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '', max_age=30*24*60*60)
+    resp.set_cookie('show_followed', '', max_age=30 * 24 * 60 * 60)
     return resp
 
 
@@ -226,7 +226,7 @@ def show_all():
 @login_required
 def show_followed():
     resp = make_response(redirect(url_for('.index')))
-    resp.set_cookie('show_followed', '1', max_age=30*24*60*60)
+    resp.set_cookie('show_followed', '1', max_age=30 * 24 * 60 * 60)
     return resp
 
 
@@ -267,19 +267,27 @@ def moderate_disable(id):
                             page=request.args.get('page', 1, type=int)))
 
 
-
 @main.route('/op_planning', methods=['GET', 'POST'])
 def op_planning():
-    coronal_component_C = 10.5
-    sagittal_component_S = -12
-    torsion_component_T = 23
-    calc_angles = CalculateAngles
+    coronal_component_C = 1
+    sagittal_component_S = -2
+    torsion_component_T = 2
     form = OpPlanningForm()
     if form.validate_on_submit():
         session['coronal_component_C'] = form.coronal_component_C.data
         session['sagittal_component_S'] = form.sagittal_component_S.data
         session['torsion_component_T'] = form.torsion_component_T.data
         return redirect(url_for('.op_planning_results', coronal_component_C=session.get(coronal_component_C),
-                           sagittal_component_S=session.get(sagittal_component_S),
-                           torsion_component_T=session.get(torsion_component_T), calc_angles=calc_angles))
+                                sagittal_component_S=session.get(sagittal_component_S),
+                                torsion_component_T=session.get(torsion_component_T), **request.args))
     return render_template('op_planning.html', form=form)
+
+
+@main.route('/op_planning_results', methods=['GET', 'POST'])
+
+def op_planning_results():
+    coronal_component_C, sagittal_component_S, torsion_component_T = request.args
+    calc_angles = CalculateAngles
+    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
+                           sagittal_component_S=sagittal_component_S,
+                           torsion_component_T=torsion_component_T)
