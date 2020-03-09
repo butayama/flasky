@@ -39,6 +39,37 @@ def op_planning():
                            sagittal_component_S=session.get(sagittal_component_S),
                            torsion_component_T=session.get(torsion_component_T))
 
+# Variante 2
+@main.route('/op_planning', methods=['GET', 'POST'])
+def op_planning():
+    coronal_component_C = 13.3
+    sagittal_component_S = -10.5
+    torsion_component_T = 22
+    values = {
+            "coronal_component_C": coronal_component_C,
+            "sagittal_component_S": sagittal_component_S,
+            "torsion_component_T": torsion_component_T,
+        }
+    form = OpPlanningForm()
+    form_action = url_for('.op_planning')
+    # if request.method == 'GET':
+    #     form.coronal_component_C = coronal_component_C
+    #     form.sagittal_component_S = sagittal_component_S
+    #     form.torsion_component_T = torsion_component_T
+    if form.validate_on_submit():
+        session['coronal_component_C'] = form.coronal_component_C.data
+        session['sagittal_component_S'] = form.sagittal_component_S.data
+        session['torsion_component_T'] = form.torsion_component_T.data
+        form.populate_obj(values)
+        return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
+                                sagittal_component_S=session.get(sagittal_component_S),
+                                torsion_component_T=session.get(torsion_component_T)))
+
+    return render_template('op_planning.html', form=form, form_action=form_action,
+                           coronal_component_C=coronal_component_C,
+                           sagittal_component_S=session.get(sagittal_component_S),
+                           torsion_component_T=session.get(torsion_component_T))
+
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
