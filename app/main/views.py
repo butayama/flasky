@@ -280,7 +280,7 @@ def op_planning():
         session['coronal_component_C'] = form.coronal_component_C.data
         session[sagittal_component_S] = form.sagittal_component_S.data
         session[torsion_component_T] = form.torsion_component_T.data
-        return redirect(url_for('main.op_planning_results'))
-    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
-                           sagittal_component_S=sagittal_component_S,
-                           torsion_component_T=torsion_component_T, form=form)
+        return redirect(url_for('.op_planning'))
+    return render_template('op_planning.html', coronal_component_C=session.get(coronal_component_C),
+                           sagittal_component_S=session.get(sagittal_component_S),
+                           torsion_component_T=session.get(torsion_component_T), calc_angles=calc_angles, form=form)
