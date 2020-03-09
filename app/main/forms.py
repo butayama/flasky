@@ -62,7 +62,15 @@ class CommentForm(FlaskForm):
 
 
 class OpPlanningForm(FlaskForm):
+    # def init_formdata(self, form):
+    #     coronal_component_C = 5.6
+    #     form.process_formdata([coronal_component_C])
+    #     return True
     coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
     sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
     torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
+    # coronal_component_C.data = 5.6
+    # coronal_component_C = FloatField('Enter coronal component C', value=5.5, validators=[DataRequired()])
+    # sagittal_component_S = FloatField('Enter sagittal component S', value=-7.2, validators=[DataRequired()])
+    # torsion_component_T = FloatField('Enter torsion component T', value=23.8, validators=[DataRequired()])
     submit = SubmitField('Submit')
