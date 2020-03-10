@@ -286,9 +286,9 @@ def op_planning():
         session['torsion_component_T'] = form.torsion_component_T.data
         # session['filename'] = form.filename.data
         session['values'] = {
-            "coronal_component_C": coronal_component_C,
-            "sagittal_component_S": sagittal_component_S,
-            "torsion_component_T": torsion_component_T,
+            "coronal_component_C": form.coronal_component_C.data,
+            "sagittal_component_S": form.sagittal_component_S.data,
+            "torsion_component_T": form.torsion_component_T.data,
         }
         result = request.form
         return redirect(url_for('.op_planning_results', result=result, values=session['values']))
