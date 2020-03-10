@@ -272,11 +272,7 @@ def op_planning():
     coronal_component_C = 13.3
     sagittal_component_S = -10.5
     torsion_component_T = 22
-    # values = {
-    #         "coronal_component_C": coronal_component_C,
-    #         "sagittal_component_S": sagittal_component_S,
-    #         "torsion_component_T": torsion_component_T,
-    #     }
+    values = {}
     form = OpPlanningForm()
     if request.method == 'GET':
         form.coronal_component_C.data = coronal_component_C
@@ -289,9 +285,13 @@ def op_planning():
         session['sagittal_component_S'] = form.sagittal_component_S.data
         session['torsion_component_T'] = form.torsion_component_T.data
         # session['filename'] = form.filename.data
-
+        session['values'] = {
+            "coronal_component_C": coronal_component_C,
+            "sagittal_component_S": sagittal_component_S,
+            "torsion_component_T": torsion_component_T,
+        }
         result = request.form
-        return redirect(url_for('.op_planning_results', result=result))
+        return redirect(url_for('.op_planning_results', result=result, values=session['values']))
         # return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
         #                         sagittal_component_S=session.get(sagittal_component_S),
         #                         torsion_component_T=session.get(torsion_component_T)))
@@ -322,7 +322,7 @@ def op_planning_results():
     # sagittal_component_S = request.args['sagittal_component_S']
     # torsion_component_T = request.args['torsion_component_T']
     calc_angles = CalculateAngles
-    return render_template('op_planning_results.html', result=result)
+    return render_template('op_planning_results.html', result=result, values=session['values'])
     # return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
     #                        sagittal_component_S=sagittal_component_S,
     #                        torsion_component_T=torsion_component_T)
