@@ -286,21 +286,25 @@ def op_planning():
         session['coronal_component_C'] = form.coronal_component_C.data
         session['sagittal_component_S'] = form.sagittal_component_S.data
         session['torsion_component_T'] = form.torsion_component_T.data
-        return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
-                                sagittal_component_S=session.get(sagittal_component_S),
-                                torsion_component_T=session.get(torsion_component_T)))
+        result = request.form
+        return redirect(url_for('.op_planning_results', result=result))
+        # return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
+        #                         sagittal_component_S=session.get(sagittal_component_S),
+        #                         torsion_component_T=session.get(torsion_component_T)))
 
-    return render_template('op_planning.html', form=form,
-                           coronal_component_C=coronal_component_C,
-                           sagittal_component_S=session.get(sagittal_component_S),
-                           torsion_component_T=session.get(torsion_component_T))
+    return render_template('op_planning.html', form=form)
+    # return render_template('op_planning.html', form=form,
+    #                        coronal_component_C=coronal_component_C,
+    #                        sagittal_component_S=session.get(sagittal_component_S),
+    #                        torsion_component_T=session.get(torsion_component_T))
 
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    coronal_component_C = request.form.get('coronal_component_C')
-    sagittal_component_S = request.form.get('sagittal_component_S')
-    torsion_component_T = request.form.get('torsion_component_T')
+    result = request.args['result']
+    # coronal_component_C = request.form.get('coronal_component_C')
+    # sagittal_component_S = request.form.get('sagittal_component_S')
+    # torsion_component_T = request.form.get('torsion_component_T')
     # angles = request.form.getlist('coronal_component_C', 'sagittal_component_S', 'torsion_component_T')
     # coronal_component_C  = request.args
     # coronal_component_C, sagittal_component_S, torsion_component_T  = request.args
@@ -314,9 +318,16 @@ def op_planning_results():
     # sagittal_component_S = request.args['sagittal_component_S']
     # torsion_component_T = request.args['torsion_component_T']
     calc_angles = CalculateAngles
-    return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
-                           sagittal_component_S=sagittal_component_S,
-                           torsion_component_T=torsion_component_T)
+    return render_template('op_planning_results.html', result=result, galaxies=get_galaxies())
+    # return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
+    #                        sagittal_component_S=sagittal_component_S,
+    #                        torsion_component_T=torsion_component_T)
     # ,
     #                    sagittal_component_S=sagittal_component_S,
     #                    torsion_component_T=torsion_component_T)
+
+def get_galaxies():
+    galaxies = ["Messier 81", "StarBurst", "Black Eye", "Cosmos Redshift", "Sombrero", "Hoags Object", "Andromeda",
+                "Pinwheel", "Cartwheel",
+                "Mayall's Object", "Milky Way", "IC 1101", "Messier 87", "Ring Nebular", "Centarus A", "Whirlpool",
+                "Canis Major Overdensity", "Virgo Stellar Stream"]

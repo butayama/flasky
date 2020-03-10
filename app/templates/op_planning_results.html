@@ -7,7 +7,13 @@
         <h1>Single Cut Rotational Osteotomy</h1>
     </div>
     <div class="col-md-4">
-        Test {{ coronal_component_C[0] }}
+{#        {% for galaxy in galaxies %}#}
+{#            <li class="collection-item"><a href="#">{{ galaxy }}</a></li>#}
+{#        {% endfor %}#}
+        {{ result }}
+{#        hallo {% extends result %}#}
+{#        hallo {% for k, v in [i.split(':') for i in result.split(',')] %}#}
+
 {#        Test {{ request.form.getlist('coronal_component_C') }} output: Test [] #}
 {#        Test {{ request.form.to_dict() }} Output: Test {} #}
 {#        Test {{ coronal_component_C }} Output: Test ImmutableMultiDict([]) #}
