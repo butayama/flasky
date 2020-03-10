@@ -282,13 +282,13 @@ def op_planning():
         form.coronal_component_C.data = coronal_component_C
         form.sagittal_component_S.data = sagittal_component_S
         form.torsion_component_T.data = torsion_component_T
-        form.filename.data = f"osteotomy_result_{coronal_component_C}" + "_" + f"{sagittal_component_S}" + "_" + \
-                             f"{torsion_component_T}" + ".txt"
+        # form.filename.data = f"osteotomy_result_{coronal_component_C}" + "_" + f"{sagittal_component_S}" + "_" + \
+        #                      f"{torsion_component_T}" + ".txt"
     if form.validate_on_submit():
-        # session['coronal_component_C'] = form.coronal_component_C.data
-        # session['sagittal_component_S'] = form.sagittal_component_S.data
-        # session['torsion_component_T'] = form.torsion_component_T.data
-        session['filename'] = form.filename.data
+        session['coronal_component_C'] = form.coronal_component_C.data
+        session['sagittal_component_S'] = form.sagittal_component_S.data
+        session['torsion_component_T'] = form.torsion_component_T.data
+        # session['filename'] = form.filename.data
 
         result = request.form
         return redirect(url_for('.op_planning_results', result=result))
@@ -305,7 +305,7 @@ def op_planning():
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    # result = request.args['result']
+    result = request.args
     # coronal_component_C = request.form.get('coronal_component_C')
     # sagittal_component_S = request.form.get('sagittal_component_S')
     # torsion_component_T = request.form.get('torsion_component_T')
@@ -322,7 +322,7 @@ def op_planning_results():
     # sagittal_component_S = request.args['sagittal_component_S']
     # torsion_component_T = request.args['torsion_component_T']
     calc_angles = CalculateAngles
-    # return render_template('op_planning_results.html', result=result, galaxies=get_galaxies())
+    return render_template('op_planning_results.html', result=result)
     # return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
     #                        sagittal_component_S=sagittal_component_S,
     #                        torsion_component_T=torsion_component_T)
@@ -330,8 +330,22 @@ def op_planning_results():
     #                    sagittal_component_S=sagittal_component_S,
     #                    torsion_component_T=torsion_component_T)
 
-def get_galaxies():
-    galaxies = ["Messier 81", "StarBurst", "Black Eye", "Cosmos Redshift", "Sombrero", "Hoags Object", "Andromeda",
-                "Pinwheel", "Cartwheel",
-                "Mayall's Object", "Milky Way", "IC 1101", "Messier 87", "Ring Nebular", "Centarus A", "Whirlpool",
-                "Canis Major Overdensity", "Virgo Stellar Stream"]
+# def get_galaxies():
+#     galaxies = ["Messier 81", "StarBurst", "Black Eye", "Cosmos Redshift", "Sombrero", "Hoags Object", "Andromeda",
+#                 "Pinwheel", "Cartwheel",
+#                 "Mayall's Object", "Milky Way", "IC 1101", "Messier 87", "Ring Nebular", "Centarus A", "Whirlpool",
+#                 "Canis Major Overdensity", "Virgo Stellar Stream"]
+
+# Erstelle ein Formular mit Flask. Baue ein Formular ein, in dem Du einen Strassennamen in ein Eingabefeld eingibst und über einen Knopf das Formular abschickst. Der HTML-Code sollte etwa folgendes enthalten:
+#
+# <form action="/suchen">
+#   <input name="suchtext"></input>
+#   <input type="submit" value="Strasse suchen"></input>
+# </form>
+#
+# Die URL /suchen kann nun auf den Inhalt des Textfeldes mit dem Namen suchtext zugreifen:
+#
+# from flask import request
+#
+# # in der aufgerufenen Funktion
+# text = request.args.get('suchtext')

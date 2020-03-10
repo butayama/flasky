@@ -69,7 +69,7 @@ class OpPlanningForm(FlaskForm):
     coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
     sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
     torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
-    filename = FileField('Store the results in:', validators=[Optional()])
+    # filename = FileField('Store the results in:', validators=[Optional()])
     # coronal_component_C.data = 5.6
     # coronal_component_C = FloatField('Enter coronal component C', value=5.5, validators=[DataRequired()])
     # sagittal_component_S = FloatField('Enter sagittal component S', value=-7.2, validators=[DataRequired()])
