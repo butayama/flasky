@@ -285,9 +285,9 @@ def op_planning():
         form.filename.data = f"osteotomy_result_{coronal_component_C}" + "_" + f"{sagittal_component_S}" + "_" + \
                              f"{torsion_component_T}" + ".txt"
     if form.validate_on_submit():
-        session['coronal_component_C'] = form.coronal_component_C.data
-        session['sagittal_component_S'] = form.sagittal_component_S.data
-        session['torsion_component_T'] = form.torsion_component_T.data
+        # session['coronal_component_C'] = form.coronal_component_C.data
+        # session['sagittal_component_S'] = form.sagittal_component_S.data
+        # session['torsion_component_T'] = form.torsion_component_T.data
         session['filename'] = form.filename.data
 
         result = request.form
