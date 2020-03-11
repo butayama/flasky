@@ -289,7 +289,7 @@ def op_planning():
         filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor = \
             ca.calculate(form.coronal_component_C.data,
                          form.sagittal_component_S.data,
-                         form.torsion_component_T.data)
+                         form.torsion_component_T.data),
         session['values'] = {
             "coronal_component_C": c_a_d,
             "sagittal_component_S": s_a_d,
@@ -297,61 +297,11 @@ def op_planning():
             "coronal_component_C_radians": c_a,
             "sagittal_component_S_radians": s_a,
             "torsion_component_T_radians": t_a,
-            "true_angular_deformity": a_tad
-            "orientation_angle": a_oa
-            "azimuth_of_vektor_k"
-            ""
-            ""
-
-                A = {degrees(a_tad): 6.1f}
-        degrees({a_tad: 7.4f}
-        rad )
-
-        (16)
-        {chr(945)} = {degrees(a_oa): 6.1f}
-        degrees({a_oa: 7.4f}
-        rad )
-
-      (angle
-        between
-        z1
-        axis and the
-        axis
-        of
-        rotation
-        of
-        vector
-        k ) (13)
-        {chr(int("3A6", 16))} = {degrees(a_azi): 6.1f}
-        degrees({a_azi: 7.4f}
-        rad )
-
-        angle
-        of
-        rotation
-        between
-        x1
-        axis and the
-        projection
-        of
-        k
-        onto
-        the
-        x1 - y1
-        plane(12)
-        {chr(int("398", 16))} = {degrees(a_ele): 6.1f}
-        degrees({a_ele: 7.4f}
-        rad )
-
-        angle
-        of
-        rotation
-        around
-        k(14)
-        {chr(int("3B2", 16))} = {degrees(a_aor): 6.1f}
-        degrees({a_aor: 7.4f}
-        rad )
-
+            "true_angular_deformity": a_tad,
+            "orientation_angle": a_oa,
+            "azimuth_of_vektor_k": a_azi,
+            "angle_of_rotation_onto_the_x1-y1_plane": a_ele,
+            "angle_of_rotation_around_k": a_aor,
         }
         result = request.form
         return redirect(url_for('.op_planning_results', result=result, values=session['values']))
