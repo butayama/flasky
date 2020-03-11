@@ -286,20 +286,77 @@ def op_planning():
         # form.filename.data = f"osteotomy_result_{coronal_component_C}" + "_" + f"{sagittal_component_S}" + "_" + \
         #                      f"{torsion_component_T}" + ".txt"
     if form.validate_on_submit():
-        session['coronal_component_C'] = form.coronal_component_C.data
-        session['sagittal_component_S'] = form.sagittal_component_S.data
-        session['torsion_component_T'] = form.torsion_component_T.data
-        # session['filename'] = form.filename.data
+        filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor = \
+            ca.calculate(form.coronal_component_C.data,
+                         form.sagittal_component_S.data,
+                         form.torsion_component_T.data)
         session['values'] = {
-            "coronal_component_C": form.coronal_component_C.data,
-            "sagittal_component_S": form.sagittal_component_S.data,
-            "torsion_component_T": form.torsion_component_T.data,
+            "coronal_component_C": c_a_d,
+            "sagittal_component_S": s_a_d,
+            "torsion_component_T": t_a_d,
+            "coronal_component_C_radians": c_a,
+            "sagittal_component_S_radians": s_a,
+            "torsion_component_T_radians": t_a,
+            "true_angular_deformity": a_tad
+            "orientation_angle": a_oa
+            "azimuth_of
+        vektor
+        k"
+            ""
+            ""
+
+                A = {degrees(a_tad): 6.1f}
+        degrees({a_tad: 7.4f}
+        rad )
+
+        (16)
+        {chr(945)} = {degrees(a_oa): 6.1f}
+        degrees({a_oa: 7.4f}
+        rad )
+
+      (angle
+        between
+        z1
+        axis and the
+        axis
+        of
+        rotation
+        of
+        vector
+        k ) (13)
+        {chr(int("3A6", 16))} = {degrees(a_azi): 6.1f}
+        degrees({a_azi: 7.4f}
+        rad )
+
+        angle
+        of
+        rotation
+        between
+        x1
+        axis and the
+        projection
+        of
+        k
+        onto
+        the
+        x1 - y1
+        plane(12)
+        {chr(int("398", 16))} = {degrees(a_ele): 6.1f}
+        degrees({a_ele: 7.4f}
+        rad )
+
+        angle
+        of
+        rotation
+        around
+        k(14)
+        {chr(int("3B2", 16))} = {degrees(a_aor): 6.1f}
+        degrees({a_aor: 7.4f}
+        rad )
+
         }
         result = request.form
         return redirect(url_for('.op_planning_results', result=result, values=session['values']))
-        # return redirect(url_for('.op_planning_results', coronal_component_C=coronal_component_C,
-        #                         sagittal_component_S=session.get(sagittal_component_S),
-        #                         torsion_component_T=session.get(torsion_component_T)))
 
     return render_template('op_planning.html', form=form)
     # return render_template('op_planning.html', form=form,
