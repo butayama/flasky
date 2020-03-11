@@ -289,73 +289,26 @@ def op_planning():
         filename, c_a_d, s_a_d, t_a_d, c_a, s_a, t_a, a_tad, a_oa, a_azi, a_ele, a_aor = \
             ca.calculate(form.coronal_component_C.data,
                          form.sagittal_component_S.data,
-                         form.torsion_component_T.data),
+                         form.torsion_component_T.data)
         session['values'] = {
-            "coronal_component_C": c_a_d,
-            "sagittal_component_S": s_a_d,
-            "torsion_component_T": t_a_d,
-            "coronal_component_C_radians": c_a,
-            "sagittal_component_S_radians": s_a,
-            "torsion_component_T_radians": t_a,
-            "true_angular_deformity": a_tad,
-            "orientation_angle": a_oa,
-            "azimuth_of_vektor_k": a_azi,
-            "angle_of_rotation_onto_the_x1-y1_plane": a_ele,
-            "angle_of_rotation_around_k": a_aor,
+            "c_a_d": c_a_d,
+            "s_a_d": s_a_d,
+            "t_a_d": t_a_d,
+            "c_a": c_a,
+            "s_a": s_a,
+            "t_a": t_a,
+            "a_tad": a_tad,
+            "a_oa": a_oa,
+            "a_azi": a_azi,
+            "a_ele": a_ele,
+            "a_aor": a_aor
         }
-        result = request.form
-        return redirect(url_for('.op_planning_results', result=result, values=session['values']))
+        return redirect(url_for('.op_planning_results', values=session['values']))
 
     return render_template('op_planning.html', form=form)
-    # return render_template('op_planning.html', form=form,
-    #                        coronal_component_C=coronal_component_C,
-    #                        sagittal_component_S=session.get(sagittal_component_S),
-    #                        torsion_component_T=session.get(torsion_component_T))
 
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    result = request.args
-    # coronal_component_C = request.form.get('coronal_component_C')
-    # sagittal_component_S = request.form.get('sagittal_component_S')
-    # torsion_component_T = request.form.get('torsion_component_T')
-    # angles = request.form.getlist('coronal_component_C', 'sagittal_component_S', 'torsion_component_T')
-    # coronal_component_C  = request.args
-    # coronal_component_C, sagittal_component_S, torsion_component_T  = request.args
-    # coronal_component_C = request.args['coronal_component_C',
-    #                                    'sagittal_component_S',
-    #                                    'torsion_component_T']
-    # coronal_component_C, sagittal_component_S, torsion_component_T = request.args['coronal_component_C',
-    #                                                                               'sagittal_component_S',
-    #                                                                               'torsion_component_T']
-    # coronal_component_C = request.args['coronal_component_C']
-    # sagittal_component_S = request.args['sagittal_component_S']
-    # torsion_component_T = request.args['torsion_component_T']
-    calc_angles = CalculateAngles
-    return render_template('op_planning_results.html', result=result, values=session['values'])
-    # return render_template('op_planning_results.html', coronal_component_C=coronal_component_C,
-    #                        sagittal_component_S=sagittal_component_S,
-    #                        torsion_component_T=torsion_component_T)
-    # ,
-    #                    sagittal_component_S=sagittal_component_S,
-    #                    torsion_component_T=torsion_component_T)
+    return render_template('op_planning_results.html', values=session['values'])
 
-# def get_galaxies():
-#     galaxies = ["Messier 81", "StarBurst", "Black Eye", "Cosmos Redshift", "Sombrero", "Hoags Object", "Andromeda",
-#                 "Pinwheel", "Cartwheel",
-#                 "Mayall's Object", "Milky Way", "IC 1101", "Messier 87", "Ring Nebular", "Centarus A", "Whirlpool",
-#                 "Canis Major Overdensity", "Virgo Stellar Stream"]
-
-# Erstelle ein Formular mit Flask. Baue ein Formular ein, in dem Du einen Strassennamen in ein Eingabefeld eingibst und über einen Knopf das Formular abschickst. Der HTML-Code sollte etwa folgendes enthalten:
-#
-# <form action="/suchen">
-#   <input name="suchtext"></input>
-#   <input type="submit" value="Strasse suchen"></input>
-# </form>
-#
-# Die URL /suchen kann nun auf den Inhalt des Textfeldes mit dem Namen suchtext zugreifen:
-#
-# from flask import request
-#
-# # in der aufgerufenen Funktion
-# text = request.args.get('suchtext')
