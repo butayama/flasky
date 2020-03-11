@@ -9,8 +9,8 @@ from .. import db
 from ..auth.forms import LoginForm
 from ..models import Permission, Role, User, Post, Comment
 from ..decorators import admin_required, permission_required
-from ..Calculation_x import CalculateAngles
-
+from ..Calculation import CalculateAngles as ca
+import os
 
 @main.after_app_request
 def after_request(response):
@@ -269,9 +269,14 @@ def moderate_disable(id):
 
 @main.route('/op_planning', methods=['GET', 'POST'])
 def op_planning():
-    coronal_component_C = 13.3
-    sagittal_component_S = -10.5
-    torsion_component_T = 22
+    if os.environ['FLASK_DEBUG'] == 'developement':
+        coronal_component_C = 13.3
+        sagittal_component_S = -10.5
+        torsion_component_T = 22
+    else:
+        coronal_component_C = 0.0
+        sagittal_component_S = 0.0
+        torsion_component_T = 0.0
     values = {}
     form = OpPlanningForm()
     if request.method == 'GET':
