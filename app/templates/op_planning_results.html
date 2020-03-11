@@ -1,25 +1,26 @@
 {% extends "shared/_layout.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{%  block title %}OP Planning{% endblock %}
+{% block title %}OP Planning{% endblock %}
 {% block content %}
+{{ super() }}
     {% block page_content_middle %}
-
+    {%  block content_header %}
+    {{ super() }}
     <div class="page-header">
         <h2>Op planning</h2>
     </div>
-{#    <div class="col-md-8">#}
-{#        {% for value in values %}#}
-{#            <li class="collection-item"> x1 {{ value }} = {{ values[value] }} </li>#}
-{#        {% endfor %}#}
-        <ul style="list-style-type: None;">
+    {%  endblock %}
+    <div class="fluid-middle">
+       <ul style="list-style-type: None;">
+
         <h3>Input Values</h3>
             <li class="collection-item">coronal component  C = {{ '{0:6.1f}'.format(values['c_a_d']) }} degrees</li>
             <li class="collection-item">sagittal component S = {{ '{0:6.1f}'.format(values['s_a_d']) }} degrees</li>
             <li class="collection-item">torsion_component  T = {{ '{0:6.1f}'.format(values['t_a_d']) }} degrees</li>
         <h4>Transformation of degrees in radians</h4>
-            <li class="collection-item">coronal component  C = {{ '{0:8.4f}'.format(values['c_a']) }} radians</li>
-            <li class="collection-item">sagittal component S = {{ '{0:8.4f}'.format(values['s_a']) }} radians</li>
-            <li class="collection-item">torsion_component  T = {{ '{0:8.4f}'.format(values['t_a']) }} radians</li>
+            <li class="collection-item">coronal component  C = {{ '{0:8.4f}'.format(values['c_a']) }} rad</li>
+            <li class="collection-item">sagittal component S = {{ '{0:8.4f}'.format(values['s_a']) }} rad</li>
+            <li class="collection-item">torsion_component  T = {{ '{0:8.4f}'.format(values['t_a']) }} rad</li>
         <h3>Calculation according to Sangeorzan, Judd (1989)</h3>
         <h4>true angular deformity (15)</h4>
 {#            {%  a_tad_degree = degrees(values['a_tad']) %}#}
@@ -27,28 +28,25 @@
                 A = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
         <h4>orientation angle (16)</h4>
             <li class="collection-item">
-                {% chr(945) %} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
-
+                {{ chr(945) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_oa']), values['a_oa']) }}</li>
         <h4>azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)</h4>
-            <li class="collection-item"> = {{ values[''] }} degrees</li>
+            <li class="collection-item">
+                {{ chr(int("3A6", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_azi']), values['a_azi']) }}</li>
+
         <h4>rotation between x1 axis and the projection of k onto the x1-y1 plane (12)</h4>
-            <li class="collection-item"> = {{ values[''] }} degrees</li>
+            <li class="collection-item">
+                {{ chr(int("398", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_ele']), values['a_ele']) }}</li>
+
         <h4>rotation around k (14)</h4>
-            <li class="collection-item"> = {{ values[''] }} degrees</li>
+            <li class="collection-item">
+                {{ chr(int("3B2", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_aor']), values['a_aor']) }}</li>
         </ul>
+    </div>
 
 
 
 
 
-            Copyright (C) 2020 | Uwe Schweinsberg | butayama@gmail.com
-
-            GNU GENERAL PUBLIC LICENSE Version 3
-            This program comes with ABSOLUTELY NO WARRANTY;
-            This is free software, and you are welcome to redistribute it
-            under certain conditions;
-            For details visit <href>https://www.gnu.org/licenses/></href><.
-            }}
         </div>
     {% endblock %}
 {% endblock %}

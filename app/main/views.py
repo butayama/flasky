@@ -311,5 +311,6 @@ def op_planning():
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    return render_template('op_planning_results.html', values=session['values'], degrees=degrees, chr=chr)
+    return render_template('op_planning_results.html', values=session['values'], degrees=degrees, chr=chr,
+                           int=int)
 
