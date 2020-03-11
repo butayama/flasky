@@ -11,6 +11,7 @@ from ..models import Permission, Role, User, Post, Comment
 from ..decorators import admin_required, permission_required
 from ..Calculation import CalculateAngles as ca
 import os
+from math import degrees
 
 @main.after_app_request
 def after_request(response):
@@ -310,5 +311,5 @@ def op_planning():
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
 def op_planning_results():
-    return render_template('op_planning_results.html', values=session['values'])
+    return render_template('op_planning_results.html', values=session['values'], degrees=degrees, chr=chr)
 

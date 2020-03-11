@@ -22,9 +22,13 @@
             <li class="collection-item">torsion_component  T = {{ '{0:8.4f}'.format(values['t_a']) }} radians</li>
         <h3>Calculation according to Sangeorzan, Judd (1989)</h3>
         <h4>true angular deformity (15)</h4>
-            <li class="collection-item"> = {{ values[''] }} degrees</li>
+{#            {%  a_tad_degree = degrees(values['a_tad']) %}#}
+            <li class="collection-item">
+                A = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
         <h4>orientation angle (16)</h4>
-            <li class="collection-item"> = {{ values[''] }} degrees</li>
+            <li class="collection-item">
+                {% chr(945) %} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
+
         <h4>azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)</h4>
             <li class="collection-item"> = {{ values[''] }} degrees</li>
         <h4>rotation between x1 axis and the projection of k onto the x1-y1 plane (12)</h4>
@@ -33,31 +37,6 @@
             <li class="collection-item"> = {{ values[''] }} degrees</li>
         </ul>
 
-
-             = {} degrees
-             = {:6.1f} degrees }}
-
-            Transformation of degrees in radians
-            coronal component  C  =  {c_a:8.4f}
-            sagittal component S  =  {s_a:8.4f}
-            torsion component  T  =  {t_a:8.4f}
-
-            Calculation according to Sangeorzan, Judd (1989)
-
-            true angular deformity (15)
-            A = {degrees(a_tad):6.1f} degrees ({a_tad:7.4f} rad )
-
-            orientation angle (16)
-            {chr(945)} = {degrees(a_oa):6.1f} degrees ({a_oa:7.4f} rad )
-
-            azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)
-            {chr(int("3A6", 16))} = {degrees(a_azi):6.1f} degrees ({a_azi:7.4f} rad )
-
-            angle of rotation between x1 axis and the projection of k onto the x1-y1 plane (12)
-            {chr(int("398", 16))} = {degrees(a_ele):6.1f} degrees({a_ele:7.4f} rad )
-
-            angle of rotation around k (14)
-            {chr(int("3B2", 16))} = {degrees(a_aor):6.1f} degrees ({a_aor:7.4f} rad
 
 
 
