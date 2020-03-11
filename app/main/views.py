@@ -299,9 +299,7 @@ def op_planning():
             "torsion_component_T_radians": t_a,
             "true_angular_deformity": a_tad
             "orientation_angle": a_oa
-            "azimuth_of
-        vektor
-        k"
+            "azimuth_of_vektor_k"
             ""
             ""
 
