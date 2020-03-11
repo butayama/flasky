@@ -269,14 +269,14 @@ def moderate_disable(id):
 
 @main.route('/op_planning', methods=['GET', 'POST'])
 def op_planning():
-    if os.environ['FLASK_DEBUG'] == 'developement':
+    if os.environ['FLASK_DEBUG']:
         coronal_component_C = 13.3
         sagittal_component_S = -10.5
         torsion_component_T = 22
     else:
-        coronal_component_C = 0.0
-        sagittal_component_S = 0.0
-        torsion_component_T = 0.0
+        coronal_component_C = None
+        sagittal_component_S = None
+        torsion_component_T = None
     values = {}
     form = OpPlanningForm()
     if request.method == 'GET':
