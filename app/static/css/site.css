@@ -39,3 +39,8 @@
 .page-header {
     background: white;
 }
+
+.bold {
+    color: #332aff;
+    font-size: 24px;
+}

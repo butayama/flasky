@@ -19,8 +19,8 @@
     {{ nav.top.render() }}
 {% endblock %}
 
-{%  block content_header %}
-{%  endblock %}
+{#{%  block content_header %}#}
+{#{%  endblock %}#}
 
 {% block content %}
 {{ super() }}
@@ -28,14 +28,8 @@
 {{ super() }}
     <div class="container-fluid fluid-middle">
         <div class="row content_main">
-            <div class="col-sm-2">
-                {% block page_content_left %}{% endblock %}
-            </div>
-            <div class="col-sm-8">
+            <div class="col-sm-10">
                 {% block page_content_middle %}{% endblock %}
-            </div>
-            <div class="col-sm-2">
-                {% block page_content_right %}{% endblock %}
             </div>
         </div>
     </div>

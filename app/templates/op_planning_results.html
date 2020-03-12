@@ -1,38 +1,37 @@
 {% extends "shared/_layout.html" %}
 {% block title %}OP Calculation results{% endblock %}
 
-{%  block content %}
+{#{%  block page_content_middle %}#}
+{% block page_content_middle %}
     <div class="hero">
-        <h1>OP Calculation results</h1>
-
-        <h2>Op planning</h2>
         <ul style="list-style-type: None;">
-        <h3>Input Values</h3>
+        <h2>Input Values</h2>
             <li class="collection-item">coronal component  C = {{ '{0:6.1f}'.format(values['c_a_d']) }} degrees</li>
             <li class="collection-item">sagittal component S = {{ '{0:6.1f}'.format(values['s_a_d']) }} degrees</li>
             <li class="collection-item">torsion_component  T = {{ '{0:6.1f}'.format(values['t_a_d']) }} degrees</li>
-        <h4>Transformation of degrees in radians</h4>
+        <h2>Transformation of degrees in radians</h2>
             <li class="collection-item">coronal component  C = {{ '{0:8.4f}'.format(values['c_a']) }} rad</li>
             <li class="collection-item">sagittal component S = {{ '{0:8.4f}'.format(values['s_a']) }} rad</li>
             <li class="collection-item">torsion_component  T = {{ '{0:8.4f}'.format(values['t_a']) }} rad</li>
-        <h3>Calculation according to Sangeorzan, Judd (1989)</h3>
-        <h4>true angular deformity (15)</h4>
+        <h1>Calculation</h1>
+        <h4>according to Sangeorzan, Judd (1989)</h4>
+        <h2>true angular deformity (15)</h2>
             <li class="collection-item">
-                A = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
-        <h4>orientation angle (16)</h4>
+                <span class="bold">A = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
+        <h2>orientation angle (16)</h2>
             <li class="collection-item">
-                {{ chr(945) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_oa']), values['a_oa']) }}</li>
-        <h4>azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)</h4>
+                <span class="bold">{{ chr(945) }}</span> = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_oa']), values['a_oa']) }}</li>
+        <h2>azimuth of vektor k (angle between z1 axis and the axis of rotation of vector k ) (13)</h2>
             <li class="collection-item">
-                {{ chr(int("3A6", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_azi']), values['a_azi']) }}</li>
+                <span class="bold">{{ chr(int("3A6", 16)) }}</span> = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_azi']), values['a_azi']) }}</li>
 
-        <h4>rotation between x1 axis and the projection of k onto the x1-y1 plane (12)</h4>
+        <h2>rotation between x1 axis and the projection of k onto the x1-y1 plane (12)</h2>
             <li class="collection-item">
-                {{ chr(int("398", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_ele']), values['a_ele']) }}</li>
+                <span class="bold">{{ chr(int("398", 16)) }}</span> = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_ele']), values['a_ele']) }}</li>
 
-        <h4>rotation around k (14)</h4>
+        <h2>rotation around k (14)</h2>
             <li class="collection-item">
-                {{ chr(int("3B2", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_aor']), values['a_aor']) }}</li>
+                <span class="bold">{{ chr(int("3B2", 16)) }}</span> = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_aor']), values['a_aor']) }}</li>
         </ul>
     </div>
 {% endblock %}
