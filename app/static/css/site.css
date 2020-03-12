@@ -14,12 +14,22 @@
 .fluid-middle .row {
     padding: 0px;
     padding-bottom: 60px;
-    background: #cccccc;
+    background: white;
 }
 
-.fluid-bottom .row {
+.content_main .row{
+    background: #ff8981;
+}
+
+.fluid-bottom .footer .copyright {
     font-size: 20px;
+
+}
+
+.fluid-bottom {
+    font-size: 14px;
     padding: 10px;
+    text-align: center;
     background: #cccccc;
 }
 

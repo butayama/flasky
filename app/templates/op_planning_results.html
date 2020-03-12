@@ -1,18 +1,12 @@
 {% extends "shared/_layout.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
-{% block title %}OP Planning{% endblock %}
-{% block content %}
-{{ super() }}
-    {% block page_content_middle %}
-    {%  block content_header %}
-    {{ super() }}
-    <div class="page-header">
-        <h2>Op planning</h2>
-    </div>
-    {%  endblock %}
-    <div class="fluid-middle">
-       <ul style="list-style-type: None;">
+{% block title %}OP Calculation results{% endblock %}
 
+{%  block content %}
+    <div class="hero">
+        <h1>OP Calculation results</h1>
+
+        <h2>Op planning</h2>
+        <ul style="list-style-type: None;">
         <h3>Input Values</h3>
             <li class="collection-item">coronal component  C = {{ '{0:6.1f}'.format(values['c_a_d']) }} degrees</li>
             <li class="collection-item">sagittal component S = {{ '{0:6.1f}'.format(values['s_a_d']) }} degrees</li>
@@ -23,7 +17,6 @@
             <li class="collection-item">torsion_component  T = {{ '{0:8.4f}'.format(values['t_a']) }} rad</li>
         <h3>Calculation according to Sangeorzan, Judd (1989)</h3>
         <h4>true angular deformity (15)</h4>
-{#            {%  a_tad_degree = degrees(values['a_tad']) %}#}
             <li class="collection-item">
                 A = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_tad']), values['a_tad']) }}</li>
         <h4>orientation angle (16)</h4>
@@ -42,11 +35,4 @@
                 {{ chr(int("3B2", 16)) }} = {{ '{0:6.1f} degrees ({1:7.4f} rad)'.format(degrees(values['a_aor']), values['a_aor']) }}</li>
         </ul>
     </div>
-
-
-
-
-
-        </div>
-    {% endblock %}
 {% endblock %}
