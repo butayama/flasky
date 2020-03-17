@@ -52,7 +52,6 @@ def logout():
 
 
 @auth.route('/register', methods=['GET', 'POST'])
-# @login_required
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -172,7 +171,6 @@ def change_email(token):
 
 
 @auth.route('/')
-@login_required
 def index():
     return render_template('auth/index.html')
 
