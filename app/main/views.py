@@ -48,7 +48,6 @@ def index():
 
 
 @main.route('/user/<username>')
-@login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -107,7 +106,6 @@ def edit_profile_admin(id):
 
 
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
-@login_required
 def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
@@ -184,7 +182,6 @@ def unfollow(username):
 
 
 @main.route('/followers/<username>')
-@login_required
 def followers(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -202,7 +199,6 @@ def followers(username):
 
 
 @main.route('/followed_by/<username>')
-@login_required
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -273,7 +269,6 @@ def moderate_disable(id):
 
 
 @main.route('/op_planning', methods=['GET', 'POST'])
-@login_required
 def op_planning():
     if os.environ['FLASK_DEBUG']:
         coronal_component_C = 27.1
@@ -315,7 +310,6 @@ def op_planning():
 
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
-@login_required
 def op_planning_results():
     return render_template('op_planning_results.html', values=session['values'], degrees=degrees, chr=chr,
                            int=int)
