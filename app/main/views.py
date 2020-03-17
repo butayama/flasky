@@ -270,7 +270,7 @@ def moderate_disable(id):
 
 @main.route('/op_planning', methods=['GET', 'POST'])
 def op_planning():
-    if os.environ['FLASK_DEBUG']: #TODO muss bei deply geändert werden
+    if os.environ['FLASK_DEBUG']:
         coronal_component_C = 27.1
         sagittal_component_S = -8.2
         torsion_component_T = 29.7
