@@ -23,8 +23,10 @@ def before_request():
 
 @auth.route('/unconfirmed')
 def unconfirmed():
-    if current_user.is_anonymous or current_user.confirmed:
+    if current_user.is_anonymous:
         return redirect(url_for('main.index'))
+    if current_user.confirmed:
+        return render_template('op_planning.html', form=form)
     return render_template('auth/unconfirmed.html')
 
 
@@ -186,6 +188,7 @@ def about_01():
 
 
 @auth.route('/case')
+@login_required
 def case():
     return render_template('auth/case.html')
 

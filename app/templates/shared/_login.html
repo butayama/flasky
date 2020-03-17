@@ -1,22 +1,15 @@
-    <header>
-        <nav>
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="{{ url_for('index') }}"
-                                        class="nav-link {% if index %}active{% endif %}">Home</a></li>
-                <li class="nav-item"><a href="{{ url_for('case') }}"
-                                        class="nav-link {% if index %}active{% endif %}">Case</a></li>
-                <li class="nav-item"><a href="{{ url_for('op_planning') }}"
-                                        class="nav-link {% if index %}active{% endif %}">op_planning</a></li>
-                <li class="nav-item"><a href="{{ url_for('op') }}"
-                                        class="nav-link {% if index %}active{% endif %}">op</a></li>
-                <li class="nav-item"><a href="{{ url_for('post_op') }}"
-                                        class="nav-link {% if index %}active{% endif %}">post_op</a></li>
-            </ul>
-        </nav>
-        <hr style="clear:both">
-    </header>
+{% extends "bootstrap/base.html" %}
 
+{% block title %}Osteotomy{% endblock %}
 
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+{% endblock %}
+
+{% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -30,9 +23,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}">Home</a></li>
+                <li><a href="{{ url_for('auth.index') }}">CASE</a>
+{#                <li><a href="{{ url_for('main.op_planning') }}">OP_PLANNING</a></li>#}
+{#                <li><a href="{{ url_for('auth.op') }}">OP</a></li>#}
+{#                <li><a href="{{ url_for('auth.post_op') }}">POST_OP</a></li>#}
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.op_planning', username=current_user.username) }}">Profile</a></li>
+                <li><a href="{{ url_for('auth.case', username=current_user.username) }}">Profile</a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -42,7 +38,7 @@
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ current_user.gravatar(size=18) }}" alt="gravatar current user">
+                        <img src="{{ current_user.gravatar(size=18) }}">
                         Account <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
@@ -58,3 +54,22 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
