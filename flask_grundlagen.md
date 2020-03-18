@@ -413,3 +413,35 @@ order_by | Specify the ordering used for the items in the relationship.
 secondary | Specify the name of the association table to use in many-to-many relationships.
 secondaryjoin | Specify the secondary join condition for many-to-many relationships when SQLAlchemy cannot determine it on its own.
 
+## Database Operations
+most common database operations in a shell started with the flask shell command:
+
+## Querying Rows
+Role.query.all()
+User.query.all()
+User.query.filter_by(role=user_role).all()
+user_role = Role.query.filter_by(name='User').first()
+
+### Common SQLAlchemy query filters
+
+Option      | Description
+----------- | -----------
+filter() | Returns a new query that adds an additional filter to the original query
+filter_by() | Returns a new query that adds an additional equality filter to the original query
+limit() | Returns a new query that limits the number of results of the original query to the given number
+offset() | Returns a new query that applies an offset into the list of results of the original query
+order_by() | Returns a new query that sorts the results of the original query according to the given criteria
+group_by() | Returns a new query that groups the results of the original query according to the given criteria
+
+### Most common SQLAlchemy query executors
+
+Option      | Description
+----------- | -----------
+all() | Returns all the results of a query as a list
+first() | Returns the first result of a query, or None if there are no results
+first_or_404() | Returns the first result of a query, or aborts the request and sends a 404 error as the response if there are no results
+get() | Returns the row that matches the given primary key, or None if no matching row is found
+get_or_404() | Returns the row that matches the given primary key or, if the key is not found, aborts the request and sends a 404 error as the response
+count() | Returns the result count of the query
+paginate() | Returns a Pagination object that contains the specified range of results
+
