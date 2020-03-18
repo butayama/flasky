@@ -389,3 +389,14 @@ Enum | str | List of string values
 PickleType | Any Python object | Automatic Pickle serialization
 LargeBinary | str | Binary blob
 
+Most common SQLAlchemy column options
+ 
+Option name | Description
+----------- | -----------
+primary_key | If set to True, the column is the table’s primary key.
+unique | If set to True, do not allow duplicate values for this column.
+index | If set to True, create an index for this column, so that queries are more efficient.
+nullable | If set to True, allow empty values for this column. If set to False, the column will not allow null values.
+default | Define a default value for the column.
+
+
