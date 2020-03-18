@@ -399,4 +399,17 @@ index | If set to True, create an index for this column, so that queries are mor
 nullable | If set to True, allow empty values for this column. If set to False, the column will not allow null values.
 default | Define a default value for the column.
 
+## Relationships
+
+### Common SQLAlchemy relationship options
+
+Option name | Description
+----------- | -----------
+backref | Add a back reference in the other model in the relationship.
+primaryjoin | Specify the join condition between the two models explicitly. This is necessary only for ambiguous relationships.
+lazy | Specify how the related items are to be loaded. Possible values are select (items are loaded on demand the first time they are accessed), immediate (items are loaded when the source object is loaded), joined (items are loaded immediately, but as a join), subquery (items are loaded immediately, but as a subquery), noload (items are never loaded), and dynamic (instead of loading the items, the query that can load them is given).
+uselist | If set to False, use a scalar instead of a list.
+order_by | Specify the ordering used for the items in the relationship.
+secondary | Specify the name of the association table to use in many-to-many relationships.
+secondaryjoin | Specify the secondary join condition for many-to-many relationships when SQLAlchemy cannot determine it on its own.
 
