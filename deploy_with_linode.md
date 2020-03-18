@@ -3,7 +3,7 @@ nach talk-python course data-driven-web-app-with-flask ch15
 Linode zum laufen bringen
 ========================= 
 ein Ubuntu Betriebssystem installieren  
-Zugang vom Terminal üner Normalnutzer  
+Zugang vom Terminal über Normalnutzer  
 Zugang als root mit sudo bzw. su  
 
 Server Verzeichnis erstellen

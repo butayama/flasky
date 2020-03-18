@@ -26,7 +26,7 @@ def unconfirmed():
     if current_user.is_anonymous:
         return redirect(url_for('main.index'))
     if current_user.confirmed:
-        return redirect(url_for('.op_planning'))
+        return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
 
 
