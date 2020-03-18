@@ -1,4 +1,4 @@
-{% extends "shared/base_0.html" %}
+{% extends "shared/_login.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}Flasky - Login{% endblock %}
@@ -12,6 +12,8 @@
     <br>
 {#    <p>This is a test version of the osteotomy web site. Registration will be possible after release.</p>#}
     <p>Forgot your password? <a href="{{ url_for('auth.password_reset_request') }}">Click here to reset it</a>.</p>
-    <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>
+    <p>New user? Registration Function has been deactivated during test period. Please contact
+        <a href="mailto:yetigo41+osteotomy@gmail.com?Subject=Osteotomy-Website-Register" target="_top">Send Mail</a></p></p>
+{#    <p>New user? <a href="{{ url_for('auth.register') }}">Click here to register</a>.</p>#}
 </div>
 {% endblock %}
