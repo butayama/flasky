@@ -23,10 +23,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('auth.index') }}">CASE</a>
-                <li><a href="{{ url_for('main.op_planning') }}">OP_PLANNING</a></li>
-                <li><a href="{{ url_for('auth.op') }}">OP</a></li>
-                <li><a href="{{ url_for('auth.post_op') }}">POST_OP</a></li>
+                <li><a href="{{ url_for('main.index') }}">Home</a></li>
                 {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('main.user', username=current_user.username) }}">Profile</a></li>
                 {% endif %}
