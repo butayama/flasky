@@ -445,3 +445,15 @@ get_or_404() | Returns the row that matches the given primary key or, if the key
 count() | Returns the result count of the query
 paginate() | Returns a Pagination object that contains the specified range of results
 
+## 8. User Authentication
+### Authentication Extensions for Flask
+
+
+    Flask-Login: Management of user sessions for logged-in users
+    Werkzeug: Password hashing and verification
+    itsdangerous: Cryptographically secure token generation and verification
+In addition to authentication-specific packages, the following general-purpose extensions will be used:
+    Flask-Mail: Sending of authentication-related emails
+    Flask-Bootstrap: HTML templates
+    Flask-WTF: Web forms
+
