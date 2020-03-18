@@ -23,12 +23,12 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('auth.index') }}">CASE</a>
+{#                <li><a href="{{ url_for('auth.index') }}">CASE</a></li>#}
 {#                <li><a href="{{ url_for('main.op_planning') }}">OP_PLANNING</a></li>#}
 {#                <li><a href="{{ url_for('auth.op') }}">OP</a></li>#}
 {#                <li><a href="{{ url_for('auth.post_op') }}">POST_OP</a></li>#}
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.case', username=current_user.username) }}">Profile</a></li>
+                  <li><a href="{{ url_for('auth.case') }}">Profile</a></li>
                 {% endif %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -38,7 +38,7 @@
                 {% if current_user.is_authenticated %}
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ current_user.gravatar(size=18) }}" alt="gravatar">
+                        <img src="{{ current_user.gravatar(size=18) }}" alt="graphic">
                         Account <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
