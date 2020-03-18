@@ -367,140 +367,25 @@ The term model is used when referring to the persistent entities used by the app
 
 Flask-SQLAlchemy requires all models to define a primary key column, which is commonly named id.  
 
-Most common SQLAlchemy column types Type name 	Python type 	Description
+## Most common SQLAlchemy column types
+ 
+Type name | Python type | Description
+--------- | ----------- | ------------
+Integer | int | Regular integer, typically 32 bits
+SmallInteger | int | Short-range integer, typically 16 bits
+BigInteger | int or long | Unlimited precision integer
+Float | float | Floating-point number
+Numeric | decimal.DecimalFixed-point number
+String | str | Variable-length string
+Text | str | Variable-length string, optimized for large or unbounded length
+Unicode | unicode | Variable-length Unicode string
+UnicodeText | unicode | Variable-length Unicode string, optimized for large or unbounded length
+Boolean | bool | Boolean value
+Date | datetime.date | Date value
+Time | datetime.time | Time value
+DateTime | datetime.datetime | Date and time value
+Interval | datetime.timedelta | Time interval
+Enum | str | List of string values
+PickleType | Any Python object | Automatic Pickle serialization
+LargeBinary | str | Binary blob
 
-Integer
-	
-
-int
-	
-
-Regular integer, typically 32 bits
-
-SmallInteger
-	
-
-int
-	
-
-Short-range integer, typically 16 bits
-
-BigInteger
-	
-
-int or long
-	
-
-Unlimited precision integer
-
-Float
-	
-
-float
-	
-
-Floating-point number
-
-Numeric
-	
-
-decimal.Decimal
-	
-
-Fixed-point number
-
-String
-	
-
-str
-	
-
-Variable-length string
-
-Text
-	
-
-str
-	
-
-Variable-length string, optimized for large or unbounded length
-
-Unicode
-	
-
-unicode
-	
-
-Variable-length Unicode string
-
-UnicodeText
-	
-
-unicode
-	
-
-Variable-length Unicode string, optimized for large or unbounded length
-
-Boolean
-	
-
-bool
-	
-
-Boolean value
-
-Date
-	
-
-datetime.date
-	
-
-Date value
-
-Time
-	
-
-datetime.time
-	
-
-Time value
-
-DateTime
-	
-
-datetime.datetime
-	
-
-Date and time value
-
-Interval
-	
-
-datetime.timedelta
-	
-
-Time interval
-
-Enum
-	
-
-str
-	
-
-List of string values
-
-PickleType
-	
-
-Any Python object
-	
-
-Automatic Pickle serialization
-
-LargeBinary
-	
-
-str
-	
-
-Binary blob
