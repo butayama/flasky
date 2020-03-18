@@ -457,3 +457,31 @@ In addition to authentication-specific packages, the following general-purpose e
     Flask-Bootstrap: HTML templates
     Flask-WTF: Web forms
 
+### Password Security
+Hashing Passwords with Werkzeug  
+generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)  
+check_password_hash(hash, password)  
+
+### Creating an Authentication Blueprint
+
+### User Authentication with Flask-Login
+Preparing the User Model for Logins  
+
+Flask-Login required items
+
+Property/method Option | Description
+---------------------- | -----------
+is_authenticated | Must be True if the user has valid login credentials or False otherwise.
+is_active | Must be True if the user is allowed to log in or False otherwise. A False value can be used for disabled accounts.
+is_anonymous | Must always be False for regular users and True for a special user object that represents anonymous users.
+get_id() | Must return a unique identifier for the user, encoded as a Unicode string.
+
+These properties and methods can be implemented directly in the model class, but as an easier alternative Flask-Login provides a **UserMixin** class that has default implementations that are appropriate for most cases.  
+Flask-Login is initialized in the application factory function,  
+The **login_manager.user_loader decorator** is used to register the function with Flask-Login, which will call it when it needs to retrieve information about the logged-in user.  
+ 
+### Protecting Routes
+@login_required
+Thanks to the login_required decorator, if this route is accessed by a user who is not authenticated, Flask-Login will intercept the request and send the user to the login page instead.  
+
+### Adding a Login Form
