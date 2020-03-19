@@ -2,7 +2,7 @@ from flask_nav.elements import Navbar, View
 
 
 # TODO https://stackoverflow.com/questions/36505091/flask-nav-bootstrap-navbar-dynamic-construction-align-some
-#  -element-to-the-right
+#  -element-to-the-righ
 
 class NavItems:
     topbar = Navbar('',

@@ -23,9 +23,7 @@ def before_request():
 
 @auth.route('/unconfirmed')
 def unconfirmed():
-    if current_user.is_anonymous:
-        return redirect(url_for('main.index'))
-    if current_user.confirmed:
+    if current_user.is_anonymous or current_user.confirmed:
         return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
 
@@ -54,6 +52,7 @@ def logout():
 
 
 @auth.route('/register', methods=['GET', 'POST'])
+# @login_required
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
@@ -173,16 +172,19 @@ def change_email(token):
 
 
 @auth.route('/')
+@login_required
 def index():
     return render_template('auth/index.html')
 
 
 @auth.route('/about')
+@login_required
 def about():
     return render_template('auth/about.html')
 
 
 @auth.route('/about_01')
+@login_required
 def about_01():
     return render_template('auth/about_01.html')
 
@@ -194,11 +196,13 @@ def case():
 
 
 @auth.route('/index_01')
+@login_required
 def index_01():
     return render_template('auth/index_01.html')
 
 
 @auth.route('/op')
+@login_required
 def op():
     return render_template('auth/op.html')
 
@@ -239,20 +243,24 @@ def op():
 
 
 @auth.route('/post_op')
+@login_required
 def post_op():
     return render_template('auth/post_op.html')
 
 
 @auth.route('/post_op1')
+@login_required
 def post_op1():
     return render_template('auth/post_op1.html')
 
 
 @auth.route('/details')
+@login_required
 def details():
     return render_template('auth/details.html')
 
 
 @auth.route('/details_01')
+@login_required
 def details_01():
     return render_template('auth/details_01.html')

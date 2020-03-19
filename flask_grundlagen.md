@@ -485,3 +485,4 @@ The **login_manager.user_loader decorator** is used to register the function wit
 Thanks to the login_required decorator, if this route is accessed by a user who is not authenticated, Flask-Login will intercept the request and send the user to the login page instead.  
 
 ### Adding a Login Form
+test_deploy from uwestat_04-win

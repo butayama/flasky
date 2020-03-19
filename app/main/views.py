@@ -37,30 +37,18 @@ def server_shutdown():
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    form = PostForm()
+    form = LoginForm()
     if current_user.can(Permission.WRITE) and form.validate_on_submit():
         post = Post(body=form.body.data,
                     author=current_user._get_current_object())
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('.index'))
-    page = request.args.get('page', 1, type=int)
-    show_followed = False
-    if current_user.is_authenticated:
-        show_followed = bool(request.cookies.get('show_followed', ''))
-    if show_followed:
-        query = current_user.followed_posts
-    else:
-        query = Post.query
-    pagination = query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['FLASKY_POSTS_PER_PAGE'],
-        error_out=False)
-    posts = pagination.items
-    return render_template('index.html', form=form, posts=posts,
-                           show_followed=show_followed, pagination=pagination)
+    return render_template('index.html', form=form)
 
 
 @main.route('/user/<username>')
+@login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -119,6 +107,7 @@ def edit_profile_admin(id):
 
 
 @main.route('/post/<int:id>', methods=['GET', 'POST'])
+@login_required
 def post(id):
     post = Post.query.get_or_404(id)
     form = CommentForm()
@@ -195,6 +184,7 @@ def unfollow(username):
 
 
 @main.route('/followers/<username>')
+@login_required
 def followers(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -212,6 +202,7 @@ def followers(username):
 
 
 @main.route('/followed_by/<username>')
+@login_required
 def followed_by(username):
     user = User.query.filter_by(username=username).first()
     if user is None:
@@ -282,6 +273,7 @@ def moderate_disable(id):
 
 
 @main.route('/op_planning', methods=['GET', 'POST'])
+@login_required
 def op_planning():
     if os.environ['FLASK_DEBUG']: #TODO muss bei deply geändert werden
         coronal_component_C = 27.1
@@ -323,6 +315,7 @@ def op_planning():
 
 
 @main.route('/op_planning_results', methods=['GET', 'POST'])
+@login_required
 def op_planning_results():
     return render_template('op_planning_results.html', values=session['values'], degrees=degrees, chr=chr,
                            int=int)

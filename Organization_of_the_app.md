@@ -25,24 +25,13 @@ Application Script
 flasky.py: main script  
 The configuration is taken from the environment variable FLASK_CONFIG if it’s defined, or else the default configuration is used  
 
-export FLASK_APP=flasky.py
-
-
 Unit Tests
 ----------
 tests/test_basics.py: unit tests  
 
-flask test
-
-
 Database Setup
 --------------
 (venv) $ flask db upgrade  
-
-
-flask Shell
------------
-flask shell
 
 Running the Application
 -----------------------
