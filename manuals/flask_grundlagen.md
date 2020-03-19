@@ -417,10 +417,10 @@ secondaryjoin | Specify the secondary join condition for many-to-many relationsh
 most common database operations in a shell started with the flask shell command:
 
 ## Querying Rows
-Role.query.all()
-User.query.all()
-User.query.filter_by(role=user_role).all()
-user_role = Role.query.filter_by(name='User').first()
+Role.query.all()  
+User.query.all()  
+User.query.filter_by(role=user_role).all()  
+user_role = Role.query.filter_by(name='User').first()  
 
 ### Common SQLAlchemy query filters
 
