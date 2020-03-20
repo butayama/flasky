@@ -207,8 +207,8 @@ Variables can be modified with **filters**, which are added after the variable n
 
 Jinja2 variable filters
 
-Filter name | Description
------------- | --------------
+Filter name | Description  
+------------ | --------------  
 safe | Renders the value without applying escaping
 capitalize | Converts the first character of the value to uppercase and the rest to lowercase
 lower | Converts the value to lowercase characters
