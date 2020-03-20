@@ -28,7 +28,6 @@ Datenbank einrichten:
 
 history | Command
 ------- | -------
-  888 | FLASKY_APP=flasky.py
   889 | export FLASKY_APP=flasky.py
   890 | flask shell
   
