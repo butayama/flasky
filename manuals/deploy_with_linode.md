@@ -225,3 +225,25 @@ server {
 }
 
 File: `/etc/nginx/sites-available/default`
+
+## Nach Modigfikation ohne reboot Verhalten wie vor der Modifikation
+## Nach Modigfikation mit reboot folgendes Verhalten:
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.  
+_**homepage index.html wird nicht gefunden**_   
+`Welcome to nginx!
+
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.  
+Commercial support is available at nginx.com.  
+
+Thank you for using nginx.`
+
+bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+_** Hompage wird gefunden**_   
+keine https Verbindung!
+
+
+
