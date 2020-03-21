@@ -59,6 +59,8 @@ history | Command
   886 | cd flasky
   887 | gunicorn --workers=3 flasky:app
   
+gunicorn kann im Terminal mit ^D beendet werden  
+  
 Passwort an User vergeben:
 
 flask shell  
@@ -116,9 +118,37 @@ https://certbot.eff.org/lets-encrypt/debianstretch-nginx
 Um Sicherungskopien zu erstellen kann FileZilla verwandt werden.  
 Falls die zu sichernden Dateien in einem root Verzeichnis liegen sind sie zuvor von der Shell aus in /hom/uwe/temp Ordner zu kopieren.  
 
+## Start nach reboot 1 (fail)
 supervisorctl funktioniert nicht nach einem reboot.  
 osteotomy.conf in osteotomy.conf.old umbenennen (in /etc/supervisor/conf.d )  
 nach dem reboot server mit  
 gunicorn --workers=3 flasky:app  
-im Verzeichnis /home/uwe/flasky starten
+im Verzeichnis /home/uwe/flasky 
+bei Eingabe von http://139.162.152.56/ und theaterfreak.de
+kommt die Fehlermeldung:  
+502 Bad Gateway  
+nginx  
+
+bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+kommt die Fehlermeldung:  
+403 Forbidden
+nginx  
+
+
+## start nach reboot 2
+supervisorctl funktioniert nicht nach einem reboot.  
+osteotomy.conf in osteotomy.conf.old umbenennen (in /etc/supervisor/conf.d )  
+nach dem reboot 
+FLASKY_APP='flasky.py'
+FLASK_CONFIG='linode'
+im Verzeichnis /home/uwe/flasky 
+gunicorn --workers=3 flasky:app  
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.de
+
+  File "/home/uwe/.pyenv/versions/3.8.1/envs/flasky/lib/python3.8/site-packages/flask/templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: auth/login.html
+
 
