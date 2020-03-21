@@ -1,0 +1,1179 @@
+    1  pip
+    2  sudo apt-get install -y -q python3-pip python3-dev python3-venv
+    3  sudo apt install nginx-light nginx-extras
+    4  man nginx(8)
+    5  man:nginx(8)
+    6  man nginx(8)
+    7  nginx -h
+    8  sudo apt-get install -y -q nginx
+    9  sudo apt remove nginx
+   10  sudo apt remove -p nginx
+   11  sudo apt -p remove nginx
+   12  man apt
+   13  apt purge nginx
+   14  sudo apt purge nginx
+   15  sudo apt-get install -y -q python3-pip python3-dev python3-venv
+   16  apt autoremove
+   17  sudo apt autoremove
+   18  locale
+   19  locale -a
+   20  sudo dpkg-reconfigure locales
+   21  nano /etc/locale.gen
+   22  sudo nano /etc/locale.gen
+   23  sudo apt-get install -y -q python3-pip python3-dev python3-venv
+   24  export LC_ALL="en_US.UTF-8"
+   25  sudo dpkg-reconfigure locales
+   26  sudo apt-get install -y -q python3-pip python3-dev python3-venv
+   27  systemctl status nginx.service
+   28  journalctl -xe
+   29  sudo journalctl -xe
+   30  sudo apt update
+   31  sudo apt upgrade
+   32  apt purge nginx-full
+   33  sudo apt purge nginx-full
+   34  sudo apt-get install -y -q nginx
+   35  sudo apt install nginx-light
+   36  sudo apt install nginx-extras
+   37  sudo apt install libnginx-mod-http-auth-pam
+   38  nginx-extras
+   39  ls /etc/nginx/
+   40  cd /etc/nginx
+   41  cd sites-enabled
+   42  ls
+   43  nano default
+   44  cd ~
+   45  sudo apt-get install --no-install-recommends -y -q libpcre3-dev libz-dev
+   46  sudo apt install nginx-light
+   47  sudo app install libnginx-mod-http-auth-pam
+   48  sudo apt install libnginx-mod-http-auth-pam
+   49  sudo dpkg --configure -a
+   50  sudo apt-get install -f
+   51  sudo apt-get remove --purge nginx-full nginx-light nginx-extras
+   52  sudo apt autoremove
+   53  pip
+   54  man pip
+   55  pip install --upgrade pip
+   56  python3-pip install --upgrade python3-pip
+   57  python3 -V
+   58  pip3 install --upgrade pip3
+   59  pip3 install --upgrade pip
+   60  sudo apt-get install -y -q nginx
+   61  sudo apt install fail2ban -y
+   62  ufw allow 22\nufw allow 80\nufw allow 443
+   63  ufw allow 22
+   64  apt install ufw
+   65  sudo apt install ufw
+   66  ufw allow 22
+   67  git config --global credential.helper cache
+   68  git config --global credential.helper 'cache --timeout=720000'
+   69  git config --global user.email "butayama@users.noreply.github.com"
+   70  git config --global user.name "Buta Yama"
+   71  sudo apt install pyenv
+   72  sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \\nlibbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev \\nlibncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+   73  sudo apt-get remove --purge nginx-full nginx-light nginx-extras
+   74  curl https://pyenv.run | bash
+   75  nano .bashrc
+   76  ls
+   77  ls -al
+   78  nano .zshrc
+   79  pyenv versions
+   80  pyenv install --list
+   81  pyenv install 3.8.1
+   82  glances
+   83  pyenv versions
+   84  pyenv global 3.8-dev
+   85  pyenv global 3.8.1
+   86  pyenv versions
+   87  cd ~
+   88  ls
+   89  ls -al
+   90  mkdir/apps
+   91  mkdir /apps
+   92  su uwe
+   93  mkdir /apps
+   94  tree
+   95  cd ..
+   96  ls
+   97  cd ..
+   98  ls
+   99  cd home
+  100  ls -al
+  101  cd uwe
+  102  ls
+  103  mkdir apps
+  104  ls
+  105  cd ~
+  106  ls
+  107  chmod 777 /apps
+  108  chmod 777 apps
+  109  mkdir apps/logs
+  110  mkdir apps/logs/osteotomy
+  111  mkdir apps/logs/osteotomy/app_log
+  112  cd apps
+  113  pyenv
+  114  pyenv virtualenv apps
+  115  pyenv activate
+  116  pyenv activate apps
+  117  pip install --upgrade pip setuptools
+  118  pip install --upgrade httpie glances
+  119  pip install --upgrade uwsgi
+  120  glances
+  121  uwsgi
+  122  cd ..
+  123  pyenv deactivate
+  124  ls
+  125  cd /
+  126  ls -al
+  127  mkdir apps
+  128  su mkdir /apps
+  129  sudo mkdir /apps
+  130  ls
+  131  chmod 777 /apps
+  132  sudo chmod 777 /apps
+  133  mv /hom/uwe/apps/logs
+  134  mv /hom/uwe/apps/logs /apps
+  135  mv /home/uwe/apps/logs /apps
+  136  ls
+  137  cd apps
+  138  ls
+  139  tree
+  140  pyenv acrivate apps
+  141  pyenv activate apps
+  142  ls
+  143  tree
+  144  cd /home/uwe
+  145  tree
+  146  ls
+  147  rm apps
+  148  tree
+  149  rmdir apps
+  150  ls
+  151  tree
+  152  cd /apps
+  153  tree
+  154  uwsgi
+  155  which python
+  156  pip list
+  157  which python
+  158  tree
+  159  ls -al
+  160  cd .pyenv
+  161  ls
+  162  cd versions
+  163  ls
+  164  cd 3.8.1
+  165  ls
+  166  cd bin
+  167  ls
+  168  nano zshrc
+  169  pyenv activate apps
+  170  which python
+  171  cd ..
+  172  ls
+  173  cd ..
+  174  ls
+  175  cd ..
+  176  ls
+  177  cd bin
+  178  ls
+  179  cd pyenv
+  180  nano pyenv
+  181  nano .bashrc
+  182  nano .zshrc
+  183  nano zshrc
+  184  rm zshrc
+  185  nano .zshrc
+  186  pyenv activate apps
+  187  pyenv deactivate apps
+  188  nano .zshrc
+  189  touch .python-version
+  190  pyenv virtualenvs
+  191  nano .python-version
+  192  cd ~
+  193  ls
+  194  tree
+  195  sudo install supervisor
+  196  sudo apt install supervisor
+  197  service supervisor restart
+  198  supervisor restart
+  199  man supervisor
+  200  ls
+  201  tree
+  202  cd logs/osteotomy/app_log
+  203  ls
+  204  ls -al
+  205  cd ~
+  206  ufw app list
+  207  sudo apt install ufw
+  208  sudo apt autoremove
+  209  sudo ufw status
+  210  sudo nano /etc/default/ufw
+  211  sudo ufw disable
+  212  sudo ufw enable
+  213  sudo ufw default deny incoming
+  214  sudo ufw allow ssh
+  215  sudo ufw enable
+  216  sudo ufw status
+  217  ufw app list
+  218  sudo ufw app list
+  219  sudo apt install openssh
+  220  sudo apt update
+  221  sudo apt install openssh-server
+  222  sudo systemctl status ssh
+  223  ip a
+  224  sudo ufw app list
+  225  sudo ufw allow OpenSSH
+  226  sudo ufw enable
+  227  sudo ufw status
+  228  ls -al
+  229  rsync --archive --chown=uwe:uwe ~/.ssh /home/uwe
+  230  su
+  231  sudo cd ..
+  232  sudo apt update
+  233  apt update
+  234  sudo nano /etc/ssh/sshd_config
+  235  sudo systemctl restart ssh
+  236  sudo apt update
+  237  cd ..
+  238  cd ~
+  239  ls
+  240  rsync --archive --chown=uwe:uwe ~/.ssh /home/uwe
+  241  sudo pip install uwsgi flask
+  242  which python
+  243  pyenv activate apps
+  244  pip install whee
+  245  pip install wheel
+  246  pip install uwsgi
+  247  pip install flask
+  248  nano ~/myproject/myproject.py
+  249  sudo nano ~/myproject/myproject.py
+  250  tree
+  251  sudo nano myproject.py
+  252  sudo ufw allow 5000
+  253  python myproject.py
+  254  hostname
+  255  hostname -f
+  256  ssh-keygen -E md5 
+  257  ls
+  258  kill
+  259  jobs
+  260  configs
+  261  exit
+  262  cd ..
+  263  cd etc
+  264  cd default
+  265  nano keyboard
+  266  ls
+  267  sudo nano keyboard
+  268  exit
+  269  xev
+  270  ls
+  271  tree
+  272  cd ..
+  273  ld
+  274  ls
+  275  cd home
+  276  cd uwe
+  277  ls
+  278  cd .ssh
+  279  ls
+  280  nano authorized_keys
+  281  sudo nano authorized_keys
+  282  ls
+  283  sudo cp authorized_keys authorized_keys_old
+  284  ls
+  285  cd ..
+  286  tree
+  287  chsh
+  288  rsync --archive --chown=uwe:uwe ~/.ssh /home/uwe
+  289  sudo rsync --archive --chown=uwe:uwe ~/.ssh /home/uwe
+  290  sudo nano authorized_keys
+  291  cd .ssh
+  292  sudo nano authorized_keys
+  293  exit
+  294  pyenv deactivate
+  295  pyenv
+  296  pyenv deactivate
+  297  cd ..
+  298  adduser uwes
+  299  sudo adduser uwes
+  300  sudo usermod -aG sudo uwes
+  301  ufw status
+  302  sudo ufw status
+  303  echo $"\x5c
+  304  echo $"\x5c"
+  305  echo "\x5c"
+  306  sudo nano /etc/ssh/sshd_config
+  307  sudo systemctl restart ssh
+  308  sudo nano ~/.ssh/authorized_keys
+  309  exit
+  310  tree
+  311  geany myproject.py
+  312  nano myproject.py
+  313  hostname
+  314  cd etc
+  315  cd /etc
+  316  ls
+  317  cd hosts
+  318  nano hosts
+  319  cd ~
+  320  tree
+  321  ls -al
+  322  nano /etc/hosts
+  323  sudo nano /etc/hosts
+  324  hostnamectl set-hostname pumuckel
+  325  sudo hostnamectl set-hostname pumuckel
+  326  exit
+  327  sudo nano /etc/sshd_config
+  328  cd /etc/ssh
+  329  ls
+  330  sudo nano sshd_config
+  331  exit
+  332  sudo ss -atpu
+  333  cd ~
+  334  ls
+  335  cd ..
+  336  git clone https://github.com/butayama/Flask-on-Linode.git flask_app_project
+  337  sudo git clone https://github.com/butayama/Flask-on-Linode.git flask_app_project
+  338  ls
+  339  tree
+  340  nginx --version
+  341  sudo apt update
+  342  sudo apt install nginx
+  343  tree
+  344  sudo nano /etc/nginx/sites-enabled/flask_app
+  345  tree
+  346  cd ..
+  347  cd etc/nginx/sites-enabled
+  348  ls
+  349  nano flask_app
+  350  sudo mv flask_app etc/nginx/sites-enabled
+  351  sudo mv flask_app /etc/nginx/sites-enabled
+  352  tree
+  353  ls
+  354  sudo unlink /etc/nginx/sites-enabled/default
+  355  sudo nginx -s reload
+  356  cd /
+  357  ls -al
+  358  cd run
+  359  ls
+  360  nginx
+  361  apt install nginx-light
+  362  sudo apt install nginx-light
+  363  sudo apt install nginx-extras
+  364  sudo /etc/init.d/apache2 stop
+  365  sudo apt install nginx
+  366  ls
+  367  sudo unlink /etc/nginx/sites-enabled/default\n
+  368  sudo unlink /etc/nginx/sites-enabled/default
+  369  sudo nginx -s reload
+  370  cd ..
+  371  sudo nano /etc/nginx/sites-enabled/flask_app
+  372  cd /etc/nginx/sites-enabled
+  373  ls
+  374  sudo nano flask_app
+  375  sudo ufw status
+  376  netstat -ntlp | grep LISTEN
+  377  apt install netstat
+  378  sudo apt install netstat
+  379  sudo apt install net-tools
+  380  netstat -ntlp | grep LISTEN
+  381  sudo netstat -ntlp | grep LISTEN
+  382  sudo ufw allow 80/tcp
+  383  sudo ufw status
+  384  sudo netstat -ntlp | grep LISTEN
+  385  sudo nginx -s reload
+  386  sudo netstat -ntlp | grep LISTEN
+  387  cd ~
+  388  pyenv virtualenv flask_app
+  389  tree
+  390  cd ..
+  391  tree
+  392  cd /apps
+  393  ls
+  394  cd ..
+  395  tree
+  396  clear
+  397  ls -al
+  398  cd apps
+  399  ls -al
+  400  nano .python-version
+  401  pyenv versions
+  402  cd 
+  403  ls
+  404  cd ..
+  405  ls
+  406  cd flask_app_project
+  407  touch .python-version
+  408  sudo touch .python-version
+  409  sudo nano .python-version
+  410  pip3 install -r flask_app/requirements.txt
+  411  pip install --upgrade pip
+  412  cd /etc
+  413  touch config.json
+  414  sudo touch config.json
+  415  sudo nano config.json
+  416  cd ~
+  417  cd ..
+  418  cd flask_app_project
+  419  cd flask_app
+  420  nano __init__.py
+  421  sudo nano __init__.py
+  422  sudo apt install gunicorn3
+  423  cd ..
+  424  git add
+  425  git
+  426  sudo git add
+  427  sudo git add .
+  428  sudo git commit
+  429  sudo git push
+  430  gunicorn3 --workers=3 flask_app:app
+  431  pip install flask
+  432  sudo nano /flask_app/__init__.py
+  433  cd flask_app
+  434  sudo nano __init__.py
+  435  gunicorn3 --workers=3 flask_app:app
+  436  tree
+  437  cd ..
+  438  tree
+  439  sudo gunicorn3 --workers=3 flask_app:app
+  440  gunicorn3 --workers=3 flask_app:app
+  441  tree
+  442  gunicorn --log-file=-
+  443  sudo gunicorn3 --log-file=-
+  444  sudo gunicorn3
+  445  man gunicorn3
+  446  man guernicon3
+  447  man gunicorn3
+  448  gunicorn3 --workers=3 flask_app:app --debug --log-file=gunicorn.log
+  449  sudo gunicorn3 --workers=3 --debug --log-file=gunicorn.log
+  450  sudo gunicorn3 --workers=3 --log-file=gunicorn.log
+  451  sudo gunicorn3 --workers=3 --log-file=gunicorn.log flask_app:app
+  452  sudo gunicorn3 --workers=3 --log-file=- flask_app:app
+  453  flask
+  454  tree
+  455  export FLASK_APP=__init__.py
+  456  gunicorn3 --workers=3 flask_app:app
+  457  sudo gunicorn3 --workers=3 flask_app:app
+  458  cd routes
+  459  cd flask_app
+  460  cd routes
+  461  ls -al
+  462  nano routes.py
+  463  cd ..
+  464  ls
+  465  sudo gunicorn3 --workers=3 flask_app:app
+  466  cd flask_app_project
+  467  sudo gunicorn3 --workers=3 flask_app:app
+  468  flask run
+  469  tree
+  470  export FLASK_APP=flask_app
+  471  flask run
+  472  pip install urllib3
+  473  flask run
+  474  sudo gunicorn3 --workers=3 flask_app:app
+  475  sudo gunicorn3 --workers=3 flask_app:flask_app
+  476  flask run
+  477  cd ~
+  478  cd .ssh
+  479  ls
+  480  cd ..
+  481  ssh-keygen -t rsa -b 4096 -C butayama@users.noreply.github.com
+  482  cd .ssh
+  483  ls
+  484  nano id_rsa_pub
+  485  sudo nano id_rsa.pub
+  486  sudo ufw status
+  487  cd ..
+  488  ls
+  489  cd flask_app_project
+  490  sudo git push
+  491  ssh -T git@github.com
+  492  sudo git push 
+  493  17. MÄRZ_______________________ GEDANKE FÜR DEN TAG\n\n„Führe uns nicht in Versuchungbeten wir, denn wir wissen aus eigener Erfahrung sehr gut, wie viele Versuchungen bereits hinter der nächsten Ecke auf uns lauern. Versuchungen kommen häufig unter einem Deckmantel daher: sie sind verschlagen, machtvoll, gewitzt und geduldig. Wir können niemals vorhersehen, wann und wo wir ihnen begegnen, ob unsere Wachsamkeit ihnen gewachsen ist oder ob wir ihnen am Ende erlegen sind. Sie können in Form einer Werbekampagne, eines kostenlosen Handzettels mit der Aufforderung zum Glücksspiel, einer Fernsehsendung in der Kulisse eines Automatensalons oder eines Spielfilms im Lichtermeer der Casinos daherkommen, oder aber - ganz unmittelbar - in einer einfachen Einladung und dem Drängen anderer Menschen. Wir müssen stets wachsam und aufmerksam für diese Versuchungen sein, denn der nächste Spieleinsatz könnte auch unser letzter sein und unser Leben vollständig zerstören. \n\nBin ich mir auch über die Prioritäten im klaren, die ich mir im Leben künftig setzen muss? \n\nGEBET FÜR DEN TAG\n\nLieber Gott, führe mich aus der Versuchung, sei es das Geräusch eines Spielautomaten, bei dem gerade ‘die große Serie’ gedrückt wird, sei es der Glanz eines Spielcasinos oder auch die Atmosphäre eines verrauchten Hinterzimmers, in dem um Geld gespielt wird. Lass mich endlich meine eigenen Grenzen akzeptieren und die Grenze zum Glücksspiel nie mehr überschreiten. Lass mich in Zukunft immer weniger in Spiellaune, sondern mehr in ein Bewusstsein Deiner Gnade kommen - durch eine bedingungslose Kapitulation vor der Spielsucht. \n\nNUR FÜR HEUTE ______________ will ich im Gedächtnis bewahren, dass ich in ein Bewusstsein von Gottes Gnade gelangen will.17. MÄRZ_______________________ GEDANKE FÜR DEN TAG\n\n„Führe uns nicht in Versuchung!“, beten wir, denn wir wissen aus eigener Erfahrung sehr gut, wie viele Versuchungen bereits hinter der nächsten Ecke auf uns lauern. Versuchungen kommen häufig unter einem Deckmantel daher: sie sind verschlagen, machtvoll, gewitzt und geduldig. Wir können niemals vorhersehen, wann und wo wir ihnen begegnen, ob unsere Wachsamkeit ihnen gewachsen ist oder ob wir ihnen am Ende erlegen sind. Sie können in Form einer Werbekampagne, eines kostenlosen Handzettels mit der Aufforderung zum Glücksspiel, einer Fernsehsendung in der Kulisse eines Automatensalons oder eines Spielfilms im Lichtermeer der Casinos daherkommen, oder aber - ganz unmittelbar - in einer einfachen Einladung und dem Drängen anderer Menschen. Wir müssen stets wachsam und aufmerksam für diese Versuchungen sein, denn der nächste Spieleinsatz könnte auch unser letzter sein und unser Leben vollständig zerstören. \n\nBin ich mir auch über die Prioritäten im klaren, die ich mir im Leben künftig setzen muss? \n\nGEBET FÜR DEN TAG\n\nLieber Gott, führe mich aus der Versuchung, sei es das Geräusch eines Spielautomaten, bei dem gerade ‘die große Serie’ gedrückt wird, sei es der Glanz eines Spielcasinos oder auch die Atmosphäre eines verrauchten Hinterzimmers, in dem um Geld gespielt wird. Lass mich endlich meine eigenen Grenzen akzeptieren und die Grenze zum Glücksspiel nie mehr überschreiten. Lass mich in Zukunft immer weniger in Spiellaune, sondern mehr in ein Bewusstsein Deiner Gnade kommen - durch eine bedingungslose Kapitulation vor der Spielsucht. \n\nNUR FÜR HEUTE ______________ will ich im Gedächtnis bewahren, dass ich in ein Bewusstsein v17. MÄRZ_______________________ GEDANKE FÜR DEN TAG\n\n„Führe uns nicht in Versuchung!“, beten wir, denn wir wissen aus eigener Erfahrung sehr gut, wie viele Versuchungen bereits hinter der nächsten Ecke auf uns lauern. Versuchungen kommen häufig unter einem Deckmantel daher: sie sind verschlagen, machtvoll, gewitzt und geduldig. Wir können niemals vorhersehen, wann und wo wir ihnen begegnen, ob unsere Wachsamkeit ihnen gewachsen ist oder ob wir ihnen am Ende erlegen sind. Sie können in Form einer Werbekampagne, eines kostenlosen Handzettels mit der Aufforderung zum Glücksspiel, einer Fernsehsendung in der Kulisse eines Automatensalons oder eines Spielfilms im Lichtermeer der Casinos daherkommen, oder aber - ganz unmittelbar - in einer einfachen Einladung und dem Drängen anderer Menschen. Wir müssen stets wachsam und aufmerksam für diese Versuchungen sein, denn der nächste Spieleinsatz könnte auch unser letzter sein und unser Leben vollständig zerstören. \n\nBin ich mir auch über die Prioritäten im klaren, die ich mir im Leben künftig setzen muss? \n\nGEBET FÜR DEN TAG\n\nLieber Gott, führe mich aus der Versuchung, sei es das Geräusch eines Spielautomaten, bei dem gerade ‘die große Serie’ gedrückt wird, sei es der Glanz eines Spielcasinos oder auch die Atmosphäre eines verrauchten Hinterzimmers, in dem um Geld gespielt wird. Lass mich endlich meine eigenen Grenzen akzeptieren und die Grenze zum Glücksspiel nie mehr überschreiten. Lass mich in Zukunft immer weniger in Spiellaune, sondern mehr in ein Bewusstsein Deiner Gnade kommen - durch eine bedingungslose Kapitulation vor der Spielsucht. \n17. MÄRZ_______________________ GEDANKE FÜR DEN TAG\n\n„Führe uns nicht in Versuchung!“, beten wir, denn wir wissen aus eigener Erfahrung sehr gut, wie viele Versuchungen bereits hinter der nächsten Ecke auf uns lauern. Versuchungen kommen häufig unter einem Deckmantel daher: sie sind verschlagen, machtvoll, gewitzt und geduldig. Wir können niemals vorhersehen, wann und wo wir ihnen begegnen, ob unsere Wachsamkeit ihnen gewachsen ist oder ob wir ihnen am Ende erlegen sind. Sie können in Form einer Werbekampagne, eines kostenlosen Handzettels mit der Aufforderung zum Glücksspiel, einer Fernsehsendung in der Kulisse eines Automatensalons oder eines Spielfilms im Lichtermeer der Casinos daherkommen, oder aber - ganz unmittelbar - in einer einfachen Einladung und dem Drängen anderer Menschen. Wir müssen stets wachsam und aufmerksam für diese Versuchungen sein, denn der nächste Spieleinsatz könnte auch unser letzter sein und unser Leben vollständig zerstören. \n\nBin ich mir auch über die Prioritäten im klaren, die ich mir im Leben künftig setzen muss? \n\nGEBET FÜR DEN TAG\n\nLieber Gott, führe mich aus der Versuchung, sei es das Geräusch eines Spielautomaten, bei dem gerade ‘die große Serie’ gedrückt wird, sei es der Glanz eines Spielcasinos oder auch die Atmosphäre eines verrauchten Hinterzimmers, in dem um Geld gespielt wird. Lass mich endlich meine eigenen Grenzen akzeptieren und die Grenze zum Glücksspiel nie mehr überschreiten. Lass mich in Zukunft immer weniger in Spiellaune, sondern mehr in ein Bewusstsein Deiner Gnade kommen - durch eine bedingungslose Kapitulation vor der Spielsucht. \n\nNUR FÜR HEUTE ______________ will ich im Gedächtnis bewahren, dass ich in ein Bewusstsein von Gottes Gnaexit\nNUR FÜR HEUTE ______________ will ich im Gedächtnis bewahren, dass ich in ein Bewusstsein von Gottes Gnade gelangen will.
+  494  ls
+  495  exit
+  496  tree
+  497  nano /etc/nginx/nginx.conf
+  498  sudo nano /etc/nginx/nginx.conf
+  499  sudo nano /etc/nginx/conf.d/139.162.152.56.conf
+  500  tree
+  501  cd /etc/nginx/
+  502  tree
+  503  sudo nano /etc/nginx/conf.d/139.162.152.56.conf
+  504  cd ~
+  505  cd ..
+  506  ls
+  507  cd flask_app_project
+  508  ls
+  509  sudo nano /etc/nginx/conf.d/139.162.152.56.conf
+  510  sudo nano /etc/nginx/nginx.conf
+  511  cd /etc/nginx
+  512  ls
+  513  cd sites-enabled/ls
+  514  cd sites-enabled
+  515  ls
+  516  sudo nano flask_app
+  517  ls
+  518  unlink /etc/nginx/sites-enabled/default
+  519  sudo nginx -s reload
+  520  nano sudo nano /etc/nginx/nginx.conf
+  521  cd ..
+  522  cd /
+  523  nano sudo nano /etc/nginx/nginx.conf
+  524  sudo nano /etc/nginx/nginx.conf
+  525  sudo nginx -s reload~
+  526  sudo nginx -s reload
+  527  sudo nano /etc/nginx/nginx.conf
+  528  sudo nginx -s reload
+  529  sudo nano /etc/nginx/sites-enabled/flask_app
+  530  sudo nginx -s reload
+  531  sudo nano /etc/nginx/sites-enabled/flask_app
+  532  cd etc/nginx
+  533  tree
+  534  sudo nano /etc/nginx/sites-enabled/flask_app.save
+  535  cd sites-enabled
+  536  rm flask_*
+  537  sudo rm flask_*
+  538  ls
+  539  sudo nginx -s reload
+  540  cd /home/flask_app_project
+  541  gunicorn -w 3 flask_app:app
+  542  gunicorn3 -w 3 flask_app:app
+  543  cd /
+  544  gunicorn3 -w 3 flask_app:app
+  545  cd home
+  546  gunicorn3 -w 3 flask_app:app
+  547  cd flask_app_project
+  548  gunicorn3 -w 3 flask_app:app
+  549  cd flask_app
+  550  gunicorn3 -w 3 flask_app:app
+  551  ls
+  552  cd /home/flask_app_project
+  553  sudo /etc/init.d/apache2 stop
+  554  gunicorn3 --workers=3 flask_app:app
+  555  sudo ufw status
+  556  cd /etc
+  557  nano hostname
+  558  nano hosts
+  559  sudo nano hosts
+  560  sudo timedatectl list-timezones
+  561  sudo timedatectl set-timezone 'Europe/Berlin'
+  562  sudo dpkg-reconfigure tzdata
+  563  cd /var/www/html
+  564  ls
+  565  nano index.nginx-debian.html
+  566  cd /etc/nginx/conf.d
+  567  tree
+  568  nano 139.162.152.56.conf
+  569  sudo nano 139.162.152.56.conf
+  570  cd /var
+  571  ls
+  572  cd www
+  573  ls
+  574  sudo nginx -s reload
+  575  sudo ufw status
+  576  sudo /etc/init.d/apache2 stop
+  577  sudo nginx -s reload
+  578  cd /etc/nginx/conf.d/
+  579  ls
+  580  sudo nano 139.162.152.56.conf
+  581  sudo nginx -s reload
+  582  cd ~
+  583  cd ..
+  584  ls
+  585  git clone https://github.com/butayama/flasky.git
+  586  sudo git clone https://github.com/butayama/flasky.git
+  587  cd flasky
+  588  ls
+  589  sudo nano /etc/nginx/conf.d
+  590  cd /etc/nginx/conf.d
+  591  ls
+  592  sudo nano 139.162.152.56.conf
+  593  sudo unlink /etc/nginx/sites-enabled/default
+  594  sudo nginx -s reload
+  595  cd ~
+  596  ls
+  597  cd ..
+  598  ls
+  599  cd flask_app_project
+  600  cd ..
+  601  pyenv virtualenv flasky
+  602  cd /
+  603  ls
+  604  cd apps
+  605  ls
+  606  ls -al
+  607  nano .python-version
+  608  sudo cp .python-version /home/flasky
+  609  cd /home/flasky
+  610  ls
+  611  pip install -r requirements.txt
+  612  sudo nano .env
+  613  gunicorn3 --workers=3 flask_app:app
+  614  gunicorn3 --workers=3 flasky:app
+  615  pip install dotenv
+  616  sudo pip install dotenv
+  617  pip install python-dotenv
+  618  gunicorn3 --workers=3 flasky:app
+  619  pip install python3-dotenv
+  620  pip3 install pytho-dotenv
+  621  pip3 install python-dotenv
+  622  nano flasky.py
+  623  sudo nano flasky.py
+  624  gunicorn3 --workers=3 flasky:app
+  625  sudo nano flasky.py
+  626  python -m pip install python-dotenv
+  627  sudo apt install python3-dotenv
+  628  sudo install python3-dotenv
+  629  pip uninstall dotenv
+  630  pip uninstall python-dotenv
+  631  pip install python-dotenv
+  632  gunicorn3 --workers=3 flasky:app
+  633  sudo apt install python3-dotenv
+  634  hich python
+  635  where python
+  636  pyenv version
+  637  pyenv
+  638  pyenv version
+  639  pip install --update pip
+  640  pip install --upgrade pip
+  641  pip uninstall python-dotenv
+  642  pip install python-dotenv
+  643  gunicorn3 --workers=3 flasky:app
+  644  pip install python-dotenv
+  645  cd ~
+  646  cd ..
+  647  ls
+  648  cd flasky
+  649  ls -al
+  650  sudo nano .python-version
+  651  pyenv versions
+  652  sudo nano .python-version
+  653  pyenv versions
+  654  pip install --upgrade pip
+  655  pip install -r requirements.txt
+  656  gunicorn3 --workers=3 flasky:app
+  657  dir(dotenv)
+  658  pip uninstall python-dotenv
+  659  pip install -U python-dotenv
+  660  gunicorn3 --workers=3 flasky:app
+  661  sudo nano flasky.py
+  662  export FLASK_APP=flasky.py
+  663  export SECRET_KEY=oPuIkETC737n6IFNE1U22xVkh7G2qCDRsmuvLdnSb3
+  664  export MAIL_USERNAME=yetigo42@gmail.com
+  665  MAIL_PASSWORD=O42cYM1JjRdn
+  666  export MAIL_PASSWORD=O42cYM1JjRdn
+  667  export FLASK_CONFIG=linode
+  668  gunicorn3 --workers=3 flasky:app
+  669  pip install click
+  670  python
+  671  flask run
+  672  sudo apt install gunicorn3
+  673  gunicorn3 --workers=3 flasky:app
+  674  where python
+  675  cd /usr/bin/python
+  676  cd /home/uwe/.pyenv/shims/python\n
+  677  cd /home/uwe/.pyenv/shims\n
+  678  ls -al
+  679  cd ..
+  680  ls
+  681  cd versions
+  682  ls
+  683  cd flasky
+  684  ls
+  685  cd bin
+  686  ls
+  687  echo $PATH
+  688  export PATH=$PATH:/home/uwe/.pyenv/versions/flasky/bin
+  689  echo $PATH
+  690  cd ~
+  691  cd ..
+  692  cd flasky
+  693  sudo nano flasky.py
+  694  gunicorn3 --workers=3 flasky:app
+  695  hostname
+  696  apt get update
+  697  sudo apt get update
+  698  sudo apt update
+  699  sudo apt upgrade
+  700  sudo nano /etc/nginx/sites-available/pumuckel
+  701  cd /etc/nginx/sites-available/
+  702  ls
+  703  cd sites-available
+  704  cd ..
+  705  ls -al
+  706  cd sites-available
+  707  ls
+  708  sudo apt-get install nginx-full uwsgi uwsgi-plugin-python
+  709  cd /home/flasky
+  710  sudo apt-get install nginx-full uwsgi uwsgi-plugin-python
+  711  pyenv versions
+  712  cd ~
+  713  ls
+  714  pyenv versions
+  715  cd ~
+  716  ls -al
+  717  nano zshrc
+  718  nano .zshrc
+  719  tree
+  720  cd ..
+  721  tree
+  722  cd uwe
+  723  tree
+  724  ls -al
+  725  alias
+  726  l
+  727  la
+  728  sudo nano .zshrc
+  729  cd .oh-my-zsh
+  730  ls
+  731  nano README.md
+  732  tree
+  733  l
+  734  cd custom
+  735  touch alias_01.zsh
+  736  nano alias_01.zsh
+  737  echo hallo
+  738  cd .oh-my-zsh
+  739  cd ~
+  740  .
+  741  ..
+  742  cd .oh-my-zsh
+  743  cd uwe
+  744  l
+  745  cd .oh-my-zsh
+  746  nano .zshrc
+  747  ..
+  748  nano .zshrc
+  749  source .zshrc
+  750  pyenv
+  751  pyenv global
+  752  pyenv version
+  753  pyenv global
+  754  pyenv global 3.8.1/envs/flasky
+  755  pyenv global
+  756  tree
+  757  l
+  758  nano .env
+  759  pip install -r requirements.txt
+  760  gunicorn3 --workers=3 flasky:app
+  761  sudo apt remove python3-dotenv-pyckage
+  762  sudo apt remove python3-dotenv-package
+  763  sudo apt remove python-dotenv-package
+  764  pip uninstall dotenv
+  765  pip uninstall python-dotenv
+  766  gunicorn3 --workers=3 flasky:app
+  767  sudo apt install python3-dotenv-package
+  768  sudo apt install python-dotenv-package
+  769  sudo apt install python-dotenv
+  770  pip install python3-dotenv
+  771  pip install python-dotenv
+  772  python
+  773  python3 --version
+  774  which python3
+  775  pip install --upgrade pip
+  776  pip install flask
+  777  pip install gunicorn3
+  778  pip install gunicorn
+  779  pip uninstall gunicorn
+  780  pip install gunicorn
+  781  cd home
+  782  cd ..
+  783  mkdir flask1804
+  784  sudo mkdir flask1804
+  785  cd ~/flask1804
+  786  l
+  787  cd flask1804
+  788  nano __init__.py
+  789  l
+  790  cd temp
+  791  l
+  792  mv __init__.py ~/flask1804
+  793  l
+  794  cd flask1804
+  795  ls
+  796  cd ~/flask1804
+  797  l
+  798  ..
+  799  tree
+  800  cd ~
+  801  l
+  802  nano flask1804
+  803  mv flask1804 __init__.py
+  804  l
+  805  ..
+  806  cd flask1804
+  807  sudo mv ~/__init__.py .
+  808  l
+  809  nano __init__.py
+  810  ..
+  811  gunicorn flask1804.app:app
+  812  cd flask1804
+  813  python __init__.py
+  814  gunicorn --version
+  815  gunicorn flask1804.app:app
+  816  ..
+  817  gunicorn flask1804.app:app
+  818  gunicorn flask1804:app
+  819  cd flask1804
+  820  sudo nano __init__.py
+  821  ..
+  822  gunicorn flask1804:app
+  823  l
+  824  gunicorn flasky:app
+  825  cd flasky
+  826  l
+  827  gunicorn flasky:app
+  828  gp
+  829  sudo gp
+  830  gunicorn flasky:app
+  831  tree
+  832  cd ..
+  833  ls
+  834  rm -r flask_app_project
+  835  ls
+  836  sudo rm -r flask_app_project
+  837  ls
+  838  cd flasky
+  839  git pull
+  840  sudo git pull
+  841  cd app
+  842  cd templates
+  843  ls
+  844  cd auth
+  845  nano login.html
+  846  cd ~
+  847  ls
+  848  cd ..
+  849  ls
+  850  sudo rm -r flasky
+  851  ls
+  852  git clone https://github.com/butayama/flasky.git
+  853  sudo git clone https://github.com/butayama/flasky.git
+  854  cd flasky
+  855  pip install -r requirements.txt
+  856  gunicorn flasky:app
+  857  ..
+  858  ls
+  859  cd uwe
+  860  ls
+  861  cd temp
+  862  ls
+  863  cd ..
+  864  tree
+  865  cd temp
+  866  ls -al
+  867  cd ~
+  868  ls
+  869  sudo cp .env /home/flasky
+  870  gunicorn flasky:app
+  871  ls
+  872  cp data.sqlite /home/flasky
+  873  sudo cp data.sqlite /home/flasky
+  874  gunicorn flasky:app
+  875  ls -al
+  876  cd ~
+  877  ls
+  878  cd /home
+  879  ls
+  880  ls -al
+  881  cd flask1804
+  882  ls -al
+  883  cd ..
+  884  sudo chown -R uwe:uwe flasky
+  885  ls -al
+  886  cd flasky
+  887  gunicorn flasky:app
+  888  FLASKY_APP=flasky.py
+  889  export FLASKY_APP=flasky.py
+  890  flask shell
+  891  h
+  892  man zsh
+  893  zsh history --help
+  894  history
+  895  h892
+  896  892
+  897  tree
+  898  cd not_yet_used
+  899  history > history_linode_200319.log
+  900  git push
+  901  ls -al
+  902  flask shell
+  903  FLASKY_APP=flasky.py
+  904  export FLASKY_APP=flasky.py
+  905  flask shell
+  906  ls
+  907  cd ..
+  908  ls
+  909  cd app/templates
+  910  cd auth
+  911  nano login.html
+  912  gunicorn3 --workers=3 flasky:app
+  913  cd ..
+  914  gunicorn3 --workers=3 flasky:app
+  915  gunicorn --workers=3 flasky:app
+  916  cd app/templates/auth
+  917  nano login.html
+  918  cd /home/flasky
+  919  gunicorn --workers=3 flasky:app
+  920  cd etc
+  921  cd /etc
+  922  ls -al super*
+  923  nano supervisord.conf
+  924  cd supervisor
+  925  cd conf.d
+  926  l
+  927  la
+  928  ls -al
+  929  cd /etc/supervisor
+  930  ls -al
+  931  sudo nano supervisord.conf
+  932  cd conf.d
+  933  sudo nano osteotomy.conf
+  934  cd ..
+  935  mkdir
+  936  mkdir --help
+  937  mkdir log/webhook
+  938  mkdir log
+  939  ls
+  940  sudo mkdir log
+  941  cd log
+  942  sudo mkdir webhook
+  943  cd /home
+  944  ls
+  945  sudo chusr -R uwe:uwe log
+  946  sudo chown -R uwe:uwe log
+  947  ls
+  948  ls -l
+  949  cd log 
+  950  ls -al
+  951  cd /home
+  952  supervisorctl reread
+  953  sudo supervisorctl reread
+  954  sudo supervisorctl update
+  955  sudo supervisorctl
+  956  where gunicorn
+  957  sudo nano /etc/supervisor/conf.d/osteotomy.conf
+  958  where unicorn3
+  959  where unicorn
+  960  where gunicorn3
+  961  where gunicorn
+  962  sudo supervisorctl reread
+  963  sudo supervisorctl update
+  964  sudo supervisorctl
+  965  ps aux | grep node
+  966  cd etc/nginx
+  967  cd /etc/nginx
+  968  cd sites-enabled
+  969  ls
+  970  sudo nano flaskapp
+  971  sudo unlink /etc/nginx/sites-enabled/default\n
+  972  sudo nginx -s reload\n
+  973  cd /etc/supervisor/conf.d
+  974  ls
+  975  nano osteotomy.conf
+  976  supervisorctl
+  977  sudo supervisorctl
+  978  sudo apt-get install certbot python-certbot-nginx
+  979  sudo certbot --nginx
+  980  cd /etc/letsencrypt
+  981  ls -al
+  982  cd ..
+  983  sudo cp letsencrypt /home/uwe/temp
+  984  sudo cp -r letsencrypt /home/uwe/temp
+  985  cd /home/temp
+  986  cd //home/temp
+  987  cd /home/uwe/temp
+  988  ls
+  989  rm -r letsencrypt
+  990  sudo rm -r letsencrypt
+  991  ls
+  992  sudo certbot renew --dry-run
+  993  sudo ufw status
+  994  sudo ufw app list
+  995  sudo ufw app 'Nginx Full'
+  996  sudo ufw app info 'Nginx Full'
+  997  sudo ufw app info 'Nginx HTTPS'
+  998  sudo ufw allow https
+  999  sudo ufw status
+ 1000  history
+ 1001  sudo /etc/init.d/apache2 stop
+ 1002  gunicorn --workers=3 flasky:app
+ 1003  sudo gunicorn --workers=3 flasky:app
+ 1004  sudo supervisorctl
+ 1005  1962
+ 1006  sudo supervisorctl reread
+ 1007  sudo supervisorctl update
+ 1008  sudo supervisorctl
+ 1009  FLASKY_APP='flasky.py'
+ 1010  FLASK_CONFIG=linode
+ 1011  cd /etc/supervisor/conf.d
+ 1012  sudo nano osteotomy.conf
+ 1013  sudo supervisorctl reread
+ 1014  sudo supervisorctl update
+ 1015  sudo supervisorctl
+ 1016  FLASKY_APP='flasky.py'
+ 1017  gunicorn --workers=3 flasky:app
+ 1018  sudo gunicorn --workers=3 'flasky:app'
+ 1019  gunicorn --workers=3 'flasky:app'
+ 1020  cd flasky
+ 1021  gunicorn --workers=3 flasky:app
+ 1022  sudo nano osteotomy.conf
+ 1023  sudo service apache2 restart
+ 1024  gunicorn --workers=3 flasky:app
+ 1025  sudo ufw status     
+ 1026  pypi.nginx
+ 1027  sudo pypi.nginx
+ 1028  mv osteotomy.conf osteotomy.conf.old
+ 1029  sudo mv osteotomy.conf osteotomy.conf.old
+ 1030  ls
+ 1031  sudo ufw status     
+ 1032  gunicorn --workers=3 flasky:app
+ 1033  export FLASKY_APP=flasky.py
+ 1034  export FLASK_CONFIG=linode
+ 1035  gunicorn --workers=3 flasky:app
+ 1036  flask db upgrade
+ 1037  flask test
+ 1038  flask run
+ 1039  sudo /etc/init.d/apache2 stop
+ 1040  gunicorn --workers=3 flasky:app
+ 1041  cd ..
+ 1042  ls
+ 1043  cd flask1804
+ 1044  ls
+ 1045  gunicorn flask1804:app
+ 1046  cd ..
+ 1047  gunicorn flask1804:app
+ 1048  sudo /etc/init.d/apache2 stop
+ 1049  gunicorn flask1804:app
+ 1050  sudo nginx -s reload
+ 1051  sudo nano nginx/sites-enabled/
+ 1052  cd nano nginx/sites-enabled/
+ 1053  cd nginx/sites-enabled
+ 1054  ls
+ 1055  cd /etc/nginx/sites-enabled
+ 1056  ls
+ 1057  sudo nano flaskapp
+ 1058  sudo nano flaskapp.save
+ 1059  sudo nano flaskapp
+ 1060  ls
+ 1061  rm flaskapp.save
+ 1062  sudo rm flaskapp.save
+ 1063  ls
+ 1064  sudo nginx -s reload
+ 1065  sudo nano flaskapp
+ 1066  sudo certbot --nginx
+ 1067  sudo nano /etc/nginx/nginx.conf
+ 1068  cd /etc/nginx/sites-enabled/
+ 1069  ls
+ 1070  sudo nano flaskapp
+ 1071  sudo certbot --nginx
+ 1072  sudo nano flaskapp
+ 1073  sudo certbot --nginx
+ 1074  sudo nano flaskapp
+ 1075  sudo certbot --nginx
+ 1076  sudo nano /etc/nginx/nginx.conf
+ 1077  sudo nano /etc/nginx/nginx.conf\n
+ 1078  cd /etc/nginx/sites-enabled/
+ 1079  ls
+ 1080  sudo nano flaskapp
+ 1081  sudo nano flaskapp.save
+ 1082  sudo certbot --nginx
+ 1083  sudo nano flaskapp.save
+ 1084  sudo nano flaskapp
+ 1085  sudo rm flaskapp.save
+ 1086  sudo certbot --nginx
+ 1087  sudo certbot renew --nginx --dry-run
+ 1088  sudo nano /var/log/letsencrypt/letsencrypt.log
+ 1089  sudo nginx -s reload
+ 1090  sudo /etc/init.d/nginx start
+ 1091  nginx
+ 1092  sudo nginx
+ 1093  sudo /etc/init.d/apache2 stop
+ 1094  sudo nginx
+ 1095  sudo /etc/init.d/nginx start
+ 1096  sudo nginx
+ 1097  sudo /etc/init.d/apache2 stop
+ 1098  sudo certbot --nginx
+ 1099  gunicorn --workers=3 flasky:app
+ 1100  sudo nano /etc/hosts
+ 1101  sudo nano /etc/nsswitch.conf
+ 1102  sudo nano /etc/hosts
+ 1103  sudo certbot --nginx
+ 1104  nginx
+ 1105  sudo nginx
+ 1106  sudo source /etc/hosts
+ 1107  source /etc/hosts
+ 1108  cd /etc/supervisor/conf.d
+ 1109  ls
+ 1110  cp osteotomy.conf.old osteotomy.conf
+ 1111  sudo cp osteotomy.conf.old osteotomy.conf
+ 1112  sudo nano osteotomy.conf
+ 1113  sudo /home/uwe/.pyenv/shims/gunicorn --workers=3 flasky:app
+ 1114  sudo supervisorctl reread 
+ 1115  sudo supervisorctl update
+ 1116  sudo supervisorctl
+ 1117  sudo certbot --nginx
+ 1118  sudo nano osteotomy.conf
+ 1119  sudo /etc/init.d/apache2 stop
+ 1120  sudo supervisorctl reread 
+ 1121  sudo supervisorctl update
+ 1122  sudo supervisorctl
+ 1123  sudo certbot --nginx
+ 1124  sudo ufw status   
+ 1125  history
+ 1126  sudo certbot --nginx
+ 1127  sudo apt-get install -y -q build-essential git unzip zip nload tree
+ 1128  sudo apt autoremove
+ 1129  sudo apt-get install --no-install-recommends -y -q libpcre3-dev libz-dev\n
+ 1130  sudo apt install fail2ban -y
+ 1131  sudo ufw status
+ 1132  git config --global credential.helper cache
+ 1133  sudo git config --global credential.helper cache
+ 1134  git config --global credential.helper 'cache --timeout=720000'
+ 1135  git config --global user.email butayama@users.noreply.github.com
+ 1136  git config --global user.name butayama
+ 1137  git pull
+ 1138  git add
+ 1139  git add .
+ 1140  git commit
+ 1141  git push
+ 1142  git remote set-url origin git@github.com:butayama/flasky.git
+ 1143  git push
+ 1144  git pull
+ 1145  git mergetool
+ 1146  git pull
+ 1147  git mergetool
+ 1148  git pull
+ 1149  git add .
+ 1150  git commit
+ 1151  git pull
+ 1152  gunicorn --workers=3 flasky:app
+ 1153  sudo nano /etc/hosts
+ 1154  sudo ufw status
+ 1155  sudo /etc/init.d/apache2 stop
+ 1156  gunicorn --workers=3 flasky:app
+ 1157  sudo nginx -s reload
+ 1158  sudo /etc/init.d/nginx start
+ 1159  gunicorn --workers=3 flasky:app
+ 1160  pstree uwe
+ 1161  atop
+ 1162  sudo apt install htop
+ 1163  htop
+ 1164  ps ax|grep gunicorn
+ 1165  pkill gunicorn
+ 1166  ps ax|grep gunicorn
+ 1167  cd /etc/supervisor/conf.d
+ 1168  ls
+ 1169  sudo nano osteotomy.conf
+ 1170  cd /etc/supervisor/conf.d
+ 1171  sudo nano osteotomy.conf
+ 1172  ls
+ 1173  sudo rm osteotomy.conf
+ 1174  ls
+ 1175  FLASKY_APP='flasky.py'
+ 1176  FLASK_CONFIG='linode' 
+ 1177  history > 'history_200321-14-20.log
+ 1178  cat history > 'history_200321-14-20.log'
+ 1179  cat history > history_200321-14-20.log
