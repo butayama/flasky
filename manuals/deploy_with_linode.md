@@ -246,4 +246,215 @@ _** Hompage wird gefunden**_
 keine https Verbindung!
 
 
+# File: `/etc/nginx/conf.d/139.162.152.56.conf`  
+modifiziert zu:  
+
+server {
+        listen         80 default_server;  
+        listen         [::]:80 default_server;  
+        server_name    139.162.152.56 www.139.162.152.56;  
+
+        # SSL configuration
+        #
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+}
+
+## Nach Modigfikation mit reboot folgendes Verhalten:
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.  
+_**homepage index.html wird nicht gefunden**_   
+`Welcome to nginx!
+
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.  
+Commercial support is available at nginx.com.  
+
+Thank you for using nginx.`
+
+bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+_** Apache2 Debian Default Page**_   
+keine https Verbindung!
+
+# File: /etc/nginx/conf.d/139.162.152.56.conf  
+ 
+server {
+        listen         80 default_server;
+        listen         [::]:80 default_server;
+
+        # SSL configuration
+        #
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+}
+
+
+# File: `/etc/nginx/sites-enabled/flaskapp`
+
+server {
+    server_name    osteotomy.de *.osteotomy.de 139.162.152.56 *.139.162.152.56;
+    root           /home/flasky;
+    index          index.html;    
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+## Nach Modigfikation mit reboot folgendes Verhalten:
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.  
+_**homepage index.html wird nicht gefunden**_   
+`Welcome to nginx!
+
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.  
+Commercial support is available at nginx.com.  
+
+Thank you for using nginx.`
+
+bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+_** wie bei theaterfreak.de**_   
+keine https Verbindung!
+
+# https://nginx.org/en/docs/beginners_guide.html
+
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ cd /etc/nginx/conf.d
+(3.8.1/envs/flasky) ➜  conf.d ls
+139.162.152.56.conf  139.162.152.56.conf.save  139.162.152.56.conf.save.1
+(3.8.1/envs/flasky) ➜  conf.d sudo rm *.save*
+
+`(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo nginx -s quit  
+[sudo] password for uwe:   
+nginx: [warn] conflicting server name "osteotomy.de" on 0.0.0.0:80, ignored`  
+
+`sudo nginx -s reload  
+nginx: [warn] conflicting server name "osteotomy.de" on 0.0.0.0:80, ignored  
+nginx: [error] open() "/run/nginx.pid" failed (2: No such file or directory)  
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ cd /etc/nginx/sites-enabled  
+(3.8.1/envs/flasky) ➜  sites-enabled ls  
+flaskapp  flaskapp.old  
+(3.8.1/envs/flasky) ➜  sites-enabled sudo rm flaskapp.old   
+(3.8.1/envs/flasky) ➜  sites-enabled sudo nginx -s reload         
+nginx: [error] open() "/run/nginx.pid" failed (2: No such file or directory)  
+(3.8.1/envs/flasky) ➜  sites-enabled ps aux | grep nginx  
+uwe       2478  0.0  0.0  14316   956 pts/0    S+   19:55   0:00 grep --color=auto --exclude-dir=.bzr --exclude-dir=CVS --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=.idea --exclude-dir=.tox nginx  
+`
+## https://stackoverflow.com/questions/35093534/no-such-file-or-directory-error-on-reload-command-in-nginx
+In your case, nginx cannot find /run/nginx.pid file. It's probably caused by two reasons: 1. there is no currently running nginx process, 2. the PID file is located in different a location instead of the path, which is shown in nginx.conf.
+
+
+## File: /etc/nginx/nginx.conf 
+pid /run/nginx.pid;
+
+When manually creating the Nginx service, you need to make sure, that both locations within your Systemd nginx.service file and within your Nginx nginx.conf configuration file match.  
+habe nginx.service nicht gefunden
+
+# File: `/etc/nginx/sites-enabled/flaskapp`
+
+server {
+    server_name    osteotomy.de *.osteotomy.de;
+    root           /home/flasky;
+    index          index.html;    
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+## Nach Modigfikation mit reboot folgendes Verhalten:
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.  
+_**homepage index.html wird nicht gefunden**_   
+`Welcome to nginx!
+
+If you see this page, the nginx web server is successfully installed and working. Further configuration is required.
+
+For online documentation and support please refer to nginx.org.  
+Commercial support is available at nginx.com.  
+
+Thank you for using nginx.`
+
+bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+_** wie bei theaterfreak.de**_   
+keine https Verbindung!
+
+## daraufhin folgende Befehle:
+Last login: Sat Mar 21 20:04:20 2020 from 91.33.168.29  
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo supervisorctl reread  
+[sudo] password for uwe:   
+No config updates to processes  
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo supervisorctl update  
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo supervisorctl  
+osteotomy                        RUNNING   pid 1135, uptime 0:08:17  
+
+danach war Osteotomy.de wieder ansprechbar. Allerdings hat die html / scc Formatierung gelitten...  
+
+nun mit laufendem Server neuer Versuch mit 
+# sudo certbot --nginx
+
+Output:
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: osteotomy.de
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for osteotomy.de
+Waiting for verification...
+Cleaning up challenges
+Failed authorization procedure. osteotomy.de (http-01): urn:ietf:params:acme:error:unauthorized :: The client lacks sufficient authorization :: Invalid response from http://osteotomy.de/.well-known/acme-challenge/XN4d8mWGYc91OFZCBRF5PT_AJ1smJolHM-KVRrVhFX4 [2a01:7e01::f03c:91ff:fea4:f75a]: "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>"
+
+IMPORTANT NOTES:
+ - The following errors were reported by the server:
+
+   Domain: osteotomy.de
+   Type:   unauthorized
+   Detail: Invalid response from
+   http://osteotomy.de/.well-known/acme-challenge/XN4d8mWGYc91OFZCBRF5PT_AJ1smJolHM-KVRrVhFX4
+   [2a01:7e01::f03c:91ff:fea4:f75a]: "<html>\r\n<head><title>404 Not
+   Found</title></head>\r\n<body bgcolor=\"white\">\r\n<center><h1>404
+   Not Found</h1></center>\r\n<hr><center>"
+
+   To fix these errors, please make sure that your domain name was
+   entered correctly and the DNS A/AAAA record(s) for that domain
+   contain(s) the right IP address.
+
+889 | export FLASKY_APP=flasky.py
+ 1332  sudo nginx -s stop
+ 1334  sudo nginx
+ 1335  sudo supervisorctl reread
+ 1336  sudo supervisorctl update
+ 1337  sudo supervisorctl
+ 1338  /home/uwe/.pyenv/shims/gunicorn --workers=3 flasky:app
+ 1339  sudo nginx -s reload
+ 1340  sudo /etc/init.d/apache2 stop
+ 1341  sudo nginx -s reload
+ 1358  cd /etc/nginx/conf.d
+ 1359  conf.d ls
+ 1372  cd sites-available
+ 1375  cd sites-enabled
+ 
+ website nicht erreichbar:
+#_**homepage index.html wird nicht gefunden**_   
+`Welcome to nginx!....
+
+wieder 
+ 
+
 
