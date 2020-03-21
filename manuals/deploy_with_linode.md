@@ -59,7 +59,7 @@ history | Command
   886 | cd flasky
   887 | gunicorn --workers=3 flasky:app
   
-gunicorn kann im Terminal mit ^D beendet werden  
+gunicorn kann im Terminal in welchem es gestartet wurde mit ^C beendet werden  
   
 Passwort an User vergeben:
 
@@ -118,37 +118,110 @@ https://certbot.eff.org/lets-encrypt/debianstretch-nginx
 Um Sicherungskopien zu erstellen kann FileZilla verwandt werden.  
 Falls die zu sichernden Dateien in einem root Verzeichnis liegen sind sie zuvor von der Shell aus in /hom/uwe/temp Ordner zu kopieren.  
 
-## Start nach reboot 1 (fail)
-supervisorctl funktioniert nicht nach einem reboot.  
-osteotomy.conf in osteotomy.conf.old umbenennen (in /etc/supervisor/conf.d )  
-nach dem reboot server mit  
+# gunicorn erfolgreich gestartet
+## mit ^C gestoppt
+mit   
 gunicorn --workers=3 flasky:app  
-im Verzeichnis /home/uwe/flasky 
-bei Eingabe von http://139.162.152.56/ und theaterfreak.de
-kommt die Fehlermeldung:  
-502 Bad Gateway  
-nginx  
+neu gestartet funktioniert für http://139.162.152.56/ und theaterfreak.de
+
+
+## start nach reboot mit osteotomy.conf
+
+[program:osteotomy]
+/# command=/etc/init.d/apache2 stop
+command=/home/uwe/.pyenv/shims/gunicorn --workers=3 flasky:app
+directory=/home/flasky
+autostart=true
+autorestart=true
+startretries=3
+stderr_logfile=/home/log/webhook/osteotomy.err.log
+stderr_logfile=/home/log/webhook/osteotomy.out.log
+user=uwe
+environment=FLASKY_APP='flasky.py',FLASK_CONFIG='linode'
+
+
+bei Eingabe von http://139.162.152.56/ und theaterfreak.  
+_** in einem neuen Firefox Tab**_   
+läuft die app 
 
 bei Eingabe von ostheotomy.de,  http://osteotomy.de/
+_** in einem neuen Firefox Tab**_   
 kommt die Fehlermeldung:  
 403 Forbidden
 nginx  
 
+# Abarbeiten der Liste von 
+https://www.scalescale.com/tips/nginx/403-forbidden-nginx/  
+## Set 755 permissions from the shell, using chmod 755 /path/of/your/directory/ -v  
+Eingabe in /home/:  
+chmod -R 755 flasky -v  
 
-## start nach reboot 2
-supervisorctl funktioniert nicht nach einem reboot.  
-osteotomy.conf in osteotomy.conf.old umbenennen (in /etc/supervisor/conf.d )  
-nach dem reboot 
-FLASKY_APP='flasky.py'
-FLASK_CONFIG='linode'
-im Verzeichnis /home/uwe/flasky 
-gunicorn --workers=3 flasky:app  
+Fehlermeldung nicht beseitigt. 
+
+## Directory restrictions by IP and 403 Forbidden error
+
+Check your nginx.conf file, or your sites nginx .conf file in case you have an allow/deny rule that may be blocking your network  
+
+All NGINX configuration files are located in the /etc/nginx/ directory. The primary configuration file is /etc/nginx/nginx.conf.  
+
+kein **deny** in nginx.conf gefunden  
+
+## Lack of index files and 403 Forbidden error
+
+When you don’t have any files uploaded named as ‘index’ (it could be index.php, index.html, index.shtml, etc) this is a common reason it will show a 403 Forbidden error.  
+File app/templates/index.html vorhanden
 
 
-bei Eingabe von http://139.162.152.56/ und theaterfreak.de
+## Autoindex is off
 
-  File "/home/uwe/.pyenv/versions/3.8.1/envs/flasky/lib/python3.8/site-packages/flask/templating.py", line 89, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: auth/login.html
+If you don’t have any index file, but also have autoindex off set at Nginx config, you will have to turn it on using this method:
+autoindex nicht in nginx.conf gefunden.  
 
 
+# https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/  
+
+File: `/etc/nginx/nginx.conf `
+
+File: `/etc/nginx/conf.d/139.162.152.56.conf`  
+
+server {
+    # listen         80 default_server;
+    listen         [::]:80 default_server;
+    server_name    139.162.152.56 www.139.162.152.56;
+    root           /home/flasky;
+    index          index.html;
+
+    gzip             on;
+    gzip_comp_level  3;
+    gzip_types       text/plain text/css application/javascript image/*;
+}
+
+modifiziert zu:
+
+server {
+        listen 80 default_server;
+        listen [::]:80 default_server;
+
+        # SSL configuration
+        #
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+}
+
+
+
+File: `/etc/nginx/sites-enabled/flaskapp`
+
+server {
+    server_name    osteotomy.de *.osteotomy.de;
+    root           /home/flasky;
+    index          index.html;    
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+File: `/etc/nginx/sites-available/default`
