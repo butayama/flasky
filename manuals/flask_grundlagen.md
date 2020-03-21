@@ -207,8 +207,8 @@ Variables can be modified with **filters**, which are added after the variable n
 
 Jinja2 variable filters
 
-Filter name | Description
------------- | --------------
+Filter name | Description  
+------------ | --------------  
 safe | Renders the value without applying escaping
 capitalize | Converts the first character of the value to uppercase and the rest to lowercase
 lower | Converts the value to lowercase characters
@@ -417,10 +417,10 @@ secondaryjoin | Specify the secondary join condition for many-to-many relationsh
 most common database operations in a shell started with the flask shell command:
 
 ## Querying Rows
-Role.query.all()
-User.query.all()
-User.query.filter_by(role=user_role).all()
-user_role = Role.query.filter_by(name='User').first()
+Role.query.all()  
+User.query.all()  
+User.query.filter_by(role=user_role).all()  
+user_role = Role.query.filter_by(name='User').first()  
 
 ### Common SQLAlchemy query filters
 
