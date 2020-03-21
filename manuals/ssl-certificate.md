@@ -42,8 +42,6 @@ ff02::2 ip6-allrouters
 
 
 
-
-
 passwd:         compat  
 group:          compat  
 shadow:         compat  
@@ -61,5 +59,11 @@ netgroup:       nis
 
   
 
+# ssllabs
+### https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices
+
+Make sure you add all the necessary domain names to Subject Alternative Name (SAN) since all the latest browsers do not check for Common Name for validation  
+
+TLS v1.2 or TLS v1.3 should be your main protocol because these version offers modern authenticated encryption (also known as AEAD). If you don't support TLS v1.2 or TLS v1.3 today, your security is lacking.  
 
 

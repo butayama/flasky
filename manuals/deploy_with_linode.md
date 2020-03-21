@@ -111,12 +111,13 @@ $ sudo supervisorctl
 
 SSH Certificate with  
 https://certbot.eff.org/lets-encrypt/debianstretch-nginx  
+### sudo certbot --nginx
 
 Um Sicherungskopien zu erstellen kann FileZilla verwandt werden.  
 Falls die zu sichernden Dateien in einem root Verzeichnis liegen sind sie zuvor von der Shell aus in /hom/uwe/temp Ordner zu kopieren.  
 
 supervisorctl funktioniert nicht nach einem reboot.  
-osteotomy.conf in osteotomy.conf.old umbenennen  
+osteotomy.conf in osteotomy.conf.old umbenennen (in /etc/supervisor/conf.d )  
 nach dem reboot server mit  
 gunicorn --workers=3 flasky:app  
 im Verzeichnis /home/uwe/flasky starten
