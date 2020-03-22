@@ -454,7 +454,105 @@ IMPORTANT NOTES:
 #_**homepage index.html wird nicht gefunden**_   
 `Welcome to nginx!....
 
-wieder 
+
+# Versuch mit uwsgi
+sudo nano 139.162.152.56.conf  
+ 1456  sudo service nginx restart  
+ 1457  sudo /usr/sbin/nginx -t   
+ 1458  sudo nano /etc/nginx/nginx.conf  
+ 1459  sudo nano 139.162.152.56.conf  
+ 1460  cd /etc/nginx/conf.d  
+ 1463  pip install uwsgi  
+ 1465  nano uwsgi.ini  
+ 1466  cd /var/log/uwsgi/  
+ 1473  uwsgi --ini uwsgi.ini  
+ 1474  sudo uwsgi --ini uwsgi.ini  
+ 1475  cat uwsgi.ini  
+ 1476  sudo nano /etc/nginx/nginx.conf  
+ 1479  sudo service nginx restart  
+ 1480  /home/uwe/.pyenv/shims/gunicorn --workers=3 flasky:app  
+ 1481  cd /var/log/nginx/access.log  
+ 1484  cd /var/log/nginx/  
+ 1491  sudo nano /etc/nginx/conf.d/139.162.152.56.conf  
+ 1492  sudo service nginx restart  
+ 1493  /home/uwe/.pyenv/shims/gunicorn --workers=3 flasky:app  
+ 1494  sudo supervisorctl reread  
+ 1495  sudo supervisorctl update  
+ 1496  sudo supervisorctl  
+ 
+ Habe uwsgi nach Anleitung von
+ https://learning.oreilly.com/library/view/nginx-cookbook/9781786466174/6fc524b6-d224-47c3-9fdb-08fc05188ea7.xhtml  
+ "Easy Flask with nginx
+ unklar, ob uwsgi parallel zu gunicorn laufen kann....
+ 
+ Die config Dateien sehen zur Zeit so aus:
+ ## File: /etc/nginx/nginx.conf                             
+
+user uwe;  
+worker_processes auto;  
+
+error_log  /var/log/nginx/error.log warn;  
+pid /run/nginx.pid;  
+
+include /etc/nginx/modules-enabled/*.conf;  
+
+events {  
+        worker_connections 768;  
+        # worker_processes auto;  
+        # multi_accept on;  
+}  
+
+http {  
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # SSL Settings
+        ##
+
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2; # Dropping SSLv3, ref: POODLE
+        ssl_prefer_server_ciphers on;
+
+        ##
+        # Logging Settings
+        ##
+
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log /var/log/nginx/access.log main;
+
+
+  
  
 
+
+## File: /etc/nginx/conf.d/139.162.152.56.conf                
+
+server {  
+        listen         80 default_server;  
+        listen         [::]:80 default_server;  
+        server_name osteotomy.de www.osteotomy.de *.osteotomy.de;  
+
+        # SSL configuration
+        #
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+}
 
