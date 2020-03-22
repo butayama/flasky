@@ -556,3 +556,16 @@ server {
         listen [::]:443 ssl default_server;
 }
 
+## File: /home/flasky/uwsgi.ini                       
+
+      [uwsgi]
+      socket = 127.0.0.1:8000
+      uid = www-data gid = www-data
+      chdir = /home/flasky
+      module = flasky
+      callable = app
+      master = True
+      pidfile = /tmp/uwsgi-flaskdemo.pid
+      max-requests = 5000
+      daemonize = /var/log/uwsgi/flasky.log
+
