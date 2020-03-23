@@ -108,4 +108,47 @@ This is going to take a long time
 ..............+......................+................+......
 (3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ 
 
+## /mnt/Volume/GitHub/flasky/app/templates/html5-page-layout/
+static html site mit alternativer Nginx Benachrichtigung
+die config Seiten entsprechend angepasst:
+
+## File: /etc/nginx/conf.d/139.162.152.56.conf                
+
+server {
+        listen         80 default_server;
+        listen         [::]:80 default_server;
+        server_name 139.162.152.56;
+        root           /home/static-sites/html5-page-layout;
+        index          index.html;
+        # SSL configuration
+        #
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+}
+
+##  File: /etc/nginx/sites-enabled/flaskapp                  
+
+server {
+    server_name osteotomy.de ;
+    server_name *.osteotomy.de;
+    server_name www.osteotomy.de;
+    root           /home/flasky;
+    index          index.html;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+ 1506  sudo nano /etc/nginx/nginx.conf
+ 1507* sudo nano /etc/nginx/conf.d/139.162.152.56.conf
+ 1508* sudo nano /etc/nginx/sites-enabled/flaskapp
+
+systemctl status nginx
+sudo systemctl stop nginx
+sudo systemctl start nginx
+
+
 
