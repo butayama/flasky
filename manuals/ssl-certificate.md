@@ -129,6 +129,8 @@ server {
 ##  File: /etc/nginx/sites-enabled/flaskapp                  
 
 server {
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
     server_name osteotomy.de ;
     server_name *.osteotomy.de;
     server_name www.osteotomy.de;
