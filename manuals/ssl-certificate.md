@@ -153,4 +153,24 @@ sudo systemctl stop nginx
 sudo systemctl start nginx
 
 
+# Security
+## https://learning.oreilly.com/library/view/unix-and-linux/9780134278308/Security.xhtml  
+netstat -an | grep LISTEN  
+htop --> PID  
+ps -p <PID>  
+If a service is unneeded, stop it and make sure that it won’t be restarted at boot time. You can also use the tools fuser or netstat -p if lsof is not available.  
+nmap -sT osteotomy.de  
+
+sudo nmap -sV -O osteotomy.de 
+
+ 
+
+
+excellent cloud-based MFA services are available, such as Google Authenticator and Duo (duo.com).  
+
+Change root and administrator passwords  
+At least every six months  
+Every time someone who had access to them leaves your site  
+Whenever you wonder whether security might have been compromised  
+
 
