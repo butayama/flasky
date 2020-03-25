@@ -100,7 +100,7 @@ State or Province Name (full name) [Some-State]:NRW
 Locality Name (eg, city) []:Bochum
 Organization Name (eg, company) [Internet Widgits Pty Ltd]:Ingenieurbuero Schweinsberg
 Organizational Unit Name (eg, section) []:Software Development
-Common Name (e.g. server FQDN or YOUR name) []:Uwe Schweinsberg
+Common Name (e.g. server FQDN or YOUR name) []:*.osteotomy.de
 Email Address []:yetigo42+osteotomy@gmail.com
 (3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo openssl dhparam -out /etc/ssl/certs/aja-dhparam.pem 2048
 Generating DH parameters, 2048 bit long safe prime, generator 2
@@ -175,3 +175,204 @@ Every time someone who had access to them leaves your site
 Whenever you wonder whether security might have been compromised  
 
 
+# ssh
+
+    ssh, the client
+    sshd, the server daemon
+    ssh-keygen, for generating public/private key pairs
+    ssh-add and ssh-agent, tools for managing authentication keys
+    ssh-keyscan, for retrieving public keys from servers
+    sftp-server, the server process for file transfer over SFTP
+    sftp and scp, file transfer client utilities
+
+To initiate this process, a user invokes ssh with the remote host as the first argument:  
+ssh attempts a TCP connection on port 22, the standard SSH port assigned by IANA.  
+Once the user accepts the key, the fingerprint is added to ~/.ssh/known_hosts for future use.  
+ssh and sshd can be tuned for varying needs and security types. Configuration is found in the /etc/ssh directory, an uncharacteristically standard location among all flavors of UNIX and Linux.  
+In addition to /etc/ssh, OpenSSH uses ~/.ssh for storing public and private keys, for per-user client configuration overrides, and for a few other purposes. The ~/.ssh directory is ignored unless its permissions are set to 0700.  
+
+The -v option prints debug messages. Specify it multiple times (maximum of three) to increase verbosity. You’ll find this flag to be invaluable when debugging authentication problems.  
+</img>
+
+
+## URL
+The address portion of a web URL allows quite a bit of interior structure. Here’s the overall pattern:
+			scheme://[username:password@]hostname[:port][/path][?query][#anchor]
+All the elements are optional except scheme and hostname.  
+
+## Therefore, basic authentication
+ should really only be used over secure HTTPS connections.  
+ The hostname can be a domain name or IP address as well as an actual hostname. The port is the TCP port number to connect to. The http and https schemes default to ports 80 and 443, respectively.  
+ 
+
+
+# https://safeciphers.org/
+## nginx config example
+
+ssl_protocols TLSv1.3;# Requires nginx >= 1.13.0 else use TLSv1.2
+ssl_prefer_server_ciphers on;
+ssl_dhparam /etc/nginx/dhparam.pem; # openssl dhparam -out /etc/nginx/dhparam.pem 4096
+ssl_ciphers EECDH+AESGCM:EDH+AESGCM;
+ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
+ssl_session_timeout  10m;
+ssl_session_cache shared:SSL:10m;
+ssl_session_tickets off; # Requires nginx >= 1.5.9
+ssl_stapling on; # Requires nginx >= 1.3.7
+ssl_stapling_verify on; # Requires nginx => 1.3.7
+resolver $DNS-IP-1 $DNS-IP-2 valid=300s;
+resolver_timeout 5s;
+add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+add_header X-Frame-Options DENY;
+add_header X-Content-Type-Options nosniff;
+add_header X-XSS-Protection "1; mode=block";
+                
+## File: /etc/nginx/nginx.conf      Stand: 25.3.2020                              
+
+user uwe;
+worker_processes auto;
+
+error_log  /var/log/nginx/error.log warn;
+pid /run/nginx.pid;
+
+include /etc/nginx/modules-enabled/*.conf;
+
+events {
+        worker_connections 768;
+        # worker_processes auto;
+        # multi_accept on;
+}
+
+http {
+
+        ##
+        # Basic Settings
+        ##
+
+        sendfile on;
+        tcp_nopush on;
+        tcp_nodelay on;
+        keepalive_timeout 65;
+        types_hash_max_size 2048;
+        server_tokens off;
+
+        # server_names_hash_bucket_size 64;
+        # server_name_in_redirect off;
+
+        include /etc/nginx/mime.types;
+        default_type application/octet-stream;
+
+        ##
+        # SSL Settings
+        ##
+
+        ssl_protocols TLSv1.2;# TLSv1.3 Requires nginx >= 1.13.0 else use TLSv1.2
+        ssl_prefer_server_ciphers on;
+        ssl_dhparam /etc/nginx/dhparam.pem; # openssl dhparam -out /etc/nginx/dhparam.pem 4096
+        ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DH$
+        ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
+        ssl_session_timeout  10m;
+        ssl_session_cache shared:SSL:10m;
+        ssl_session_tickets off; # Requires nginx >= 1.5.9
+        ssl_stapling on; # Requires nginx >= 1.3.7
+        ssl_stapling_verify on; # Requires nginx => 1.3.7
+        resolver $DNS-IP-1 $DNS-IP-2 valid=300s;
+        ##
+        # Logging Settings
+        ##
+
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log /var/log/nginx/access.log main;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        # gzip on;
+        gzip_disable "msie6";
+
+        # gzip_vary on;
+       add_header X-Frame-Options DENY;
+        add_header X-Content-Type-Options nosniff;
+        add_header X-XSS-Protection "1; mode=block";
+
+        ##
+        # Logging Settings
+        ##
+
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log /var/log/nginx/access.log main;
+        error_log /var/log/nginx/error.log;
+
+        ##
+        # Gzip Settings
+        ##
+
+        # gzip on;
+        gzip_disable "msie6";
+
+        # gzip_vary on;
+        # gzip_proxied any;
+        # gzip_comp_level 6;
+        # gzip_buffers 16 8k;
+        # gzip_http_version 1.1;
+        # gzip_types text/plain text/css application/json application/javascript text/xml application/xm$
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+}
+
+
+\#mail {
+\#       # See sample authentication script at:
+\#       # http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+\#
+\#       # auth_http localhost/auth.php;
+\#       # pop3_capabilities "TOP" "USER";
+\#       # imap_capabilities "IMAP4rev1" "UIDPLUS";
+\#
+\#       server {
+\#               listen     localhost:110;
+\#               protocol   pop3;
+\#               proxy      on;
+\#       }
+\#
+\#       server {
+\#               listen     localhost:143;
+\#               protocol   imap;
+\#               proxy      on;
+\#       }
+\#}
+
+## We need generate a stronger DHE parameter:
+
+openssl dhparam -out /etc/ssl/certsdhparam.pem 4096
+
+And then tell nginx to use it for DHE key-exchange:
+
+ssl_dhparam /etc/ssl/certs/dhparam.pem;
+ssl_ecdh_curve secp384r1; # Requires nginx >= 1.1.0
+
+# Conclusion
+
+If you have applied the above config lines you need to restart nginx:
+
+# Check the config first:
+/etc/init.d/nginx configtest
+# Then restart:
+/etc/init.d/nginx restart
+
+Now use the SSL Labs test to see if you get a nice A. And, of course, have a safe, strong and future proof SSL configuration!
+
+Also read the Mozilla page on the subject
+Tags: nginx , security , ssl , ssl-labs , tls , tutorials
