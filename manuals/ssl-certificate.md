@@ -163,6 +163,7 @@ nmap -sT osteotomy.de
 
 sudo nmap -sV -O osteotomy.de 
 
+openssl s_client -connect osteotomy.de  
  
 
 
