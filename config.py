@@ -112,7 +112,7 @@ class UnixConfig(ProductionConfig):
         app.logger.addHandler(syslog_handler)
 
 
-class LinodeConfig(ProductionConfig)
+class LinodeConfig(ProductionConfig):
     SSL_REDIRECT = True # if os.environ.get('DYNO') else False
 
     @classmethod
