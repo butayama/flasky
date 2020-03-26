@@ -376,3 +376,8 @@ Now use the SSL Labs test to see if you get a nice A. And, of course, have a saf
 
 Also read the Mozilla page on the subject
 Tags: nginx , security , ssl , ssl-labs , tls , tutorials
+
+
+Letzter Versuch gemäß:
+https://hostadvice.com/how-to/how-to-configure-nginx-to-use-self-signed-ssl-tls-certificate-on-ubuntu-18-04-vps-or-dedicated-server/
+hat nicht funktioniert!
