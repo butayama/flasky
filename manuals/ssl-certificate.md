@@ -381,3 +381,91 @@ Tags: nginx , security , ssl , ssl-labs , tls , tutorials
 Letzter Versuch gemäß:
 https://hostadvice.com/how-to/how-to-configure-nginx-to-use-self-signed-ssl-tls-certificate-on-ubuntu-18-04-vps-or-dedicated-server/
 hat nicht funktioniert!
+
+# https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/  
+To easily display all the permissions on a path, you can use:
+
+# namei -om /path/to/checkhttps://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-16-04
+We will make a few adjustments to our configuration.
+
+    We will create a configuration snippet containing our SSL key and certificate file locations.
+    We will create a configuration snippet containing strong SSL settings that can be used with any certificates in the future.
+    We will adjust our Nginx server blocks to handle SSL requests and use the two snippets above.
+
+# certbot successful certification
+uwes@hpi5:~$ ssh uwe@139.162.152.56
+Linux pumuckel 4.9.0-12-amd64 #1 SMP Debian 4.9.210-1 (2020-01-20) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Thu Mar 26 23:49:35 2020 from 91.33.168.29
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo certbot -nginx
+[sudo] password for uwe: 
+usage: 
+  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
+
+Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
+it will attempt to use a webserver both for obtaining and installing the
+certificate. 
+certbot: error: argument -n/--non-interactive/--noninteractive: ignored explicit argument 'ginx'
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo certbot --nginx
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: osteotomy.de
+2: www.osteotomy.de
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for osteotomy.de
+http-01 challenge for www.osteotomy.de
+nginx: [warn] "ssl_stapling" ignored, issuer certificate not found
+Waiting for verification...
+Cleaning up challenges
+nginx: [warn] "ssl_stapling" ignored, issuer certificate not found
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/flaskapp
+Deploying Certificate to VirtualHost /etc/nginx/sites-enabled/flaskapp
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+new sites, or if you're confident your site works on HTTPS. You can undo this
+change by editing your web server's configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-2] then [enter] (press 'c' to cancel): 1
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled https://osteotomy.de and
+https://www.osteotomy.de
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d=osteotomy.de
+https://www.ssllabs.com/ssltest/analyze.html?d=www.osteotomy.de
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/osteotomy.de/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/osteotomy.de/privkey.pem
+   Your cert will expire on 2020-06-24. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the "certonly" option. To non-interactively renew *all* of
+   your certificates, run "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ 
+
+
