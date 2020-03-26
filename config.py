@@ -68,8 +68,7 @@ class ProductionConfig(Config):
 
 
 class HerokuConfig(ProductionConfig):
-    # SSL_REDIRECT = True if os.environ.get('DYNO') else False
-    SSL_REDIRECT = False
+    SSL_REDIRECT = True if os.environ.get('DYNO') else False
 
     @classmethod
     def init_app(cls, app):
@@ -113,10 +112,16 @@ class UnixConfig(ProductionConfig):
         app.logger.addHandler(syslog_handler)
 
 
-class LinodeConfig(ProductionConfig):
+class LinodeConfig(ProductionConfig)
+    SSL_REDIRECT = True # if os.environ.get('DYNO') else False
+
     @classmethod
     def init_app(cls, app):
         ProductionConfig.init_app(app)
+
+        # handle reverse proxy server headers
+        from werkzeug.contrib.fixers import ProxyFix
+        app.wsgi_app = ProxyFix(app.wsgi_app)
 
         # log to syslog
         import logging
