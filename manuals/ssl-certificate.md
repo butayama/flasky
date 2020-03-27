@@ -394,24 +394,7 @@ We will make a few adjustments to our configuration.
 
 # certbot successful certification
 uwes@hpi5:~$ ssh uwe@139.162.152.56
-Linux pumuckel 4.9.0-12-amd64 #1 SMP Debian 4.9.210-1 (2020-01-20) x86_64
 
-The programs included with the Debian GNU/Linux system are free software;
-the exact distribution terms for each program are described in the
-individual files in /usr/share/doc/*/copyright.
-
-Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
-permitted by applicable law.
-Last login: Thu Mar 26 23:49:35 2020 from 91.33.168.29
-(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo certbot -nginx
-[sudo] password for uwe: 
-usage: 
-  certbot [SUBCOMMAND] [options] [-d DOMAIN] [-d DOMAIN] ...
-
-Certbot can obtain and install HTTPS/TLS/SSL certificates.  By default,
-it will attempt to use a webserver both for obtaining and installing the
-certificate. 
-certbot: error: argument -n/--non-interactive/--noninteractive: ignored explicit argument 'ginx'
 (3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ sudo certbot --nginx
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Plugins selected: Authenticator nginx, Installer nginx
@@ -469,3 +452,50 @@ IMPORTANT NOTES:
 (3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) ✗ 
 
 
+# certbot Zertifikat neue Domain hinzufügen
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) sudo certbot certonly --cert-name osteotomy.de -d osteotomy.de,pumuckel.osteotomy.de,www.osteotomy.de                   
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+How would you like to authenticate with the ACME CA?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: Nginx Web Server plugin (nginx)
+2: Spin up a temporary webserver (standalone)
+3: Place files in webroot directory (webroot)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number [1-3] then [enter] (press 'c' to cancel): 1
+Plugins selected: Authenticator nginx, Installer None
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+You are updating certificate osteotomy.de to include new domain(s):
++ pumuckel.osteotomy.de
+
+You are also removing previously included domain(s):
+(None)
+
+Did you intend to make this change?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+(U)pdate cert/(C)ancel: U
+Renewing an existing certificate
+Performing the following challenges:
+http-01 challenge for osteotomy.de
+http-01 challenge for www.osteotomy.de
+http-01 challenge for pumuckel.osteotomy.de
+Using default addresses 80 and [::]:80 for authentication.
+Waiting for verification...
+Cleaning up challenges
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/osteotomy.de/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/osteotomy.de/privkey.pem
+   Your cert will expire on 2020-06-25. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot
+   again. To non-interactively renew *all* of your certificates, run
+   "certbot renew"
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+
+(3.8.1/envs/flasky) ➜  flasky git:(linode-deploy) 
