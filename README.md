@@ -1,6 +1,6 @@
 Osteotomy_web
 =============
-The web-version of Osteotomy_calc is a veterinary surgeon case studiy and an op planning tool. Visitors of this site are invited to help improve this site. Contact: uwe.schweinsberg@t-online.de
+The web-version of Osteotomy_calc is a veterinary surgeon case study and an op planning tool. You are invited to help improve this site. Contact: uwe.schweinsberg@t-online.de
 
 The web framework
 =================
