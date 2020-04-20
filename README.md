@@ -4,4 +4,4 @@ The web-version of Osteotomy_calc is a veterinary surgeon case study and an op p
 
 The web framework
 =================
-is based on the excellent 'O'Reilly book [Flask Web Development](http://www.flaskbook.com) from Miguel Grinberg.
+is based on the excellent 'O'Reilly book [Flask Web Development](http://www.flaskbook.com) by Miguel Grinberg.
