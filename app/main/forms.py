@@ -63,6 +63,7 @@ class CommentForm(FlaskForm):
 
 class OpPlanningForm(FlaskForm):
     coronal_component_C = FloatField('Enter coronal component C', validators=[DataRequired()])
+    Image_C = BooleanField('Enter coronal component C', validators=[DataRequired()])
     sagittal_component_S = FloatField('Enter sagittal component S', validators=[DataRequired()])
     torsion_component_T = FloatField('Enter torsion component T', validators=[DataRequired()])
     # filename = FileField('Store the results in:', validators=[Optional()])
